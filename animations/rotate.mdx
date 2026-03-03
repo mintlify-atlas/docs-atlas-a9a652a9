@@ -1,0 +1,465 @@
+---
+title: Rotation Animations
+description: Rotate elements with precise angles or continuous spinning
+---
+
+Rotation animations add dynamic movement and visual interest by spinning elements around their center point. Use them for loading indicators, interactive elements, and playful transitions.
+
+## Fixed Angle Rotations
+
+<Tabs>
+  <Tab title="rotate-90">
+    Rotates element 90 degrees clockwise.
+
+    ```html
+    <div class="animate-rotate-90">
+      Quarter turn rotation
+    </div>
+    ```
+
+    **Rotation:** 0° to 90°
+    
+    **Duration:** 1000ms
+
+    **Best for:** Accordion chevrons, dropdown arrows, expand/collapse indicators
+  </Tab>
+
+  <Tab title="rotate-180">
+    Rotates element 180 degrees clockwise.
+
+    ```html
+    <div class="animate-rotate-180">
+      Half turn rotation
+    </div>
+    ```
+
+    **Rotation:** 0° to 180°
+    
+    **Duration:** 1000ms
+
+    **Best for:** Flip indicators, toggle states, card flips (2D)
+  </Tab>
+
+  <Tab title="rotate-360">
+    Completes a full 360-degree rotation.
+
+    ```html
+    <div class="animate-rotate-360">
+      Full circle rotation
+    </div>
+    ```
+
+    **Rotation:** 0° to 360°
+    
+    **Duration:** 1000ms (linear timing)
+
+    **Best for:** Loading spinners, refresh buttons, completion indicators
+    
+    **Note:** Uses linear timing by default for smooth continuous motion
+  </Tab>
+</Tabs>
+
+## Continuous Spinning
+
+<Accordion title="spin-clockwise">
+  Continuous clockwise rotation.
+
+  ```html
+  <div class="animate-spin-clockwise animate-iteration-count-infinite">
+    Spins clockwise continuously
+  </div>
+  ```
+
+  **Rotation:** 0° to 360° (repeating)
+  
+  **Duration:** 600ms per rotation
+
+  **Best for:** Loading indicators, processing spinners, active state indicators
+
+  **Usage tip:** Always combine with `animate-iteration-count-infinite` for continuous spinning
+</Accordion>
+
+<Accordion title="spin-counter-clockwise">
+  Continuous counter-clockwise rotation.
+
+  ```html
+  <div class="animate-spin-counter-clockwise animate-iteration-count-infinite">
+    Spins counter-clockwise continuously
+  </div>
+  ```
+
+  **Rotation:** 0° to -360° (repeating)
+  
+  **Duration:** 600ms per rotation
+
+  **Best for:** Reverse loading indicators, decorative elements, contrast with clockwise spinners
+</Accordion>
+
+## Rotation with Opacity
+
+<Tabs>
+  <Tab title="rotate-in">
+    Element rotates into view while fading in.
+
+    ```html
+    <div class="animate-rotate-in">
+      Rotates from -90° while fading in
+    </div>
+    ```
+
+    **Animation:**
+    - Starts: `opacity: 0; transform: rotate(-90deg)`
+    - Ends: `opacity: 1; transform: rotate(0deg)`
+
+    **Duration:** 600ms
+
+    **Best for:** Card entrances, icon reveals, modal content
+  </Tab>
+
+  <Tab title="rotate-out">
+    Element rotates out of view while fading out.
+
+    ```html
+    <div class="animate-rotate-out">
+      Rotates to 90° while fading out
+    </div>
+    ```
+
+    **Animation:**
+    - Starts: `opacity: 1; transform: rotate(0deg)`
+    - Ends: `opacity: 0; transform: rotate(90deg)`
+
+    **Duration:** 600ms
+
+    **Best for:** Dismissing elements with flair, exit animations
+  </Tab>
+</Tabs>
+
+## Impulse Rotations
+
+### impulse-rotation-right
+
+Rotates with an initial counter-impulse before spinning right.
+
+```html
+<div class="animate-impulse-rotation-right">
+  Winds up left, then spins right
+</div>
+```
+
+**Animation sequence:**
+- 0%: `rotate(0deg)`
+- 50%: `rotate(-40deg)` (wind-up)
+- 100%: `rotate(360deg)` (full spin)
+
+**Duration:** 1000ms
+
+**Best for:** Playful button clicks, game elements, attention-grabbing spins
+
+### impulse-rotation-left
+
+Rotates with an initial right-impulse before spinning left.
+
+```html
+<div class="animate-impulse-rotation-left">
+  Winds up right, then spins left
+</div>
+```
+
+**Animation sequence:**
+- 0%: `rotate(0deg)`
+- 50%: `rotate(40deg)` (wind-up)
+- 100%: `rotate(-360deg)` (full spin)
+
+**Duration:** 1000ms
+
+**Best for:** Alternative direction impulse, varied visual interest
+
+## Subtle Rotation Effects
+
+### rotational-wave
+
+Gentle back-and-forth rotation creating a wave effect.
+
+```html
+<div class="animate-rotational-wave animate-iteration-count-infinite">
+  Gently rocks back and forth
+</div>
+```
+
+**Animation sequence:**
+- 0%: `rotate(0deg)`
+- 25%: `rotate(10deg)`
+- 50%: `rotate(-10deg)`
+- 75%: `rotate(10deg)`
+- 100%: `rotate(0deg)`
+
+**Duration:** 2000ms
+
+**Best for:** Floating UI elements, decorative icons, subtle motion backgrounds
+
+## Combined Animations
+
+### slide-rotate-in
+
+Slides from left while rotating into view.
+
+```html
+<div class="animate-slide-rotate-in">
+  Slides and rotates into view
+</div>
+```
+
+**Animation:**
+- Starts: `opacity: 0; translateX(-20px) rotate(-90deg)`
+- Ends: `opacity: 1; translateX(0) rotate(0deg)`
+
+**Duration:** 600ms
+
+**Best for:** Playful card entrances, creative transitions
+
+### slide-rotate-out
+
+Slides right while rotating out of view.
+
+```html
+<div class="animate-slide-rotate-out">
+  Rotates and slides out
+</div>
+```
+
+**Animation:**
+- Starts: `opacity: 1; translateX(0) rotate(0deg)`
+- Ends: `opacity: 0; translateX(20px) rotate(90deg)`
+
+**Duration:** 600ms
+
+**Best for:** Dismissing elements with style, card exits
+
+### roll-in / roll-out
+
+See [Movement & Motion animations](/animations/movement) for rolling animations that combine translation with rotation.
+
+## Customization Examples
+
+### Fast Loading Spinner
+
+```html
+<div class="animate-spin-clockwise 
+            animate-iteration-count-infinite 
+            animate-duration-fast">
+  🔄
+</div>
+```
+
+### Slow Decorative Spin
+
+```html
+<div class="animate-rotate-360 
+            animate-iteration-count-infinite 
+            animate-duration-slower">
+  ⭐
+</div>
+```
+
+### Smooth Rotation with Easing
+
+```html
+<div class="animate-rotate-180 
+            animate-bezier-cubic-in-out 
+            animate-duration-normal">
+  Smooth flip
+</div>
+```
+
+### Alternating Rotation
+
+```html
+<div class="animate-rotate-90 
+            animate-iteration-count-infinite 
+            animate-direction-alternate 
+            animate-duration-slow">
+  Rotates back and forth
+</div>
+```
+
+### Continuous Wave Effect
+
+```html
+<div class="animate-rotational-wave 
+            animate-iteration-count-infinite 
+            animate-duration-slower">
+  Gentle continuous wave
+</div>
+```
+
+## Practical Use Cases
+
+### Loading Spinner
+
+```html
+<div class="inline-flex items-center gap-2">
+  <svg class="w-5 h-5 animate-spin-clockwise animate-iteration-count-infinite" 
+       viewBox="0 0 24 24">
+    <circle class="opacity-25" cx="12" cy="12" r="10" 
+            stroke="currentColor" stroke-width="4" fill="none"/>
+    <path class="opacity-75" fill="currentColor" 
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"/>
+  </svg>
+  <span>Loading...</span>
+</div>
+```
+
+### Refresh Button
+
+```html
+<button class="p-2 hover:animate-rotate-360 hover:animate-duration-fast">
+  <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+  </svg>
+</button>
+```
+
+### Dropdown Arrow
+
+```html
+<button class="flex items-center gap-2 group">
+  <span>Options</span>
+  <svg class="w-4 h-4 transition-transform group-hover:animate-rotate-180" 
+       viewBox="0 0 20 20" fill="currentColor">
+    <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"/>
+  </svg>
+</button>
+```
+
+### Success Checkmark with Spin
+
+```html
+<div class="w-16 h-16 rounded-full bg-green-500 flex items-center justify-center
+            animate-rotate-360 animate-duration-normal">
+  <svg class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+  </svg>
+</div>
+```
+
+### Playful Button Click
+
+```html
+<button class="px-6 py-3 bg-purple-500 text-white rounded-lg
+               active:animate-impulse-rotation-right active:animate-duration-fast">
+  Spin Me!
+</button>
+```
+
+### Scroll-Driven Rotation
+
+```html
+<div class="animate-rotate-360 timeline-scroll">
+  Rotates as you scroll
+</div>
+```
+
+### Floating Icon
+
+```html
+<div class="animate-rotational-wave 
+            animate-iteration-count-infinite 
+            animate-duration-slower">
+  💎
+</div>
+```
+
+## Advanced Combinations
+
+### Rotation with Scale
+
+```html
+<div class="animate-rotate-360 hover:scale-110 transition-transform">
+  Rotates and scales on hover
+</div>
+```
+
+### Staggered Rotating Icons
+
+```html
+<div class="flex gap-4">
+  <div class="animate-rotate-360 animate-delay-0">⚙️</div>
+  <div class="animate-rotate-360 animate-delay-200">⚙️</div>
+  <div class="animate-rotate-360 animate-delay-400">⚙️</div>
+</div>
+```
+
+### Multiple Spinners
+
+```html
+<div class="relative w-16 h-16">
+  <!-- Outer ring -->
+  <div class="absolute inset-0 border-4 border-blue-200 border-t-blue-500 rounded-full
+              animate-spin-clockwise animate-iteration-count-infinite"></div>
+  
+  <!-- Inner ring -->
+  <div class="absolute inset-2 border-4 border-purple-200 border-t-purple-500 rounded-full
+              animate-spin-counter-clockwise animate-iteration-count-infinite"></div>
+</div>
+```
+
+## Tips and Best Practices
+
+<Tip>Use `animate-iteration-count-infinite` with spin animations for continuous motion.</Tip>
+
+<Tip>The `rotate-360` animation uses linear timing by default, making it perfect for loading spinners.</Tip>
+
+```html
+<!-- Loading spinner -->
+<div class="animate-rotate-360 animate-iteration-count-infinite">
+  Natural continuous rotation
+</div>
+```
+
+<Warning>Be cautious with continuous rotation animations - they can be distracting. Use sparingly and only when indicating an active process.</Warning>
+
+### Transform Origin
+
+Rotations happen around the element's center by default. Control the rotation point with transform-origin:
+
+```html
+<!-- Rotate around top-left corner -->
+<div class="animate-rotate-90 origin-top-left">
+  Door swing effect
+</div>
+
+<!-- Rotate around bottom -->
+<div class="animate-rotate-180 origin-bottom">
+  Flip from bottom
+</div>
+```
+
+### Pausing on Hover
+
+```html
+<div class="animate-spin-clockwise 
+            animate-iteration-count-infinite 
+            hover:animate-play-paused">
+  Pauses when you hover
+</div>
+```
+
+### Reversing Direction
+
+```html
+<div class="animate-rotate-360 
+            animate-direction-reverse 
+            animate-iteration-count-infinite">
+  Rotates counter-clockwise
+</div>
+```
+
+## Performance Considerations
+
+- Rotation uses `transform: rotate()` which is GPU-accelerated
+- Excellent performance on all modern devices
+- Safe to animate multiple elements simultaneously
+- Continuous infinite rotations are lightweight
+- Combining with other transforms (scale, translate) maintains good performance

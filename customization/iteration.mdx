@@ -1,0 +1,292 @@
+---
+title: 'Iteration Count'
+description: 'Control how many times an animation repeats with iteration count utilities'
+icon: 'repeat'
+---
+
+Iteration count controls how many times an animation cycle repeats. Use it to create one-time effects, repeated animations, or infinite loops.
+
+## Usage
+
+Apply iteration count classes to control animation repetition:
+
+```html
+<div class="animate-bounce animate-iteration-count-infinite">
+  Bounces forever
+</div>
+
+<div class="animate-shake animate-iteration-count-thrice">
+  Shakes three times
+</div>
+```
+
+## Quick Start
+
+<CodeGroup>
+```html Named Values
+<div class="animate-bounce animate-iteration-count-once">
+  Once
+</div>
+
+<div class="animate-bounce animate-iteration-count-twice">
+  Twice
+</div>
+
+<div class="animate-bounce animate-iteration-count-thrice">
+  Three times
+</div>
+
+<div class="animate-bounce animate-iteration-count-infinite">
+  Forever
+</div>
+```
+
+```html Numeric Values
+<div class="animate-shake animate-iteration-count-1">1 time</div>
+<div class="animate-shake animate-iteration-count-2">2 times</div>
+<div class="animate-shake animate-iteration-count-3">3 times</div>
+<div class="animate-shake animate-iteration-count-5">5 times</div>
+```
+</CodeGroup>
+
+## Available Iteration Values
+
+### Named Iteration Values
+
+| Class | CSS Variable | Value | Use Case |
+|-------|--------------|-------|----------|
+| `animate-iteration-count-none` | `--tw-anim-iteration-count-none` | 0 | Disable animation |
+| `animate-iteration-count-once` | `--tw-anim-iteration-count-once` | 1 | One-time effects |
+| `animate-iteration-count-twice` | `--tw-anim-iteration-count-twice` | 2 | Double emphasis |
+| `animate-iteration-count-thrice` | `--tw-anim-iteration-count-thrice` | 3 | Triple emphasis |
+| `animate-iteration-count-infinite` | `--tw-anim-iteration-count-infinite` | infinite | Continuous effects |
+
+### Numeric Iteration Values
+
+Use any positive integer for custom iteration counts:
+
+```html
+<div class="animate-pulse animate-iteration-count-5">5 pulses</div>
+<div class="animate-bounce animate-iteration-count-10">10 bounces</div>
+```
+
+## Common Patterns
+
+### One-Time Entrance
+
+Perfect for page load animations that shouldn't repeat:
+
+```html
+<div class="animate-fade-in-up animate-iteration-count-once">
+  Welcome message
+</div>
+```
+
+### Attention Seeker
+
+Shake or pulse a few times to draw attention:
+
+```html
+<button class="animate-shake animate-iteration-count-thrice animate-delay-500">
+  Important Action
+</button>
+
+<div class="animate-pulse animate-iteration-count-twice">
+  New notification
+</div>
+```
+
+### Continuous Loading Indicator
+
+Infinite animations for loading states:
+
+```html
+<div class="animate-spin-clockwise animate-iteration-count-infinite animate-duration-slow">
+  ⏳
+</div>
+
+<div class="animate-pulse animate-iteration-count-infinite">
+  Loading...
+</div>
+```
+
+### Pulsing Badge
+
+Continuous subtle animation for notifications:
+
+```html
+<div class="relative">
+  <span>Notifications</span>
+  <span class="absolute top-0 right-0 
+               animate-ping 
+               animate-iteration-count-infinite 
+               animate-duration-slow">
+    <span class="badge">3</span>
+  </span>
+</div>
+```
+
+## Combining with Other Properties
+
+### With Duration and Delay
+
+```html
+<div class="animate-bounce 
+            animate-iteration-count-thrice 
+            animate-duration-fast 
+            animate-delay-200">
+  Quick triple bounce after delay
+</div>
+```
+
+### With Direction
+
+Combine with animation direction for advanced effects:
+
+```html
+<div class="animate-slide-in-left 
+            animate-iteration-count-twice 
+            animate-direction-alternate">
+  Slides in and out twice
+</div>
+```
+
+### With Fill Mode
+
+```html
+<div class="animate-fade-in 
+            animate-iteration-count-once 
+            animate-fill-mode-forwards">
+  Fades in once and stays visible
+</div>
+```
+
+## CSS Reference
+
+The utility class maps to the CSS property:
+
+```css
+.animate-iteration-count-infinite {
+  animation-iteration-count: infinite;
+}
+
+.animate-iteration-count-thrice {
+  animation-iteration-count: 3;
+}
+```
+
+## Best Practices
+
+<Tip>
+  **Use once for entrances**: Most entrance animations should run once (`animate-iteration-count-once`).
+</Tip>
+
+<Tip>
+  **Limit attention seekers**: Use 2-3 iterations for shake/pulse effects to avoid annoyance.
+</Tip>
+
+<Warning>
+  **Be careful with infinite**: Infinite animations can be distracting and impact performance.
+</Warning>
+
+### Recommended Usage by Animation Type
+
+- **Page load animations**: `once` (1 iteration)
+- **Attention seekers**: `twice` or `thrice` (2-3 iterations)
+- **Loading indicators**: `infinite`
+- **Hover effects**: `once` (rely on hover trigger)
+- **Notification badges**: `infinite` (but subtle)
+
+## Advanced Examples
+
+### Sequential Emphasis
+
+Shake multiple times with pauses using delays:
+
+```html
+<button class="group">
+  <span class="animate-shake 
+               animate-iteration-count-twice 
+               group-hover:animate-iteration-count-thrice">
+    Click me!
+  </span>
+</button>
+```
+
+### Heartbeat Effect
+
+Continuous heartbeat animation:
+
+```html
+<div class="animate-heartbeat 
+            animate-iteration-count-infinite 
+            animate-duration-slow">
+  ❤️
+</div>
+```
+
+### Conditional Infinite
+
+Use responsive variants to change iterations:
+
+```html
+<div class="animate-bounce 
+            animate-iteration-count-thrice 
+            md:animate-iteration-count-infinite">
+  Limited on mobile, infinite on desktop
+</div>
+```
+
+### Wave Effect
+
+Create a wave by staggering infinite animations:
+
+```html
+<div class="flex gap-2">
+  <div class="animate-bounce animate-iteration-count-infinite animate-delay-0">•</div>
+  <div class="animate-bounce animate-iteration-count-infinite animate-delay-100">•</div>
+  <div class="animate-bounce animate-iteration-count-infinite animate-delay-200">•</div>
+  <div class="animate-bounce animate-iteration-count-infinite animate-delay-300">•</div>
+</div>
+```
+
+### Toggle Animation
+
+Use with JavaScript to control iterations dynamically:
+
+```html
+<button id="animateBtn" 
+        class="animate-shake animate-iteration-count-none"
+        onclick="this.classList.replace('animate-iteration-count-none', 'animate-iteration-count-thrice')">
+  Click to animate
+</button>
+```
+
+## Accessibility Considerations
+
+<Warning>
+  **Respect user preferences**: Users with vestibular disorders may be sensitive to motion.
+</Warning>
+
+```css
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-iteration-count-infinite {
+    animation-iteration-count: 1;
+  }
+}
+```
+
+Consider providing controls to pause infinite animations:
+
+```html
+<div class="relative">
+  <div class="animate-spin animate-iteration-count-infinite animate-play-running" 
+       id="spinner">
+    ⟳
+  </div>
+  <button onclick="document.getElementById('spinner').classList.toggle('animate-play-paused')">
+    Pause
+  </button>
+</div>
+```

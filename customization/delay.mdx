@@ -1,0 +1,206 @@
+---
+title: 'Animation Delay'
+description: 'Add delays before animations start with precise timing control'
+icon: 'stopwatch'
+---
+
+Animation delay controls how long to wait before starting an animation. This is perfect for creating staggered animations, sequencing effects, or timing animations to occur after other events.
+
+## Usage
+
+Add delay classes to postpone animation start:
+
+```html
+<div class="animate-fade-in animate-delay-200">
+  Fades in after 200ms
+</div>
+
+<div class="animate-slide-in-left animate-delay-500">
+  Slides in after 500ms
+</div>
+```
+
+## Quick Start
+
+<CodeGroup>
+```html Basic Delay
+<div class="animate-fade-in animate-delay-300">
+  Delayed animation
+</div>
+```
+
+```html Staggered Animations
+<div class="animate-fade-in animate-delay-0">First</div>
+<div class="animate-fade-in animate-delay-100">Second</div>
+<div class="animate-fade-in animate-delay-200">Third</div>
+<div class="animate-fade-in animate-delay-300">Fourth</div>
+```
+</CodeGroup>
+
+## Available Delay Values
+
+All delay values are in milliseconds:
+
+| Class | CSS Variable | Value | Use Case |
+|-------|--------------|-------|----------|
+| `animate-delay-none` | `--tw-anim-delay-none` | 0ms | No delay |
+| `animate-delay-0` | `--tw-anim-delay-0` | 0ms | Immediate start |
+| `animate-delay-100` | `--tw-anim-delay-100` | 100ms | Very quick stagger |
+| `animate-delay-150` | `--tw-anim-delay-150` | 150ms | Quick stagger |
+| `animate-delay-200` | `--tw-anim-delay-200` | 200ms | Short delay |
+| `animate-delay-250` | `--tw-anim-delay-250` | 250ms | Quarter second |
+| `animate-delay-300` | `--tw-anim-delay-300` | 300ms | Standard stagger |
+| `animate-delay-400` | `--tw-anim-delay-400` | 400ms | Noticeable delay |
+| `animate-delay-500` | `--tw-anim-delay-500` | 500ms | Half second |
+| `animate-delay-700` | `--tw-anim-delay-700` | 700ms | Longer delay |
+| `animate-delay-800` | `--tw-anim-delay-800` | 800ms | Nearly a second |
+| `animate-delay-900` | `--tw-anim-delay-900` | 900ms | Long delay |
+| `animate-delay-1000` | `--tw-anim-delay-1000` | 1000ms | One second |
+
+## Common Patterns
+
+### Staggered List Items
+
+Create a cascading effect by incrementing delays:
+
+```html
+<ul>
+  <li class="animate-fade-in-right animate-delay-0">Item 1</li>
+  <li class="animate-fade-in-right animate-delay-100">Item 2</li>
+  <li class="animate-fade-in-right animate-delay-200">Item 3</li>
+  <li class="animate-fade-in-right animate-delay-300">Item 4</li>
+  <li class="animate-fade-in-right animate-delay-400">Item 5</li>
+</ul>
+```
+
+### Sequential Card Reveals
+
+```html
+<div class="grid grid-cols-3 gap-4">
+  <div class="animate-zoom-in animate-delay-0">
+    <div class="card">Card 1</div>
+  </div>
+  <div class="animate-zoom-in animate-delay-150">
+    <div class="card">Card 2</div>
+  </div>
+  <div class="animate-zoom-in animate-delay-300">
+    <div class="card">Card 3</div>
+  </div>
+</div>
+```
+
+### Timed Attention Seeker
+
+Delay an attention animation to trigger after content loads:
+
+```html
+<div class="animate-shake animate-delay-1000 animate-iteration-count-twice">
+  <button>Important Action!</button>
+</div>
+```
+
+## Combining with Duration
+
+Delay and duration work together to create precise timing:
+
+```html
+<!-- Starts after 300ms, runs for 500ms -->
+<div class="animate-fade-in animate-delay-300 animate-duration-500">
+  Delayed and slow fade in
+</div>
+```
+
+## Arbitrary Values
+
+Use any delay value with arbitrary syntax:
+
+```html
+<!-- Custom delay values -->
+<div class="animate-fade-in animate-delay-175">175ms delay</div>
+<div class="animate-fade-in animate-delay-2500">2.5 second delay</div>
+```
+
+## CSS Reference
+
+The utility class maps to the CSS property:
+
+```css
+.animate-delay-300 {
+  animation-delay: 300ms;
+}
+```
+
+## Responsive Delays
+
+Use responsive variants to adjust delays at different breakpoints:
+
+```html
+<div class="animate-fade-in 
+            animate-delay-200 
+            md:animate-delay-300 
+            lg:animate-delay-500">
+  Different delays at different screen sizes
+</div>
+```
+
+## Best Practices
+
+<Tip>
+  **Stagger incrementally**: For lists, increment delays by 50-150ms for smooth cascading effects.
+</Tip>
+
+<Tip>
+  **Keep delays short**: Most delays should be under 500ms to maintain user engagement.
+</Tip>
+
+<Warning>
+  **Avoid long delays**: Delays over 1 second can make your site feel unresponsive.
+</Warning>
+
+### Recommended Delay Patterns
+
+- **Staggered lists**: 50-150ms increments
+- **Sequential reveals**: 150-300ms increments
+- **Attention animations**: 500-1000ms
+- **Loading indicators**: 200-500ms
+
+## Advanced Examples
+
+### Dynamic Loading Sequence
+
+```html
+<div class="loading-sequence">
+  <div class="animate-fade-in animate-delay-0">Loading</div>
+  <div class="animate-fade-in animate-delay-300">.</div>
+  <div class="animate-fade-in animate-delay-500">.</div>
+  <div class="animate-fade-in animate-delay-700">.</div>
+</div>
+```
+
+### Orchestrated Hero Section
+
+```html
+<section class="hero">
+  <h1 class="animate-fade-in-down animate-delay-0">
+    Welcome
+  </h1>
+  <p class="animate-fade-in animate-delay-300">
+    Discover amazing features
+  </p>
+  <button class="animate-scale animate-delay-700">
+    Get Started
+  </button>
+</section>
+```
+
+### Interactive Tooltip Reveal
+
+```html
+<div class="group relative">
+  <button>Hover me</button>
+  <div class="tooltip hidden group-hover:block 
+              animate-fade-in animate-delay-150">
+    Tooltip appears after brief hover
+  </div>
+</div>
+```

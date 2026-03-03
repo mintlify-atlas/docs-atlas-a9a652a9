@@ -1,0 +1,514 @@
+---
+title: Animation Control Classes
+description: Complete reference of animation control utilities including iteration count, direction, fill mode, and play state
+---
+
+Animation control classes provide fine-grained control over how animations behave, including repetition, direction, persistence, and play state.
+
+## Iteration Count Classes
+
+Control how many times an animation repeats.
+
+### Available Classes
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `animate-iteration-count-none` | 0 | Animation doesn't play |
+| `animate-iteration-count-once` | 1 | Plays once (default for most) |
+| `animate-iteration-count-twice` | 2 | Plays twice |
+| `animate-iteration-count-thrice` | 3 | Plays three times |
+| `animate-iteration-count-infinite` | infinite | Loops forever |
+
+### Usage Examples
+
+```html
+<!-- Play animation once -->
+<div class="animate-bounce animate-iteration-count-once">
+  Bounces once
+</div>
+
+<!-- Loop forever -->
+<div class="animate-pulse animate-iteration-count-infinite">
+  Pulses continuously
+</div>
+
+<!-- Custom count using arbitrary values -->
+<div class="animate-shake animate-iteration-count-[5]">
+  Shakes 5 times
+</div>
+```
+
+### Common Patterns
+
+```html
+<!-- Loading spinner -->
+<div class="
+  animate-spin-clockwise
+  animate-iteration-count-infinite
+  animate-duration-1000
+  animate-linear
+">
+  ⚙️
+</div>
+
+<!-- Attention grabber -->
+<button class="
+  animate-tada
+  animate-iteration-count-twice
+">
+  Notice me!
+</button>
+
+<!-- Heartbeat effect -->
+<div class="
+  animate-heartbeat
+  animate-iteration-count-infinite
+  animate-duration-1000
+">
+  ❤️
+</div>
+```
+
+## Direction Classes
+
+Control the direction of animation playback.
+
+### Available Classes
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `animate-direction-normal` | normal | Plays forward (default) |
+| `animate-direction-reverse` | reverse | Plays backward |
+| `animate-direction-alternate` | alternate | Forward, then backward |
+| `animate-direction-alternate-reverse` | alternate-reverse | Backward, then forward |
+
+### Usage Examples
+
+```html
+<!-- Normal direction -->
+<div class="animate-slide-in-left animate-direction-normal">
+  Slides left to right
+</div>
+
+<!-- Reverse direction -->
+<div class="animate-slide-in-left animate-direction-reverse">
+  Actually slides right to left
+</div>
+
+<!-- Alternating direction -->
+<div class="
+  animate-swing
+  animate-direction-alternate
+  animate-iteration-count-infinite
+">
+  Swings back and forth
+</div>
+```
+
+### Alternate Direction Patterns
+
+Perfect for creating continuous back-and-forth motion:
+
+```html
+<!-- Pendulum effect -->
+<div class="
+  animate-swing
+  animate-direction-alternate
+  animate-iteration-count-infinite
+  animate-duration-1000
+  animate-ease-in-out
+">
+  🎯
+</div>
+
+<!-- Breathing effect -->
+<div class="
+  animate-pulsing
+  animate-direction-alternate
+  animate-iteration-count-infinite
+  animate-duration-2000
+">
+  Breathes in and out
+</div>
+
+<!-- Sliding back and forth -->
+<div class="
+  animate-slide-in-left
+  animate-direction-alternate
+  animate-iteration-count-infinite
+">
+  Slides back and forth
+</div>
+```
+
+## Fill Mode Classes
+
+Control which styles apply before and after animation.
+
+### Available Classes
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `animate-fill-mode-none` | none | No styles before/after |
+| `animate-fill-mode-forwards` | forwards | Keeps end state |
+| `animate-fill-mode-backwards` | backwards | Applies start state immediately |
+| `animate-fill-mode-both` | both | Both forwards and backwards |
+
+### Understanding Fill Modes
+
+```html
+<!-- Forwards: Stays at end position -->
+<div class="
+  animate-slide-out-right
+  animate-fill-mode-forwards
+">
+  Slides out and stays hidden
+</div>
+
+<!-- Backwards: Shows start state during delay -->
+<div class="
+  animate-fade-in
+  animate-delay-1000
+  animate-fill-mode-backwards
+">
+  Invisible during 1s delay
+</div>
+
+<!-- Both: Combines forwards and backwards -->
+<div class="
+  animate-zoom-in
+  animate-delay-500
+  animate-fill-mode-both
+">
+  Starts small, stays large
+</div>
+
+<!-- None: Returns to original state -->
+<div class="
+  animate-rotate-90
+  animate-fill-mode-none
+">
+  Rotates then returns
+</div>
+```
+
+### Practical Examples
+
+```html
+<!-- Modal entrance that stays visible -->
+<div class="
+  animate-fade-in
+  animate-fill-mode-forwards
+">
+  Modal content
+</div>
+
+<!-- Loading state that disappears -->
+<div class="
+  animate-fade-out
+  animate-fill-mode-forwards
+">
+  Loading...
+</div>
+
+<!-- Tooltip that maintains visibility -->
+<div class="
+  animate-fade-in-up
+  animate-delay-200
+  animate-fill-mode-both
+">
+  Tooltip text
+</div>
+```
+
+## Play State Classes
+
+Control whether animation is running or paused.
+
+### Available Classes
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `animate-play-running` | running | Animation plays (default) |
+| `animate-play-paused` | paused | Animation is paused |
+
+### Usage Examples
+
+```html
+<!-- Pause on hover -->
+<div class="
+  animate-spin-clockwise
+  animate-iteration-count-infinite
+  hover:animate-play-paused
+">
+  ⚙️ Hover to pause
+</div>
+
+<!-- Start paused, play on hover -->
+<div class="
+  animate-rotate-360
+  animate-play-paused
+  hover:animate-play-running
+">
+  🎯 Hover to play
+</div>
+
+<!-- Toggle with state -->
+<div class="
+  animate-pulse
+  animate-iteration-count-infinite
+  [&.paused]:animate-play-paused
+">
+  Controlled by class
+</div>
+```
+
+### Interactive Controls
+
+```html
+<!-- Pausable loading spinner -->
+<div class="group">
+  <div class="
+    animate-spin-clockwise
+    animate-iteration-count-infinite
+    animate-duration-1000
+    group-hover:animate-play-paused
+  ">
+    ⚙️
+  </div>
+  <span class="text-sm">Hover to pause</span>
+</div>
+
+<!-- Video-style controls -->
+<div class="relative">
+  <div class="
+    animate-slide-in-left
+    animate-iteration-count-infinite
+    animate-direction-alternate
+    peer
+  "></div>
+  <button class="peer-hover:animate-play-paused">
+    Pause
+  </button>
+</div>
+```
+
+## Combining Control Classes
+
+Create complex animation behaviors by combining multiple control classes:
+
+```html
+<!-- Infinite alternating animation -->
+<div class="
+  animate-bouncing
+  animate-iteration-count-infinite
+  animate-direction-alternate
+  animate-duration-1000
+  animate-ease-in-out
+">
+  Bounces continuously
+</div>
+
+<!-- Three-time reverse animation that keeps end state -->
+<div class="
+  animate-rotate-180
+  animate-iteration-count-thrice
+  animate-direction-reverse
+  animate-fill-mode-forwards
+">
+  Rotates 3 times backwards
+</div>
+
+<!-- Pausable infinite pulse -->
+<div class="
+  animate-pulse
+  animate-iteration-count-infinite
+  animate-fill-mode-both
+  hover:animate-play-paused
+">
+  Pausable pulse
+</div>
+```
+
+## Advanced Patterns
+
+### Attention-Seeking Animation
+
+```html
+<button class="
+  animate-shake
+  animate-iteration-count-thrice
+  animate-duration-500
+  animate-direction-normal
+  animate-fill-mode-both
+">
+  Important Action
+</button>
+```
+
+### Loading Indicator
+
+```html
+<div class="
+  animate-pulse
+  animate-iteration-count-infinite
+  animate-duration-[1500ms]
+  animate-ease-in-out
+  animate-direction-alternate
+">
+  Loading...
+</div>
+```
+
+### Hover Animation Loop
+
+```html
+<div class="
+  group
+  animate-play-paused
+  animate-rotate-360
+  animate-iteration-count-infinite
+  animate-duration-2000
+  animate-linear
+  hover:animate-play-running
+">
+  🎯 Hover to spin
+</div>
+```
+
+### Staggered Entrance with Hold
+
+```html
+<div class="space-y-4">
+  <div class="
+    animate-fade-in-left
+    animate-delay-0
+    animate-fill-mode-both
+  ">Item 1</div>
+  
+  <div class="
+    animate-fade-in-left
+    animate-delay-200
+    animate-fill-mode-both
+  ">Item 2</div>
+  
+  <div class="
+    animate-fade-in-left
+    animate-delay-400
+    animate-fill-mode-both
+  ">Item 3</div>
+</div>
+```
+
+## CSS Variable Reference
+
+```css
+/* Iteration count values */
+--tw-anim-iteration-count-none: 0;
+--tw-anim-iteration-count-once: 1;
+--tw-anim-iteration-count-twice: 2;
+--tw-anim-iteration-count-thrice: 3;
+--tw-anim-iteration-count-infinite: infinite;
+
+/* Fill mode values */
+--tw-anim-fill-mode-none: none;
+--tw-anim-fill-mode-forwards: forwards;
+--tw-anim-fill-mode-backwards: backwards;
+--tw-anim-fill-mode-both: both;
+```
+
+## Responsive Control Classes
+
+Apply different controls at different breakpoints:
+
+```html
+<div class="
+  animate-pulse
+  animate-iteration-count-once
+  md:animate-iteration-count-twice
+  lg:animate-iteration-count-infinite
+">
+  Different iteration counts per screen size
+</div>
+
+<div class="
+  animate-slide-in-left
+  animate-direction-normal
+  md:animate-direction-reverse
+">
+  Different directions per screen size
+</div>
+```
+
+## Best Practices
+
+### Use Fill Mode Both for Delays
+
+When using delays, apply fill-mode-both to avoid flashing:
+
+```html
+<!-- Good: Maintains state during delay -->
+<div class="
+  animate-fade-in
+  animate-delay-500
+  animate-fill-mode-both
+">
+  Content
+</div>
+
+<!-- Avoid: May flash before animation -->
+<div class="
+  animate-fade-in
+  animate-delay-500
+">
+  Content
+</div>
+```
+
+### Infinite Animations Need Pause
+
+Provide a way to pause infinite animations:
+
+```html
+<div class="
+  animate-spin-clockwise
+  animate-iteration-count-infinite
+  hover:animate-play-paused
+">
+  User can pause on hover
+</div>
+```
+
+### Match Direction to Purpose
+
+```html
+<!-- Continuous back-and-forth: use alternate -->
+<div class="
+  animate-swing
+  animate-direction-alternate
+  animate-iteration-count-infinite
+">
+  Pendulum
+</div>
+
+<!-- Repeating action: use normal -->
+<div class="
+  animate-bounce
+  animate-direction-normal
+  animate-iteration-count-infinite
+">
+  Continuous bounce
+</div>
+```
+
+## Browser Compatibility
+
+All control classes are supported in modern browsers:
+
+- Chrome 43+
+- Firefox 16+
+- Safari 9+
+- Edge 12+
+- Opera 30+
+
+Animation controls have universal support across all browsers that support CSS animations.

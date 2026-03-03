@@ -1,0 +1,493 @@
+---
+title: Combining Animations
+description: Learn how to combine multiple animation classes and modifiers for complex effects
+---
+
+## Overview
+
+Tailwind Animations provides a powerful system for combining animation classes with modifiers to create sophisticated effects. You can layer animations with delays, durations, easing functions, and state-based triggers to build rich interactive experiences.
+
+## Basic Combinations
+
+### Animation + Duration
+
+Control how fast animations play:
+
+```html
+<!-- Fast fade in -->
+<div class="animate-fade-in animate-duration-fast">
+  Fades in quickly (200ms)
+</div>
+
+<!-- Slow slide -->
+<div class="animate-slide-in-bottom animate-duration-slow">
+  Slides slowly (400ms)
+</div>
+
+<!-- Custom duration -->
+<div class="animate-zoom-in animate-duration-1000">
+  Zooms over 1 second
+</div>
+```
+
+### Animation + Delay
+
+Stagger animations for sequential effects:
+
+```html
+<!-- Immediate -->
+<div class="animate-fade-in animate-delay-0">
+  First
+</div>
+
+<!-- Delayed -->
+<div class="animate-fade-in animate-delay-300">
+  Second (after 300ms)
+</div>
+
+<!-- More delayed -->
+<div class="animate-fade-in animate-delay-700">
+  Third (after 700ms)
+</div>
+```
+
+### Animation + Easing
+
+Add custom timing functions:
+
+```html
+<!-- Ease out -->
+<div class="animate-slide-in-up animate-ease-out">
+  Natural deceleration
+</div>
+
+<!-- Cubic bezier -->
+<div class="animate-fade-in animate-bezier-cubic-in-out">
+  Smooth cubic easing
+</div>
+
+<!-- Back easing (overshoots) -->
+<div class="animate-zoom-in animate-bezier-back-out">
+  Bounces slightly past target
+</div>
+```
+
+## Complete Example
+
+Combine all modifiers for precise control:
+
+```html
+<div class="animate-slide-in-bottom 
+            animate-delay-300 
+            animate-duration-slow 
+            animate-bezier-cubic-out">
+  Slides from bottom after 300ms, slowly, with cubic easing
+</div>
+```
+
+## State-Based Animations
+
+### Hover States
+
+```html
+<!-- Pause on hover -->
+<button class="animate-bounce-fade-in 
+               animate-iteration-count-infinite 
+               hover:animate-play-paused">
+  Hover to pause
+</button>
+
+<!-- Change animation on hover -->
+<div class="animate-float 
+            hover:animate-tada 
+            animate-duration-normal">
+  Floats, celebrates on hover
+</div>
+
+<!-- Speed up on hover -->
+<div class="animate-rotate-360 
+            animate-duration-slower 
+            hover:animate-duration-fast">
+  Rotates faster on hover
+</div>
+```
+
+### Focus States
+
+```html
+<!-- Pulse when focused -->
+<input class="focus:animate-pulse-fade-in 
+              focus:animate-duration-fast" 
+       type="text" 
+       placeholder="Focus me" />
+
+<!-- Scale on focus -->
+<button class="focus:animate-scale 
+               focus:animate-duration-200">
+  Focus to scale
+</button>
+```
+
+### Active States
+
+```html
+<!-- Jiggle when clicked -->
+<button class="active:animate-jiggle 
+               active:animate-duration-faster">
+  Click me
+</button>
+
+<!-- Shrink when pressed -->
+<button class="active:animate-zoom-out 
+               active:animate-duration-100">
+  Press me
+</button>
+```
+
+### Group Hover
+
+```html
+<div class="group">
+  <img src="photo.jpg" 
+       class="group-hover:animate-zoom-in 
+              group-hover:animate-duration-300" 
+       alt="Photo" />
+  <p class="group-hover:animate-fade-in-up 
+            group-hover:animate-delay-200">
+    Caption appears on hover
+  </p>
+</div>
+```
+
+## Iteration and Direction
+
+### Iteration Count
+
+```html
+<!-- Once -->
+<div class="animate-bounce animate-iteration-count-once">
+  Bounces once
+</div>
+
+<!-- Twice -->
+<div class="animate-shake animate-iteration-count-twice">
+  Shakes twice
+</div>
+
+<!-- Three times -->
+<div class="animate-tada animate-iteration-count-thrice">
+  Celebrates three times
+</div>
+
+<!-- Infinite -->
+<div class="animate-pulse animate-iteration-count-infinite">
+  Pulses forever
+</div>
+```
+
+### Animation Direction
+
+```html
+<!-- Reverse -->
+<div class="animate-slide-in-right 
+            animate-direction-reverse">
+  Slides out to the left
+</div>
+
+<!-- Alternate (back and forth) -->
+<div class="animate-rotate-90 
+            animate-direction-alternate 
+            animate-iteration-count-infinite">
+  Rotates back and forth
+</div>
+
+<!-- Alternate reverse -->
+<div class="animate-swing 
+            animate-direction-alternate-reverse 
+            animate-iteration-count-infinite">
+  Swings in reverse alternation
+</div>
+```
+
+## Fill Mode
+
+Control animation state before and after execution:
+
+```html
+<!-- Forwards: maintain end state -->
+<div class="animate-zoom-in animate-fill-mode-forwards">
+  Stays zoomed in
+</div>
+
+<!-- Backwards: apply start state during delay -->
+<div class="animate-fade-in 
+            animate-delay-500 
+            animate-fill-mode-backwards">
+  Invisible during delay
+</div>
+
+<!-- Both: combine forwards and backwards -->
+<div class="animate-slide-in-bottom 
+            animate-delay-300 
+            animate-fill-mode-both">
+  Best of both worlds
+</div>
+```
+
+## Complex Combinations
+
+### Staggered List Animation
+
+```html
+<ul>
+  <li class="animate-fade-in-up 
+             animate-delay-0 
+             animate-duration-300 
+             animate-bezier-cubic-out">
+    Item 1
+  </li>
+  <li class="animate-fade-in-up 
+             animate-delay-100 
+             animate-duration-300 
+             animate-bezier-cubic-out">
+    Item 2
+  </li>
+  <li class="animate-fade-in-up 
+             animate-delay-200 
+             animate-duration-300 
+             animate-bezier-cubic-out">
+    Item 3
+  </li>
+  <li class="animate-fade-in-up 
+             animate-delay-300 
+             animate-duration-300 
+             animate-bezier-cubic-out">
+    Item 4
+  </li>
+</ul>
+```
+
+### Interactive Button
+
+```html
+<button class="animate-pulse-fade-in 
+               animate-duration-normal 
+               hover:animate-play-paused 
+               hover:animate-scale 
+               active:animate-jiggle 
+               focus:animate-tada">
+  Multi-state button
+</button>
+```
+
+### Card Entrance
+
+```html
+<div class="animate-slide-up-fade 
+            animate-delay-200 
+            animate-duration-slow 
+            animate-bezier-back-out 
+            animate-fill-mode-both 
+            hover:animate-play-paused">
+  <div class="card">
+    <h3>Card Title</h3>
+    <p>Card content...</p>
+  </div>
+</div>
+```
+
+### Loading Spinner
+
+```html
+<div class="animate-spin-clockwise 
+            animate-iteration-count-infinite 
+            animate-duration-slower 
+            animate-linear">
+  <svg><!-- Spinner icon --></svg>
+</div>
+```
+
+## Advanced Easing Curves
+
+### Sine Curves
+
+```html
+<div class="animate-fade-in animate-bezier-sine-in-out">
+  Smooth sinusoidal easing
+</div>
+```
+
+### Exponential Curves
+
+```html
+<div class="animate-zoom-in animate-bezier-expo-out">
+  Dramatic exponential easing
+</div>
+```
+
+### Circular Curves
+
+```html
+<div class="animate-slide-in-bottom animate-bezier-circ-in-out">
+  Circular easing curve
+</div>
+```
+
+### Quad, Cubic, Quart, Quint
+
+```html
+<!-- Quadratic -->
+<div class="animate-fade-in animate-bezier-quad-out">Quad easing</div>
+
+<!-- Cubic -->
+<div class="animate-fade-in animate-bezier-cubic-out">Cubic easing</div>
+
+<!-- Quartic -->
+<div class="animate-fade-in animate-bezier-quart-out">Quart easing</div>
+
+<!-- Quintic -->
+<div class="animate-fade-in animate-bezier-quint-out">Quint easing</div>
+```
+
+## Retro/Pixel Animations
+
+Create step-based animations for retro effects:
+
+```html
+<!-- 8 steps (very retro) -->
+<div class="animate-rotate-360 
+            animate-steps-retro 
+            animate-duration-slower 
+            animate-iteration-count-infinite">
+  Pixel-style rotation
+</div>
+
+<!-- 16 steps (normal) -->
+<div class="animate-slide-in-right 
+            animate-steps-normal 
+            animate-duration-slow">
+  Stepped slide
+</div>
+
+<!-- 24 steps (modern) -->
+<div class="animate-scale 
+            animate-steps-modern 
+            animate-duration-normal">
+  Smooth steps
+</div>
+```
+
+## Responsive Animations
+
+Use responsive variants to adapt animations to screen size:
+
+```html
+<!-- Different animations per breakpoint -->
+<div class="animate-fade-in 
+            md:animate-slide-in-bottom 
+            lg:animate-zoom-in">
+  Different on mobile, tablet, desktop
+</div>
+
+<!-- Different durations -->
+<div class="animate-rotate-360 
+            animate-duration-faster 
+            md:animate-duration-normal 
+            lg:animate-duration-slower">
+  Faster on mobile, slower on desktop
+</div>
+
+<!-- Disable on mobile -->
+<div class="md:animate-bounce-fade-in 
+            md:animate-delay-300">
+  Only animates on tablet and up
+</div>
+```
+
+## Best Practices
+
+<Note>
+**Combining Classes Effectively:**
+- Start with the base animation
+- Add duration before delay
+- Apply easing curves last
+- Use fill-mode when needed to maintain state
+- Test all combinations in target browsers
+</Note>
+
+<Warning>
+**Performance Tips:**
+- Limit simultaneous animations
+- Prefer `transform` and `opacity` for performance
+- Use `will-change` sparingly
+- Test on mobile devices
+- Respect `prefers-reduced-motion`
+</Warning>
+
+### Recommended Order
+
+```html
+<div class="
+  [base-animation]
+  animate-duration-[time]
+  animate-delay-[time]
+  animate-iteration-count-[count]
+  animate-direction-[direction]
+  animate-fill-mode-[mode]
+  animate-bezier-[curve]
+  [state-modifiers]
+">
+  Organized class order
+</div>
+```
+
+## Common Patterns
+
+### Button Hover Effects
+
+```html
+<button class="
+  transition-transform
+  hover:animate-tada
+  hover:animate-duration-fast
+  active:scale-95
+">
+  Hover me
+</button>
+```
+
+### Card Grid Stagger
+
+```html
+<div class="grid grid-cols-3 gap-4">
+  <div class="animate-fade-in-up animate-delay-0">...</div>
+  <div class="animate-fade-in-up animate-delay-150">...</div>
+  <div class="animate-fade-in-up animate-delay-300">...</div>
+</div>
+```
+
+### Modal Entrance
+
+```html
+<div class="
+  animate-zoom-in
+  animate-duration-300
+  animate-bezier-back-out
+  animate-fill-mode-both
+">
+  <div class="modal">...</div>
+</div>
+```
+
+### Infinite Pulse
+
+```html
+<div class="
+  animate-pulse
+  animate-iteration-count-infinite
+  animate-duration-slower
+  animate-ease-in-out
+">
+  Notification badge
+</div>
+```

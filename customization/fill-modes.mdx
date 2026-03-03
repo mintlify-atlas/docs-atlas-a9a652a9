@@ -1,0 +1,378 @@
+---
+title: 'Fill Modes'
+description: 'Control animation state before and after execution with fill mode utilities'
+icon: 'fill'
+---
+
+Animation fill mode controls how an animation applies styles before and after execution. This is crucial for controlling whether elements snap back to their original state or maintain the animated state.
+
+## What is Fill Mode?
+
+Fill mode determines:
+- **Before animation**: Should the first keyframe styles apply during animation-delay?
+- **After animation**: Should the final keyframe styles persist after animation completes?
+
+## Usage
+
+Apply fill mode classes to control animation state:
+
+```html
+<div class="animate-fade-in animate-fill-mode-forwards">
+  Stays visible after fading in
+</div>
+
+<div class="animate-slide-in-left animate-fill-mode-both">
+  Applies styles before and after animation
+</div>
+```
+
+## Available Fill Modes
+
+| Class | Value | Behavior |
+|-------|-------|----------|
+| `animate-fill-mode-none` | none | No styles applied before or after |
+| `animate-fill-mode-forwards` | forwards | Retains final keyframe styles |
+| `animate-fill-mode-backwards` | backwards | Applies first keyframe during delay |
+| `animate-fill-mode-both` | both | Applies styles before and after |
+
+## Quick Reference
+
+<CodeGroup>
+```html None (Default)
+<!-- Element returns to original state after animation -->
+<div class="animate-fade-in animate-fill-mode-none">
+  Fades in, then snaps back to invisible
+</div>
+```
+
+```html Forwards
+<!-- Element keeps animated state -->
+<div class="animate-fade-in animate-fill-mode-forwards">
+  Fades in and stays visible
+</div>
+```
+
+```html Backwards
+<!-- First keyframe applied during delay -->
+<div class="animate-fade-in 
+            animate-fill-mode-backwards 
+            animate-delay-1000">
+  Already invisible before animation starts
+</div>
+```
+
+```html Both
+<!-- Combines forwards and backwards -->
+<div class="animate-zoom-in 
+            animate-fill-mode-both 
+            animate-delay-500">
+  Starts at first keyframe, ends at last keyframe
+</div>
+```
+</CodeGroup>
+
+## Understanding Each Mode
+
+### None (Default)
+
+Animation doesn't affect the element before or after execution:
+
+```html
+<div class="animate-slide-out-right animate-fill-mode-none">
+  <!-- Slides out, then jumps back to original position -->
+  Temporary animation
+</div>
+```
+
+**When to use:**
+- Temporary effects that shouldn't persist
+- When you want the element to return to its original state
+
+### Forwards
+
+Element retains the styles from the final keyframe after animation completes:
+
+```html
+<!-- Fade in and stay visible -->
+<div class="animate-fade-in animate-fill-mode-forwards">
+  Permanently visible after animation
+</div>
+
+<!-- Scale up and stay scaled -->
+<div class="animate-scale animate-fill-mode-forwards">
+  Stays scaled after animation
+</div>
+```
+
+**When to use:**
+- Entrance animations (fade in, slide in)
+- Permanent state changes
+- Exit animations where element should stay hidden
+
+### Backwards
+
+Element receives styles from the first keyframe during animation-delay:
+
+```html
+<div class="animate-fade-in 
+            animate-fill-mode-backwards 
+            animate-delay-1000">
+  <!-- Element is invisible (first keyframe) during 1s delay -->
+  Delayed fade in
+</div>
+```
+
+**When to use:**
+- Preventing flash of unstyled content before animation
+- Ensuring smooth transitions during delays
+- Coordinating multiple delayed animations
+
+### Both
+
+Combines forwards and backwards - applies first keyframe during delay AND retains final keyframe after:
+
+```html
+<div class="animate-zoom-in 
+            animate-fill-mode-both 
+            animate-delay-500">
+  <!-- Starts small (first keyframe), waits 500ms, animates, stays at full size (last keyframe) -->
+  Comprehensive fill mode
+</div>
+```
+
+**When to use:**
+- Complex animations with delays that need both behaviors
+- Most entrance animations with delays
+- When you want complete control over before and after states
+
+## CSS Variables
+
+| Class | CSS Variable | Value |
+|-------|--------------|-------|
+| `animate-fill-mode-none` | `--tw-anim-fill-mode-none` | none |
+| `animate-fill-mode-forwards` | `--tw-anim-fill-mode-forwards` | forwards |
+| `animate-fill-mode-backwards` | `--tw-anim-fill-mode-backwards` | backwards |
+| `animate-fill-mode-both` | `--tw-anim-fill-mode-both` | both |
+
+## Common Patterns
+
+### Entrance Animation
+
+Most entrance animations should use `forwards` to maintain visibility:
+
+```html
+<div class="animate-fade-in-up animate-fill-mode-forwards animate-duration-500">
+  Welcome message that stays visible
+</div>
+```
+
+### Exit Animation
+
+Exit animations also use `forwards` to keep the element in its final state:
+
+```html
+<div class="animate-fade-out animate-fill-mode-forwards">
+  Element fades out and stays invisible
+</div>
+```
+
+### Delayed Entrance
+
+Use `both` for delayed entrances to prevent flashing:
+
+```html
+<div class="animate-slide-in-bottom 
+            animate-fill-mode-both 
+            animate-delay-300">
+  Smooth delayed entrance
+</div>
+```
+
+### Staggered List Items
+
+```html
+<ul>
+  <li class="animate-fade-in-right animate-fill-mode-both animate-delay-0">
+    Item 1
+  </li>
+  <li class="animate-fade-in-right animate-fill-mode-both animate-delay-100">
+    Item 2
+  </li>
+  <li class="animate-fade-in-right animate-fill-mode-both animate-delay-200">
+    Item 3
+  </li>
+</ul>
+```
+
+### Modal Entrance and Exit
+
+```html
+<!-- Opening modal -->
+<div class="modal animate-zoom-in animate-fill-mode-forwards">
+  Modal content
+</div>
+
+<!-- Closing modal -->
+<div class="modal animate-zoom-out animate-fill-mode-forwards">
+  Modal content
+</div>
+```
+
+## CSS Reference
+
+```css
+.animate-fill-mode-forwards {
+  animation-fill-mode: forwards;
+}
+
+.animate-fill-mode-backwards {
+  animation-fill-mode: backwards;
+}
+
+.animate-fill-mode-both {
+  animation-fill-mode: both;
+}
+
+.animate-fill-mode-none {
+  animation-fill-mode: none;
+}
+```
+
+## Best Practices
+
+<Tip>
+  **Use forwards for entrances**: Entrance animations should almost always use `animate-fill-mode-forwards`.
+</Tip>
+
+<Tip>
+  **Use both with delays**: When combining animations with delays, use `animate-fill-mode-both` to prevent flashing.
+</Tip>
+
+<Warning>
+  **Watch for stacking contexts**: Fill modes can affect z-index and stacking order.
+</Warning>
+
+### Recommended Fill Modes by Animation Type
+
+- **Fade in**: `forwards` (stay visible)
+- **Fade out**: `forwards` (stay hidden)
+- **Slide in**: `forwards` (maintain position)
+- **Slide out**: `forwards` (stay offscreen)
+- **Hover effects**: `none` (return to normal)
+- **Loading spinners**: `none` or default
+- **Delayed animations**: `both` (smooth throughout)
+
+## Advanced Examples
+
+### Sequential Reveal with Delays
+
+```html
+<div class="hero">
+  <h1 class="animate-fade-in-down 
+             animate-fill-mode-both 
+             animate-delay-0">
+    Welcome
+  </h1>
+  <p class="animate-fade-in 
+            animate-fill-mode-both 
+            animate-delay-300">
+    Discover our features
+  </p>
+  <button class="animate-zoom-in 
+                 animate-fill-mode-both 
+                 animate-delay-600">
+    Get Started
+  </button>
+</div>
+```
+
+### Smooth Modal Transitions
+
+```html
+<!-- Modal with backdrop -->
+<div class="modal-backdrop 
+            animate-fade-in 
+            animate-fill-mode-forwards 
+            animate-duration-300">
+  <div class="modal-content 
+              animate-zoom-in 
+              animate-fill-mode-both 
+              animate-delay-100 
+              animate-duration-300">
+    Modal content
+  </div>
+</div>
+```
+
+### Toggle Animation
+
+Use with JavaScript to animate in and out:
+
+```html
+<div id="notification" 
+     class="hidden">
+  <div class="animate-slide-in-right animate-fill-mode-forwards">
+    Notification message
+  </div>
+</div>
+
+<script>
+// Show
+notification.classList.remove('hidden');
+notification.querySelector('div').className = 'animate-slide-in-right animate-fill-mode-forwards';
+
+// Hide
+notification.querySelector('div').className = 'animate-slide-out-right animate-fill-mode-forwards';
+setTimeout(() => notification.classList.add('hidden'), 300);
+</script>
+```
+
+### Card Flip Effect
+
+```html
+<div class="card-container">
+  <div class="card-front 
+              animate-flip-out-y 
+              animate-fill-mode-forwards 
+              animate-duration-500">
+    Front
+  </div>
+  <div class="card-back 
+              animate-flip-in-y 
+              animate-fill-mode-both 
+              animate-delay-500 
+              animate-duration-500">
+    Back
+  </div>
+</div>
+```
+
+## Troubleshooting
+
+### Element Snaps Back After Animation
+
+**Problem**: Element returns to original state after animation completes.
+
+**Solution**: Add `animate-fill-mode-forwards`:
+
+```html
+<!-- Before: snaps back -->
+<div class="animate-fade-in">Content</div>
+
+<!-- After: stays visible -->
+<div class="animate-fade-in animate-fill-mode-forwards">Content</div>
+```
+
+### Flash of Unstyled Content with Delay
+
+**Problem**: Element briefly shows original state before delayed animation starts.
+
+**Solution**: Use `animate-fill-mode-backwards` or `animate-fill-mode-both`:
+
+```html
+<!-- Before: flashes -->
+<div class="animate-fade-in animate-delay-500">Content</div>
+
+<!-- After: smooth -->
+<div class="animate-fade-in animate-fill-mode-both animate-delay-500">Content</div>
+```

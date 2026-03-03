@@ -1,0 +1,269 @@
+---
+title: Animation Delay Classes
+description: Complete reference of animation delay utilities in Tailwind Animations
+---
+
+Animation delay classes control when an animation starts after being triggered. Use these classes to create staggered animations or choreograph multiple elements.
+
+## Syntax
+
+Delay classes follow the pattern `animate-delay-{value}` where value can be:
+- A predefined timing value (named)
+- A numeric value in milliseconds
+- An arbitrary value using square brackets
+
+## Predefined Delay Values
+
+### Named Delays
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `animate-delay-none` | 0ms | No delay (immediate start) |
+| `animate-delay-0` | 0ms | No delay (immediate start) |
+
+### Numeric Delays
+
+| Class | Value | Use Case |
+|-------|-------|----------|
+| `animate-delay-100` | 100ms | Subtle stagger |
+| `animate-delay-150` | 150ms | Gentle stagger |
+| `animate-delay-200` | 200ms | Standard stagger |
+| `animate-delay-250` | 250ms | Moderate stagger |
+| `animate-delay-300` | 300ms | Noticeable delay |
+| `animate-delay-400` | 400ms | Medium delay |
+| `animate-delay-500` | 500ms | Half-second delay |
+| `animate-delay-700` | 700ms | Long delay |
+| `animate-delay-800` | 800ms | Extended delay |
+| `animate-delay-900` | 900ms | Very long delay |
+| `animate-delay-1000` | 1000ms | Full second delay |
+
+## Usage Examples
+
+### Basic Delay
+
+Add a delay before an animation starts:
+
+```html
+<div class="animate-fade-in animate-delay-300">
+  Fades in after 300ms
+</div>
+```
+
+### Staggered Animations
+
+Create sequential animations by using different delays:
+
+```html
+<div class="animate-fade-in animate-delay-0">
+  Appears first
+</div>
+
+<div class="animate-fade-in animate-delay-200">
+  Appears second
+</div>
+
+<div class="animate-fade-in animate-delay-400">
+  Appears third
+</div>
+```
+
+### List Items with Stagger
+
+```html
+<ul>
+  <li class="animate-slide-in-left animate-delay-100">Item 1</li>
+  <li class="animate-slide-in-left animate-delay-200">Item 2</li>
+  <li class="animate-slide-in-left animate-delay-300">Item 3</li>
+  <li class="animate-slide-in-left animate-delay-400">Item 4</li>
+  <li class="animate-slide-in-left animate-delay-500">Item 5</li>
+</ul>
+```
+
+### Arbitrary Values
+
+Use arbitrary values for custom delays:
+
+```html
+<!-- Delay of 2.5 seconds -->
+<div class="animate-fade-in animate-delay-[2500ms]">
+  Appears after 2.5 seconds
+</div>
+
+<!-- Delay of 350ms -->
+<div class="animate-zoom-in animate-delay-[350ms]">
+  Custom timing
+</div>
+```
+
+### Combining with Other Animation Properties
+
+```html
+<div class="
+  animate-bounce-fade-in
+  animate-delay-500
+  animate-duration-800
+  animate-bezier-ease-out
+">
+  Bounces in after half a second with custom easing
+</div>
+```
+
+## Responsive Delays
+
+Apply different delays at different breakpoints:
+
+```html
+<div class="
+  animate-fade-in
+  animate-delay-200
+  md:animate-delay-400
+  lg:animate-delay-0
+">
+  Different delays on different screen sizes
+</div>
+```
+
+## Hover-Triggered Delayed Animations
+
+```html
+<button class="
+  hover:animate-shake
+  hover:animate-delay-100
+">
+  Shakes after hovering for 100ms
+</button>
+```
+
+## Sequential Group Animations
+
+Create complex animation sequences:
+
+```html
+<div class="space-y-4">
+  <!-- Title appears first -->
+  <h2 class="animate-fade-in-down animate-delay-0">
+    Welcome
+  </h2>
+  
+  <!-- Subtitle appears next -->
+  <p class="animate-fade-in animate-delay-300">
+    This is the subtitle
+  </p>
+  
+  <!-- Button appears last -->
+  <button class="animate-zoom-in animate-delay-600">
+    Get Started
+  </button>
+</div>
+```
+
+## Grid Stagger Pattern
+
+Create staggered animations for grid items:
+
+```html
+<div class="grid grid-cols-3 gap-4">
+  <div class="animate-fade-in animate-delay-0">Card 1</div>
+  <div class="animate-fade-in animate-delay-100">Card 2</div>
+  <div class="animate-fade-in animate-delay-200">Card 3</div>
+  <div class="animate-fade-in animate-delay-300">Card 4</div>
+  <div class="animate-fade-in animate-delay-400">Card 5</div>
+  <div class="animate-fade-in animate-delay-500">Card 6</div>
+</div>
+```
+
+## Advanced: Negative Delays
+
+While not directly supported, you can achieve negative delay effects by adjusting animation ranges or using custom CSS:
+
+```html
+<style>
+  .negative-delay {
+    animation-delay: -500ms;
+  }
+</style>
+
+<div class="animate-fade-in negative-delay">
+  Starts partway through animation
+</div>
+```
+
+## CSS Variable Reference
+
+All delay classes use the following CSS custom properties:
+
+```css
+--tw-anim-delay-none: 0ms;
+--tw-anim-delay-0: 0ms;
+--tw-anim-delay-100: 100ms;
+--tw-anim-delay-150: 150ms;
+--tw-anim-delay-200: 200ms;
+--tw-anim-delay-250: 250ms;
+--tw-anim-delay-300: 300ms;
+--tw-anim-delay-400: 400ms;
+--tw-anim-delay-500: 500ms;
+--tw-anim-delay-700: 700ms;
+--tw-anim-delay-800: 800ms;
+--tw-anim-delay-900: 900ms;
+--tw-anim-delay-1000: 1000ms;
+```
+
+## Best Practices
+
+### Keep Delays Short
+
+For user interfaces, keep delays under 500ms to maintain responsiveness:
+
+```html
+<!-- Good: Quick, noticeable stagger -->
+<div class="animate-fade-in animate-delay-200">Content</div>
+
+<!-- Avoid: Too long for UI elements -->
+<div class="animate-fade-in animate-delay-[2000ms]">Content</div>
+```
+
+### Use Consistent Increments
+
+Maintain visual rhythm by using consistent delay increments:
+
+```html
+<!-- Good: Consistent 150ms increments -->
+<div class="animate-fade-in animate-delay-0">Item 1</div>
+<div class="animate-fade-in animate-delay-150">Item 2</div>
+<div class="animate-fade-in animate-delay-300">Item 3</div>
+
+<!-- Avoid: Inconsistent increments -->
+<div class="animate-fade-in animate-delay-0">Item 1</div>
+<div class="animate-fade-in animate-delay-300">Item 2</div>
+<div class="animate-fade-in animate-delay-450">Item 3</div>
+```
+
+### Consider Total Animation Time
+
+Calculate total animation time (delay + duration) to ensure smooth user experience:
+
+```html
+<!-- Total time: 500ms delay + 600ms duration = 1100ms -->
+<div class="animate-fade-in animate-delay-500 animate-duration-600">
+  Completes in just over 1 second
+</div>
+```
+
+## Performance Notes
+
+- Animation delays do not impact performance
+- Delays are handled efficiently by the browser's animation engine
+- Multiple elements with different delays perform well
+- Delays work correctly with hardware-accelerated properties
+
+## Browser Compatibility
+
+Animation delay is supported in all modern browsers:
+
+- Chrome 43+
+- Firefox 16+
+- Safari 9+
+- Edge 12+
+- Opera 30+
+
+No prefix required for standard animations.

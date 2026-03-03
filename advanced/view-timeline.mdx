@@ -1,0 +1,253 @@
+---
+title: View Timeline Animations
+description: Create scroll-based animations that trigger when elements enter the viewport
+---
+
+## Overview
+
+View timeline animations allow you to create animations that are synchronized with an element's position in the viewport. These animations trigger when elements enter, exit, or move through the visible area of the page, creating engaging scroll-driven experiences.
+
+<Note>
+View timeline animations require browser support for the CSS `view-timeline` property. Check [Can I Use](https://caniuse.com/mdn-css_properties_view-timeline) for current browser compatibility.
+</Note>
+
+## Basic Usage
+
+Use the `view-animate-[--name]` class to create a custom view timeline for your element:
+
+```html
+<div class="view-animate-[--entrance] animate-fade-in">
+  Fades in when entering viewport
+</div>
+```
+
+The `--name` can be any custom identifier you choose. Common examples:
+- `--entrance` - For entry animations
+- `--reveal` - For reveal effects
+- `--slideShow` - For slide presentations
+- `--subjectReveal` - For highlighting specific content
+
+## Combining with Animations
+
+View timelines work seamlessly with any animation class:
+
+```html
+<!-- Zoom in when visible -->
+<div class="view-animate-[--zoom] animate-zoom-in">
+  Content zooms in
+</div>
+
+<!-- Slide up with fade -->
+<div class="view-animate-[--slide] animate-slide-up-fade">
+  Content slides up
+</div>
+
+<!-- Rotate on scroll -->
+<div class="view-animate-[--rotate] animate-rotate-360">
+  Content rotates
+</div>
+```
+
+## Animation Range
+
+Control when the animation starts and ends using `animate-range-*` classes:
+
+### Predefined Ranges
+
+```html
+<!-- Animate during the entire visibility -->
+<div class="view-animate-[--name] animate-fade-in animate-range-cover">
+  Animates throughout visibility
+</div>
+
+<!-- Animate only while contained in viewport -->
+<div class="view-animate-[--name] animate-zoom-in animate-range-contain">
+  Animates while fully visible
+</div>
+
+<!-- Animate only while entering -->
+<div class="view-animate-[--name] animate-slide-in-bottom animate-range-entry">
+  Animates on entry
+</div>
+
+<!-- Animate only while exiting -->
+<div class="view-animate-[--name] animate-fade-out animate-range-exit">
+  Animates on exit
+</div>
+```
+
+### Named Range Speeds
+
+```html
+<!-- Gradual: 10% to 90% -->
+<div class="view-animate-[--name] animate-fade-in animate-range-gradual">
+  Gradual animation
+</div>
+
+<!-- Moderate: 20% to 80% -->
+<div class="view-animate-[--name] animate-fade-in animate-range-moderate">
+  Moderate speed
+</div>
+
+<!-- Brisk: 30% to 70% -->
+<div class="view-animate-[--name] animate-fade-in animate-range-brisk">
+  Brisk animation
+</div>
+
+<!-- Rapid: 40% to 60% -->
+<div class="view-animate-[--name] animate-fade-in animate-range-rapid">
+  Rapid animation
+</div>
+```
+
+### Custom Ranges
+
+Use arbitrary values for precise control:
+
+```html
+<!-- Custom percentage range -->
+<div class="view-animate-[--name] animate-zoom-in animate-range-[entry_10%_contain_25%]">
+  Starts at 10% entry, ends at 25% containment
+</div>
+
+<!-- Start at entry, end at specific percentage -->
+<div class="view-animate-[--name] animate-fade-in animate-range-[entry_0%_entry_100%]">
+  Animates during entire entry phase
+</div>
+```
+
+## Real-World Example
+
+Here's a complete example from the library documentation, demonstrating a scroll-triggered reveal effect:
+
+```html
+<div class="w-3/4 max-w-[800px] m-[0_auto]">
+  <h1>Content</h1>
+
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+    tempor incididunt ut labore et dolore magna aliqua. Risus quis varius quam
+    quisque id. Et ligula ullamcorper malesuada proin libero nunc consequat
+    interdum varius. Elit ullamcorper dignissim cras tincidunt lobortis feugiat
+    vivamus at augue.
+  </p>
+
+  <p>
+    Dolor sed viverra ipsum nunc aliquet. Sed sed risus pretium quam vulputate
+    dignissim. Tortor aliquam nulla facilisi cras. A erat nam at lectus urna
+    duis convallis convallis. Nibh ipsum consequat nisl vel pretium lectus.
+    Sagittis aliquam malesuada bibendum arcu vitae elementum. Malesuada bibendum
+    arcu vitae elementum curabitur vitae nunc sed velit.
+  </p>
+
+  <div class="w-72 h-52 m-[0_auto] bg-[deeppink] 
+              view-animate-[--subjectReveal] 
+              animate-zoom-in 
+              animate-range-[entry_10%_contain_25%]">
+  </div>
+
+  <p>
+    Adipiscing enim eu turpis egestas pretium aenean pharetra magna ac. Arcu
+    cursus vitae congue mauris rhoncus aenean vel. Sit amet cursus sit amet
+    dictum. Augue neque gravida in fermentum et. Gravida rutrum quisque non
+    tellus orci ac auctor augue mauris.
+  </p>
+</div>
+```
+
+<Note>
+This example is adapted from the [MDN view-timeline documentation](https://developer.mozilla.org/en-US/docs/Web/CSS/view-timeline).
+</Note>
+
+## View Timeline Axis
+
+Control the scroll direction that triggers the animation:
+
+```html
+<!-- Vertical scroll (default) -->
+<div class="view-animate-[--name] view-timeline-axis-y animate-fade-in">
+  Triggered by vertical scroll
+</div>
+
+<!-- Horizontal scroll -->
+<div class="view-animate-[--name] view-timeline-axis-x animate-slide-in-left">
+  Triggered by horizontal scroll
+</div>
+
+<!-- Block direction -->
+<div class="view-animate-[--name] view-timeline-axis-block animate-zoom-in">
+  Follows block direction
+</div>
+
+<!-- Inline direction -->
+<div class="view-animate-[--name] view-timeline-axis-inline animate-fade-in">
+  Follows inline direction
+</div>
+```
+
+## Best Practices
+
+<Warning>
+**Performance Considerations:**
+- Use view timelines sparingly on pages with many elements
+- Prefer `transform` and `opacity` animations for best performance
+- Test thoroughly on mobile devices
+</Warning>
+
+### Accessibility
+
+- Respect user preferences for reduced motion:
+  ```css
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+    }
+  }
+  ```
+- Ensure content is still accessible if animations don't play
+- Don't rely solely on animations to convey important information
+
+### Tips for Great View Timelines
+
+1. **Start subtle** - Begin with gentle fade-ins before adding complex animations
+2. **Match content rhythm** - Use different ranges for varied pacing
+3. **Combine with duration** - Add `animate-duration-*` for speed control
+4. **Test scroll speeds** - Verify animations work at different scroll velocities
+5. **Layer animations** - Combine multiple elements with staggered ranges
+
+## Common Patterns
+
+### Sequential Reveals
+
+```html
+<div class="view-animate-[--card1] animate-fade-in-up animate-range-[entry_0%_entry_30%]">
+  Card 1
+</div>
+<div class="view-animate-[--card2] animate-fade-in-up animate-range-[entry_20%_entry_50%]">
+  Card 2
+</div>
+<div class="view-animate-[--card3] animate-fade-in-up animate-range-[entry_40%_entry_70%]">
+  Card 3
+</div>
+```
+
+### Hero Section
+
+```html
+<div class="view-animate-[--hero] 
+            animate-blurred-fade-in 
+            animate-range-entry 
+            animate-duration-slower">
+  <h1>Welcome</h1>
+</div>
+```
+
+### Gallery Grid
+
+```html
+<div class="grid grid-cols-3 gap-4">
+  <div class="view-animate-[--img1] animate-zoom-in animate-range-contain">...</div>
+  <div class="view-animate-[--img2] animate-zoom-in animate-range-contain">...</div>
+  <div class="view-animate-[--img3] animate-zoom-in animate-range-contain">...</div>
+</div>
+```

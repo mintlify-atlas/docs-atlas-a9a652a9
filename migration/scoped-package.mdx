@@ -1,0 +1,230 @@
+---
+title: 'Migrating from @midudev/tailwind-animations'
+description: 'Guide to migrate from the deprecated scoped package to the official tailwind-animations package'
+---
+
+## Overview
+
+The `@midudev/tailwind-animations` package has been renamed to `tailwind-animations`. The scoped package is now deprecated and maintained only as a backward compatibility shim.
+
+<Warning>
+  The `@midudev/tailwind-animations` package is **deprecated**. While it remains available for compatibility, all new projects should use `tailwind-animations`.
+</Warning>
+
+## Why the Change?
+
+The package was renamed as part of the v1.0 release to:
+
+- Simplify package naming and discovery
+- Align with Tailwind CSS v4's architecture
+- Establish the package as the official animations solution
+- Remove organizational scoping for broader community adoption
+
+## Version Compatibility
+
+<CardGroup cols={2}>
+  <Card title="For Tailwind CSS v3" icon="3">
+    Use `@midudev/tailwind-animations@0.2.0`
+    
+    This is the last version supporting Tailwind CSS v3.
+  </Card>
+  <Card title="For Tailwind CSS v4" icon="4">
+    Use `tailwind-animations@latest`
+    
+    Required for Tailwind CSS v4 support.
+  </Card>
+</CardGroup>
+
+## Migration Steps
+
+### For Tailwind CSS v4 Projects
+
+If you're already using Tailwind CSS v4:
+
+<Steps>
+  <Step title="Uninstall Scoped Package">
+    Remove the old scoped package:
+
+    ```bash
+    npm uninstall @midudev/tailwind-animations
+    ```
+  </Step>
+
+  <Step title="Install New Package">
+    Install the official package:
+
+    ```bash
+    npm install tailwind-animations
+    ```
+  </Step>
+
+  <Step title="Update Imports">
+    Update your CSS import statement:
+
+    **Before:**
+    ```css globals.css
+    @import 'tailwindcss';
+    @import '@midudev/tailwind-animations';
+    ```
+
+    **After:**
+    ```css globals.css
+    @import 'tailwindcss';
+    @import 'tailwind-animations';
+    ```
+  </Step>
+
+  <Step title="Update package.json References">
+    If you have any scripts or tooling that references the old package name, update them:
+
+    ```json package.json
+    {
+      "dependencies": {
+        "tailwind-animations": "^1.0.0"
+      }
+    }
+    ```
+  </Step>
+
+  <Step title="Test Your Application">
+    Run your application to verify all animations work correctly. No class name changes are required.
+  </Step>
+</Steps>
+
+### For Tailwind CSS v3 Projects
+
+If you're still using Tailwind CSS v3:
+
+<Warning>
+  The new `tailwind-animations` package requires Tailwind CSS v4. For v3 support, continue using `@midudev/tailwind-animations@0.2.0`.
+</Warning>
+
+<Steps>
+  <Step title="Stay on v0.2.0">
+    Keep using the scoped package at version 0.2.0:
+
+    ```bash
+    npm install @midudev/tailwind-animations@0.2.0
+    ```
+  </Step>
+
+  <Step title="Plan Your Upgrade">
+    When you're ready to upgrade to Tailwind CSS v4, follow the [complete migration guide](/migration/from-v3).
+  </Step>
+</Steps>
+
+## What Stays the Same
+
+### All Class Names
+
+No changes to any animation class names:
+
+```html
+<!-- These work exactly the same -->
+<div class="animate-fade-in">Content</div>
+<div class="animate-slide-in-bottom animate-delay-300">Content</div>
+```
+
+### All Animation Types
+
+Every animation remains available:
+
+- Fade animations
+- Slide animations
+- Zoom animations
+- Rotate animations
+- Bounce animations
+- All other animation utilities
+
+### All Modifiers
+
+All timing and behavior modifiers work identically:
+
+- `animate-delay-*`
+- `animate-duration-*`
+- `animate-iteration-count-*`
+- `animate-fill-mode-*`
+- `animate-bezier-*`
+- Timeline utilities
+
+## Side-by-Side Comparison
+
+<CodeGroup>
+```bash Old Package (v3)
+npm install @midudev/tailwind-animations@0.2.0
+```
+
+```bash New Package (v4)
+npm install tailwind-animations
+```
+</CodeGroup>
+
+<CodeGroup>
+```js Old Configuration (v3)
+// tailwind.config.js
+module.exports = {
+  plugins: [
+    require('@midudev/tailwind-animations')
+  ]
+}
+```
+
+```css New Configuration (v4)
+/* globals.css */
+@import 'tailwindcss';
+@import 'tailwind-animations';
+```
+</CodeGroup>
+
+## Automated Migration
+
+You can use a simple find-and-replace in your project:
+
+1. Search for: `@midudev/tailwind-animations`
+2. Replace with: `tailwind-animations`
+3. Update package version to v1.0+
+
+```bash
+# Quick replacement with sed (Unix/Mac)
+find . -type f -name '*.css' -exec sed -i '' 's/@midudev\/tailwind-animations/tailwind-animations/g' {} +
+```
+
+## Deprecation Timeline
+
+- **January 2026**: `tailwind-animations` v1.0 released
+- **Current**: `@midudev/tailwind-animations` available as compatibility shim
+- **Future**: Scoped package will continue to work but won't receive updates
+
+<Note>
+  The scoped package will remain on npm indefinitely for backward compatibility, but all new features and updates will only be added to `tailwind-animations`.
+</Note>
+
+## Frequently Asked Questions
+
+<AccordionGroup>
+  <Accordion title="Will @midudev/tailwind-animations be removed from npm?">
+    No, it will remain available for backward compatibility, but it won't receive updates beyond v0.2.0.
+  </Accordion>
+
+  <Accordion title="Do I need to change my HTML class names?">
+    No, all class names remain exactly the same. Only the package name and installation method change.
+  </Accordion>
+
+  <Accordion title="Can I use both packages in a monorepo?">
+    Yes, if you have projects on different Tailwind versions:
+    - Use `@midudev/tailwind-animations@0.2.0` for Tailwind v3
+    - Use `tailwind-animations@latest` for Tailwind v4
+  </Accordion>
+
+  <Accordion title="What if I find a bug in the old package?">
+    Please upgrade to `tailwind-animations` v1.0+ and Tailwind CSS v4. Bug fixes will only be applied to the new package.
+  </Accordion>
+</AccordionGroup>
+
+## Need Help?
+
+If you encounter any issues during migration:
+
+- Check the [GitHub repository](https://github.com/midudev/tailwind-animations)
+- Open an [issue](https://github.com/midudev/tailwind-animations/issues) if you find a problem
+- Review the [Tailwind CSS v4 upgrade guide](https://tailwindcss.com/docs/upgrade-guide)

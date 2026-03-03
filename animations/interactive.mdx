@@ -1,0 +1,486 @@
+---
+title: Interactive & Fun Animations
+description: Playful animations for user interactions and celebrations
+---
+
+Interactive animations add personality and delight to your interface. These fun, attention-grabbing effects are perfect for celebrations, user feedback, and creating memorable experiences.
+
+## Celebration Animations
+
+### tada
+
+Classic WOW.js-style celebration effect.
+
+```html
+<div class="animate-tada">
+  🎉 Success!
+</div>
+```
+
+**Animation sequence:**
+- Scales down to 0.9 with rotation
+- Multiple scale-up pulses (1.1x) with alternating rotation (±3°)
+- Returns to normal
+
+**Duration:** 1000ms
+
+**Best for:** Success messages, achievements, celebration moments, "wow" effects
+
+**Origin:** Inspired by the popular WOW.js/Animate.css tada animation
+
+<Accordion title="Animation Details">
+  The tada animation creates an exciting celebration effect:
+  
+  - **10-20%**: `scale(0.9) rotate(-3deg)` - Wind up
+  - **30-90%**: `scale(1.1) rotate(±3deg)` - Multiple shake-scale pulses
+  - **100%**: `scale(1) rotate(0)` - Settle to normal
+
+  Perfect for drawing attention to important moments like:
+  - Form submission success
+  - Achievement unlocked
+  - Level up notifications
+  - Completion celebrations
+</Accordion>
+
+## Pulse Animations
+
+<Tabs>
+  <Tab title="pulse">
+    Standard Tailwind pulse effect (opacity-based).
+
+    ```html
+    <div class="animate-pulse">
+      Pulses opacity continuously
+    </div>
+    ```
+
+    **Animation:** Opacity fades from 1 to 0.5 and back
+    
+    **Duration:** 2000ms
+
+    **Iteration:** Infinite by default
+
+    **Best for:** Loading states, skeleton screens, awaiting input
+  </Tab>
+
+  <Tab title="pulsing">
+    Scale-based pulsing effect.
+
+    ```html
+    <div class="animate-pulsing animate-iteration-count-infinite">
+      Pulses with scale change
+    </div>
+    ```
+
+    **Animation:** Scales from 1.0 to 1.1 and back
+    
+    **Duration:** 1000ms
+
+    **Best for:** Active indicators, live badges, recording states
+  </Tab>
+</Tabs>
+
+## Elastic & Rubber Effects
+
+### rubber-band
+
+Elastic rubber band stretching effect.
+
+```html
+<div class="animate-rubber-band">
+  Stretches and bounces like rubber
+</div>
+```
+
+**Animation sequence:**
+- 0%: `scale(1)`
+- 30%: `scale(1.25)` - Stretch out
+- 40%: `scale(0.75)` - Compress
+- 50%: `scale(1.15)` - Bounce back
+- 65%: `scale(0.95)` - Small compress
+- 75%: `scale(1.05)` - Small stretch
+- 100%: `scale(1)` - Settle
+
+**Duration:** 1000ms
+
+**Best for:** Button clicks, playful interactions, elastic elements
+
+### jelly
+
+Jelly-like wobbling with directional squish.
+
+```html
+<div class="animate-jelly">
+  Wobbles like jelly
+</div>
+```
+
+**Animation sequence:**
+- Alternates between horizontal and vertical squishing
+- 20%: `scale(1.25, 0.75)` - Squish wide
+- 40%: `scale(0.75, 1.25)` - Squish tall
+- Multiple dampening oscillations
+- Settles to normal
+
+**Duration:** 1000ms
+
+**Best for:** Playful UI elements, squishy buttons, fun interactions
+
+## Heartbeat Animation
+
+### heartbeat
+
+Rhythmic heartbeat pulse.
+
+```html
+<div class="animate-heartbeat animate-iteration-count-infinite">
+  ❤️ Beats like a heart
+</div>
+```
+
+**Animation sequence:**
+- 0%: `scale(1)`
+- 25%: `scale(1.1)` - First beat
+- 50%: `scale(1)` - Rest
+- 75%: `scale(0.9)` - Second beat (smaller)
+- 100%: `scale(1)` - Rest
+
+**Duration:** 600ms
+
+**Best for:** Like buttons, favorite indicators, health indicators, love-related UI
+
+## Flash & Blink
+
+<Tabs>
+  <Tab title="flash">
+    Quick opacity flash effect.
+
+    ```html
+    <div class="animate-flash animate-iteration-count-infinite">
+      Flashes on and off
+    </div>
+    ```
+
+    **Animation:** Opacity 1 → 0 → 1
+    
+    **Duration:** 1000ms
+
+    **Best for:** Alerts, warnings, urgent notifications, attention grabbers
+  </Tab>
+
+  <Tab title="blink">
+    Simple blink from invisible to visible.
+
+    ```html
+    <div class="animate-blink">
+      Blinks into view
+    </div>
+    ```
+
+    **Animation:** Opacity 0 → 1
+    
+    **Duration:** 500ms
+
+    **Best for:** Cursor effects, simple reveals, quick appearances
+  </Tab>
+</Tabs>
+
+## Skew Animations
+
+<Accordion title="skew">
+  Skews element with a tilting effect.
+
+  ```html
+  <div class="animate-skew">
+    Skews to 20 degrees
+  </div>
+  ```
+
+  **Transform:** `skew(0deg)` → `skew(20deg)`
+  
+  **Duration:** 500ms
+
+  **Best for:** Playful transitions, dynamic text effects, creative layouts
+</Accordion>
+
+<Accordion title="skew-right">
+  Skews element in opposite direction.
+
+  ```html
+  <div class="animate-skew-right">
+    Skews to -20 degrees
+  </div>
+  ```
+
+  **Transform:** `skew(0deg)` → `skew(-20deg)`
+  
+  **Duration:** 500ms
+
+  **Best for:** Mirror effect, alternative skew direction
+</Accordion>
+
+## Practical Use Cases
+
+### Success Notification
+
+```html
+<div class="fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-xl
+            animate-tada">
+  <div class="flex items-center gap-3">
+    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+    </svg>
+    <span class="font-semibold">Payment Successful!</span>
+  </div>
+</div>
+```
+
+### Like Button
+
+```html
+<button class="group">
+  <span class="text-2xl group-active:animate-heartbeat group-active:animate-duration-faster">
+    ❤️
+  </span>
+</button>
+```
+
+### Loading Skeleton
+
+```html
+<div class="space-y-3">
+  <div class="h-4 bg-gray-200 rounded animate-pulse"></div>
+  <div class="h-4 bg-gray-200 rounded animate-pulse w-5/6"></div>
+  <div class="h-4 bg-gray-200 rounded animate-pulse w-4/6"></div>
+</div>
+```
+
+### Live Indicator
+
+```html
+<div class="flex items-center gap-2">
+  <div class="w-3 h-3 bg-red-500 rounded-full 
+              animate-pulsing animate-iteration-count-infinite"></div>
+  <span class="font-semibold text-red-500">LIVE</span>
+</div>
+```
+
+### Elastic Button
+
+```html
+<button class="bg-purple-500 text-white px-8 py-4 rounded-full font-bold
+               active:animate-rubber-band active:animate-duration-fast">
+  Click Me!
+</button>
+```
+
+### Achievement Badge
+
+```html
+<div class="inline-flex items-center gap-2 bg-yellow-400 px-4 py-2 rounded-full
+            animate-tada animate-delay-500">
+  <span class="text-2xl">🏆</span>
+  <span class="font-bold">Level Up!</span>
+</div>
+```
+
+### Alert Message
+
+```html
+<div class="bg-red-100 border-l-4 border-red-500 p-4 animate-flash animate-iteration-count-thrice">
+  <p class="text-red-700 font-semibold">⚠️ Critical Alert</p>
+  <p class="text-red-600">Immediate action required!</p>
+</div>
+```
+
+### Playful Card
+
+```html
+<div class="bg-gradient-to-br from-pink-500 to-purple-500 p-8 rounded-xl text-white
+            hover:animate-jelly hover:animate-duration-fast cursor-pointer">
+  <h3 class="text-2xl font-bold mb-2">Interactive Card</h3>
+  <p>Hover for jelly effect</p>
+</div>
+```
+
+### Recording Indicator
+
+```html
+<div class="flex items-center gap-3 bg-black text-white px-4 py-2 rounded-full">
+  <div class="w-4 h-4 bg-red-500 rounded-full 
+              animate-pulsing animate-iteration-count-infinite animate-duration-slow"></div>
+  <span>Recording in progress...</span>
+</div>
+```
+
+### Favorite Button
+
+```html
+<button class="group relative">
+  <span class="text-3xl transition-transform 
+               group-hover:animate-heartbeat group-hover:animate-iteration-count-infinite
+               group-active:animate-rubber-band">
+    ⭐
+  </span>
+</button>
+```
+
+## Advanced Combinations
+
+### Celebration Sequence
+
+```html
+<div class="text-center space-y-4">
+  <div class="text-6xl animate-tada animate-delay-0">🎉</div>
+  <h2 class="text-4xl font-bold animate-bounce-fade-in animate-delay-300">Congratulations!</h2>
+  <p class="text-xl animate-fade-in-up animate-delay-600">You've completed the challenge!</p>
+</div>
+```
+
+### Interactive Button States
+
+```html
+<button class="bg-blue-500 text-white px-6 py-3 rounded-lg
+               hover:animate-pulsing hover:animate-duration-fast
+               active:animate-rubber-band active:animate-duration-faster
+               focus:animate-tada">
+  Multi-state Button
+</button>
+```
+
+### Staggered Flash Alert
+
+```html
+<div class="flex gap-4">
+  <div class="w-4 h-4 bg-red-500 rounded-full animate-flash animate-iteration-count-infinite animate-delay-0"></div>
+  <div class="w-4 h-4 bg-red-500 rounded-full animate-flash animate-iteration-count-infinite animate-delay-200"></div>
+  <div class="w-4 h-4 bg-red-500 rounded-full animate-flash animate-iteration-count-infinite animate-delay-400"></div>
+</div>
+```
+
+### Playful Text Effect
+
+```html
+<h1 class="text-6xl font-bold">
+  <span class="inline-block hover:animate-jelly hover:animate-duration-fast">P</span>
+  <span class="inline-block hover:animate-jelly hover:animate-duration-fast">L</span>
+  <span class="inline-block hover:animate-jelly hover:animate-duration-fast">A</span>
+  <span class="inline-block hover:animate-jelly hover:animate-duration-fast">Y</span>
+</h1>
+```
+
+## Customization Examples
+
+### Quick Celebration
+
+```html
+<div class="animate-tada animate-duration-fast">
+  Quick celebration
+</div>
+```
+
+### Slow Heartbeat
+
+```html
+<div class="animate-heartbeat animate-iteration-count-infinite animate-duration-slower">
+  Slow, calm heartbeat
+</div>
+```
+
+### Energetic Rubber Band
+
+```html
+<button class="active:animate-rubber-band active:animate-duration-faster active:animate-bezier-back-out">
+  Snappy feedback
+</button>
+```
+
+### Subtle Pulse
+
+```html
+<div class="animate-pulse animate-duration-slower">
+  Very subtle pulsing
+</div>
+```
+
+### Urgent Flash
+
+```html
+<div class="animate-flash animate-iteration-count-infinite animate-duration-fast">
+  Rapid urgent flashing
+</div>
+```
+
+## Tips and Best Practices
+
+<Tip>Use celebration animations sparingly for truly important moments to maintain their impact.</Tip>
+
+<Tip>The `tada` animation is perfect for success states - use it to make users feel accomplished!</Tip>
+
+```html
+<form onsubmit="showSuccess()">
+  <!-- After successful submission -->
+  <div class="animate-tada bg-green-500 text-white p-4 rounded">
+    ✓ Form submitted successfully!
+  </div>
+</form>
+```
+
+<Warning>Avoid infinite flash or blink animations as they can be very distracting and may trigger accessibility issues.</Warning>
+
+<Warning>Always respect `prefers-reduced-motion` for users who are sensitive to animations.</Warning>
+
+### One-Time Celebrations
+
+```html
+<!-- Plays once on mount -->
+<div class="animate-tada animate-iteration-count-once">
+  One celebration
+</div>
+```
+
+### Repeating Attention Grabbers
+
+```html
+<!-- Repeats 3 times then stops -->
+<div class="animate-pulse-fade-in animate-iteration-count-thrice animate-delay-1000">
+  Gets attention, then stops
+</div>
+```
+
+### Combining with Hover States
+
+```html
+<button class="transition-all 
+               hover:animate-heartbeat hover:animate-iteration-count-infinite
+               active:animate-tada active:animate-duration-faster">
+  Multi-interaction button
+</button>
+```
+
+## Performance Considerations
+
+- Most interactive animations are lightweight and performant
+- `pulse` and `pulsing` with infinite iterations are optimized for continuous use
+- Limit the number of simultaneously flashing elements
+- The `jelly` animation with multiple scale changes is slightly more expensive
+- Always test on mobile devices for smooth playback
+
+## Accessibility Considerations
+
+```html
+<!-- Respect reduced motion preference -->
+<div class="motion-safe:animate-tada">
+  Only animates if user hasn't requested reduced motion
+</div>
+```
+
+```css
+/* In your CSS */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+```

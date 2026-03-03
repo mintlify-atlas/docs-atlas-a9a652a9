@@ -1,0 +1,539 @@
+---
+title: Timeline & Scroll Animation Classes
+description: Complete reference of timeline, scroll-driven, and view-driven animation classes
+---
+
+Timeline classes enable scroll-driven and view-driven animations, allowing elements to animate based on scroll position. These create engaging parallax effects and scroll-triggered animations.
+
+<Warning>
+  Scroll-driven animations are a newer CSS feature with limited browser support. Check the [Browser Compatibility](#browser-compatibility) section before using in production.
+</Warning>
+
+## Animation Timeline Classes
+
+The `timeline-*` classes control which timeline drives an animation.
+
+### Available Timelines
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `timeline-none` | none | No timeline (standard time-based) |
+| `timeline-auto` | auto | Automatic timeline selection |
+| `timeline-scroll` | scroll() | Nearest scrollable ancestor |
+| `timeline-scroll-x` | scroll(x) | Horizontal scroll timeline |
+| `timeline-scroll-y` | scroll(y) | Vertical scroll timeline |
+| `timeline-scroll-block` | scroll(block) | Block direction scroll |
+| `timeline-scroll-inline` | scroll(inline) | Inline direction scroll |
+| `timeline-view` | view() | Element's visibility in viewport |
+| `timeline-view-x` | view(x) | Horizontal view timeline |
+| `timeline-view-y` | view(y) | Vertical view timeline |
+| `timeline-view-block` | view(block) | Block direction view |
+| `timeline-view-inline` | view(inline) | Inline direction view |
+
+### Basic Usage
+
+```html
+<!-- Animate based on scroll position -->
+<div class="
+  animate-fade-in
+  timeline-scroll
+">
+  Fades in as page scrolls
+</div>
+
+<!-- Animate based on element visibility -->
+<div class="
+  animate-slide-in-left
+  timeline-view
+">
+  Slides in when entering viewport
+</div>
+```
+
+## Scroll Timeline Classes
+
+Scroll timelines animate based on the scroll position of a container.
+
+### Scroll Timeline Axis
+
+Control which scroll direction drives the animation:
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `scroll-timeline-axis-block` | block | Block direction (vertical in LTR) |
+| `scroll-timeline-axis-inline` | inline | Inline direction (horizontal in LTR) |
+| `scroll-timeline-axis-x` | x | Horizontal axis |
+| `scroll-timeline-axis-y` | y | Vertical axis |
+
+### Usage Examples
+
+```html
+<!-- Vertical scroll animation -->
+<div class="
+  animate-fade-in
+  timeline-scroll-y
+  scroll-timeline-axis-y
+">
+  Animates on vertical scroll
+</div>
+
+<!-- Horizontal scroll animation -->
+<div class="
+  animate-slide-in-left
+  timeline-scroll-x
+  scroll-timeline-axis-x
+">
+  Animates on horizontal scroll
+</div>
+```
+
+### Scroll-Driven Parallax
+
+```html
+<!-- Background parallax effect -->
+<div class="relative h-screen overflow-y-scroll">
+  <div class="
+    absolute inset-0
+    animate-slide-in-bottom
+    timeline-scroll-y
+    animate-range-cover
+  ">
+    <img src="background.jpg" alt="Parallax background" />
+  </div>
+  
+  <div class="relative z-10">
+    <!-- Content -->
+  </div>
+</div>
+```
+
+## View Timeline Classes
+
+View timelines animate based on an element's visibility in the viewport.
+
+### View Timeline Axis
+
+Control which axis determines visibility:
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `view-timeline-axis-block` | block | Block direction |
+| `view-timeline-axis-inline` | inline | Inline direction |
+| `view-timeline-axis-x` | x | Horizontal axis |
+| `view-timeline-axis-y` | y | Vertical axis |
+
+### Usage Examples
+
+```html
+<!-- Fade in when element enters viewport -->
+<div class="
+  animate-fade-in
+  timeline-view
+  view-timeline-axis-y
+">
+  Appears on scroll into view
+</div>
+
+<!-- Multiple elements with view timelines -->
+<section class="space-y-20">
+  <div class="
+    animate-slide-in-left
+    timeline-view
+    animate-range-entry
+  ">
+    Slides in from left when entering
+  </div>
+  
+  <div class="
+    animate-slide-in-right
+    timeline-view
+    animate-range-entry
+  ">
+    Slides in from right when entering
+  </div>
+  
+  <div class="
+    animate-zoom-in
+    timeline-view
+    animate-range-contain
+  ">
+    Zooms in when fully visible
+  </div>
+</section>
+```
+
+## Animation Range Classes
+
+Control when during the scroll/view timeline the animation plays.
+
+### Available Ranges
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `animate-range-normal` | normal | Default range |
+| `animate-range-cover` | cover | Entire scroll/view range |
+| `animate-range-contain` | contain | While contained in view |
+| `animate-range-entry` | entry | While entering viewport |
+| `animate-range-exit` | exit | While exiting viewport |
+| `animate-range-gradual` | 10% 90% | Gradual range (10-90%) |
+| `animate-range-moderate` | 20% 80% | Moderate range (20-80%) |
+| `animate-range-brisk` | 30% 70% | Brisk range (30-70%) |
+| `animate-range-rapid` | 40% 60% | Rapid range (40-60%) |
+
+### Range Examples
+
+```html
+<!-- Animates throughout entire scroll -->
+<div class="
+  animate-fade-in
+  timeline-scroll
+  animate-range-cover
+">
+  Fades throughout scroll
+</div>
+
+<!-- Animates only when entering -->
+<div class="
+  animate-slide-in-bottom
+  timeline-view
+  animate-range-entry
+">
+  Slides in on entry
+</div>
+
+<!-- Animates only when exiting -->
+<div class="
+  animate-fade-out
+  timeline-view
+  animate-range-exit
+">
+  Fades out on exit
+</div>
+
+<!-- Custom range for precise control -->
+<div class="
+  animate-zoom-in
+  timeline-view
+  animate-range-moderate
+">
+  Zooms in during middle of scroll
+</div>
+```
+
+## Practical Examples
+
+### Scroll Progress Indicator
+
+```html
+<div class="fixed top-0 left-0 h-1 bg-blue-500
+  animate-expand-horizontally
+  timeline-scroll-y
+  animate-range-cover
+  origin-left
+"></div>
+```
+
+### Staggered Reveal on Scroll
+
+```html
+<div class="space-y-8">
+  <div class="
+    animate-fade-in-up
+    timeline-view
+    animate-range-entry
+    animate-delay-0
+  ">First item</div>
+  
+  <div class="
+    animate-fade-in-up
+    timeline-view
+    animate-range-entry
+    animate-delay-100
+  ">Second item</div>
+  
+  <div class="
+    animate-fade-in-up
+    timeline-view
+    animate-range-entry
+    animate-delay-200
+  ">Third item</div>
+</div>
+```
+
+### Parallax Layers
+
+```html
+<div class="relative h-screen overflow-y-scroll">
+  <!-- Background layer (slower) -->
+  <div class="
+    absolute inset-0
+    animate-slide-in-bottom
+    timeline-scroll-y
+    animate-range-cover
+    animate-duration-[2000ms]
+  ">
+    <img src="bg-far.jpg" alt="Background" />
+  </div>
+  
+  <!-- Middle layer -->
+  <div class="
+    absolute inset-0
+    animate-slide-in-bottom
+    timeline-scroll-y
+    animate-range-cover
+    animate-duration-[1500ms]
+  ">
+    <img src="bg-mid.jpg" alt="Midground" />
+  </div>
+  
+  <!-- Foreground layer (faster) -->
+  <div class="
+    relative z-10
+    animate-slide-in-bottom
+    timeline-scroll-y
+    animate-range-cover
+    animate-duration-[1000ms]
+  ">
+    <!-- Content -->
+  </div>
+</div>
+```
+
+### Image Gallery Fade In
+
+```html
+<div class="grid grid-cols-3 gap-4">
+  <img class="
+    animate-fade-in
+    timeline-view
+    animate-range-entry
+    animate-duration-600
+  " src="photo1.jpg" alt="Photo 1" />
+  
+  <img class="
+    animate-fade-in
+    timeline-view
+    animate-range-entry
+    animate-duration-600
+    animate-delay-100
+  " src="photo2.jpg" alt="Photo 2" />
+  
+  <img class="
+    animate-fade-in
+    timeline-view
+    animate-range-entry
+    animate-duration-600
+    animate-delay-200
+  " src="photo3.jpg" alt="Photo 3" />
+</div>
+```
+
+### Rotating Card on Scroll
+
+```html
+<div class="
+  animate-rotate-180
+  timeline-view
+  animate-range-contain
+  animate-duration-1000
+  transform-style-3d
+">
+  <div class="front">
+    Front of card
+  </div>
+  <div class="back">
+    Back of card
+  </div>
+</div>
+```
+
+### Section Transitions
+
+```html
+<section class="
+  min-h-screen
+  animate-fade-in
+  timeline-view
+  animate-range-entry
+">
+  <h2 class="
+    animate-slide-in-left
+    timeline-view
+    animate-range-entry
+    animate-delay-200
+  ">
+    Section Title
+  </h2>
+  
+  <p class="
+    animate-fade-in-up
+    timeline-view
+    animate-range-entry
+    animate-delay-400
+  ">
+    Section content
+  </p>
+</section>
+```
+
+## CSS Variable Reference
+
+```css
+/* Animation Range Values */
+--tw-anim-range-normal: normal;
+--tw-anim-range-cover: cover;
+--tw-anim-range-contain: contain;
+--tw-anim-range-entry: entry;
+--tw-anim-range-exit: exit;
+--tw-anim-range-gradual: 10% 90%;
+--tw-anim-range-moderate: 20% 80%;
+--tw-anim-range-brisk: 30% 70%;
+--tw-anim-range-rapid: 40% 60%;
+
+/* Timeline Values */
+--tw-timeline-none: none;
+--tw-timeline-auto: auto;
+--tw-timeline-scroll: scroll();
+--tw-timeline-scroll-x: scroll(x);
+--tw-timeline-scroll-y: scroll(y);
+--tw-timeline-scroll-block: scroll(block);
+--tw-timeline-scroll-inline: scroll(inline);
+--tw-timeline-view: view();
+--tw-timeline-view-x: view(x);
+--tw-timeline-view-y: view(y);
+--tw-timeline-view-block: view(block);
+--tw-timeline-view-inline: view(inline);
+
+/* Scroll/View Timeline Axis Values */
+--tw-scroll-timeline-axis-block: block;
+--tw-scroll-timeline-axis-inline: inline;
+--tw-scroll-timeline-axis-x: x;
+--tw-scroll-timeline-axis-y: y;
+--tw-view-timeline-axis-block: block;
+--tw-view-timeline-axis-inline: inline;
+--tw-view-timeline-axis-x: x;
+--tw-view-timeline-axis-y: y;
+```
+
+## Best Practices
+
+### Use View Timelines for Entrances
+
+For "scroll into view" effects, prefer view timelines:
+
+```html
+<!-- Good: Uses view timeline -->
+<div class="
+  animate-fade-in
+  timeline-view
+  animate-range-entry
+">
+  Content
+</div>
+
+<!-- Less ideal: Scroll timeline requires calculation -->
+<div class="
+  animate-fade-in
+  timeline-scroll
+">
+  Content
+</div>
+```
+
+### Combine with Animation Range
+
+Always specify an animation range for predictable behavior:
+
+```html
+<div class="
+  animate-slide-in-left
+  timeline-view
+  animate-range-entry
+">
+  Clear start and end points
+</div>
+```
+
+### Test Performance
+
+Scroll-driven animations can impact performance on complex pages:
+
+```html
+<!-- Good: Simple transform animation -->
+<div class="
+  animate-fade-in
+  timeline-view
+">
+  Performant
+</div>
+
+<!-- Avoid: Complex filter animations -->
+<div class="
+  animate-blurred-fade-in
+  timeline-view
+">
+  May be slower
+</div>
+```
+
+### Provide Fallbacks
+
+For browsers without scroll-driven animation support:
+
+```html
+<div class="
+  opacity-0
+  animate-fade-in
+  timeline-view
+  supports-[animation-timeline:view()]:opacity-100
+">
+  Content with fallback
+</div>
+```
+
+## Browser Compatibility
+
+<Warning>
+  Scroll-driven animations are experimental and have limited support.
+</Warning>
+
+### Current Support
+
+- Chrome 115+ (enabled by default)
+- Edge 115+
+- Opera 101+
+
+### Not Yet Supported
+
+- Firefox (in development, behind flag)
+- Safari (not yet implemented)
+
+### Enabling in Firefox
+
+Users can enable via `layout.css.scroll-driven-animations.enabled` in `about:config`.
+
+### Feature Detection
+
+Check for support in JavaScript:
+
+```javascript
+if (CSS.supports('animation-timeline', 'scroll()')) {
+  // Scroll-driven animations supported
+} else {
+  // Use fallback
+}
+```
+
+### Polyfill
+
+Consider using the [scroll-timeline polyfill](https://github.com/flackr/scroll-timeline) for broader support:
+
+```html
+<script src="https://flackr.github.io/scroll-timeline/dist/scroll-timeline.js"></script>
+```
+
+## Resources
+
+- [MDN: CSS Scroll-driven Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_scroll-driven_animations)
+- [Can I Use: animation-timeline](https://caniuse.com/css-animation-timeline)
+- [Scroll-driven Animations Specification](https://drafts.csswg.org/scroll-animations-1/)

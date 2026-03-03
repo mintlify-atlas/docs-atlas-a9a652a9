@@ -1,0 +1,184 @@
+---
+title: Installation
+description: Install and configure tailwind-animations in your Tailwind CSS v4 project
+---
+
+# Installation
+
+Get started with tailwind-animations in just a few minutes. This guide will walk you through installing the package and configuring it in your Tailwind CSS v4 project.
+
+<Note>
+  **Tailwind CSS v4 Required**: This package requires Tailwind CSS v4.0.0 or higher. For Tailwind CSS v3 support, see the legacy version section below.
+</Note>
+
+## Quick Installation
+
+<Steps>
+  <Step title="Install the Package">
+    Install tailwind-animations using your preferred package manager:
+    
+    <CodeGroup>
+      ```bash npm
+      npm install tailwind-animations
+      ```
+      
+      ```bash pnpm
+      pnpm install tailwind-animations
+      ```
+      
+      ```bash yarn
+      yarn add tailwind-animations
+      ```
+    </CodeGroup>
+  </Step>
+  
+  <Step title="Import in Your Global CSS">
+    Add the plugin import to your global CSS file (e.g., `globals.css`, `main.css`, or `app.css`):
+    
+    ```css globals.css
+    @import 'tailwindcss';
+    @import 'tailwind-animations';
+    ```
+    
+    <Tip>
+      The order matters! Make sure to import `tailwind-animations` **after** importing `tailwindcss`.
+    </Tip>
+  </Step>
+  
+  <Step title="Start Using Animations">
+    You're all set! Start adding animations to your HTML elements:
+    
+    ```html
+    <div class="animate-fade-in">
+      This element will fade in smoothly
+    </div>
+    ```
+  </Step>
+</Steps>
+
+## Configuration for Tailwind CSS v4
+
+Tailwind CSS v4 uses a new CSS-first configuration approach. Unlike v3, you don't need to configure a `tailwind.config.js` file. Instead, you simply import the plugin directly in your CSS file:
+
+```css globals.css
+/* Import Tailwind CSS */
+@import 'tailwindcss';
+
+/* Import Tailwind Animations */
+@import 'tailwind-animations';
+
+/* Your custom styles */
+```
+
+That's it! All 70+ animations and utility classes are now available in your project.
+
+## Verify Installation
+
+Test that the installation worked correctly by adding a simple animation to your page:
+
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/path/to/output.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="flex items-center justify-center min-h-screen">
+      <div class="animate-tada animate-iteration-count-infinite">
+        <h1 class="text-4xl font-bold">It Works!</h1>
+      </div>
+    </div>
+  </body>
+</html>
+```
+
+If you see the "It Works!" text animating with a celebration effect, you're ready to go!
+
+## Package Migration
+
+<Warning>
+  **Deprecated Package**: The old `@midudev/tailwind-animations` package is deprecated and maintained only for backward compatibility. All new projects should use `tailwind-animations`.
+</Warning>
+
+If you're migrating from the old package:
+
+1. **Uninstall the old package**:
+   ```bash
+   npm uninstall @midudev/tailwind-animations
+   ```
+
+2. **Install the new package**:
+   ```bash
+   npm install tailwind-animations
+   ```
+
+3. **Update your CSS import**:
+   ```css
+   /* Old (deprecated) */
+   @import '@midudev/tailwind-animations';
+   
+   /* New (recommended) */
+   @import 'tailwind-animations';
+   ```
+
+No other changes are required - all class names and functionality remain the same.
+
+## Legacy Version (Tailwind CSS v3)
+
+If you're still using Tailwind CSS v3, you can use the last v3-compatible release:
+
+```bash
+npm install @midudev/tailwind-animations@0.2.0
+```
+
+Then configure it in your `tailwind.config.js`:
+
+```javascript tailwind.config.js
+module.exports = {
+  // ... your config
+  plugins: [
+    require('@midudev/tailwind-animations')
+  ]
+}
+```
+
+<Note>
+  We strongly recommend upgrading to Tailwind CSS v4 to take advantage of the latest features and improvements.
+</Note>
+
+## Troubleshooting
+
+### Animations Not Working
+
+If animations aren't showing up:
+
+1. **Check import order**: Ensure `tailwind-animations` is imported after `tailwindcss`
+2. **Verify Tailwind CSS version**: Run `npm list tailwindcss` to confirm you're using v4.0.0 or higher
+3. **Clear your build cache**: Delete your build output and rebuild your CSS
+4. **Check for conflicting styles**: Custom CSS might override animation properties
+
+### TypeScript Errors
+
+If you're seeing TypeScript errors with the import:
+
+```typescript
+// Add to your CSS module declarations
+declare module 'tailwind-animations' {
+  const content: string;
+  export default content;
+}
+```
+
+## Next Steps
+
+Now that you have tailwind-animations installed, learn how to use it:
+
+<CardGroup cols={2}>
+  <Card title="Quick Start Guide" icon="rocket" href="/quickstart">
+    Create your first animation in minutes
+  </Card>
+  
+  <Card title="Animation Catalog" icon="book-open" href="/animations/overview">
+    Browse all available animations
+  </Card>
+</CardGroup>

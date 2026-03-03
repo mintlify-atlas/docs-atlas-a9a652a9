@@ -1,0 +1,406 @@
+---
+title: Animation Easing Classes
+description: Complete reference of animation timing function and easing classes in Tailwind Animations
+---
+
+Easing classes control the acceleration curve of animations, determining how an animation progresses over time. These create more natural and expressive motion.
+
+## Standard Easing Functions
+
+### Basic Timing Functions
+
+| Class | Function | Description |
+|-------|----------|-------------|
+| `animate-linear` | linear | Constant speed from start to finish |
+| `animate-ease` | ease | Slow start, fast middle, slow end (default) |
+| `animate-ease-in` | ease-in | Slow start, accelerates toward end |
+| `animate-ease-out` | ease-out | Fast start, decelerates toward end |
+| `animate-ease-in-out` | ease-in-out | Slow start and end, fast middle |
+
+```html
+<div class="animate-slide-in-left animate-linear">
+  Constant speed slide
+</div>
+
+<div class="animate-fade-in animate-ease-out">
+  Decelerating fade
+</div>
+
+<div class="animate-zoom-in animate-ease-in-out">
+  Smooth acceleration and deceleration
+</div>
+```
+
+## Cubic Bezier Easing Functions
+
+Advanced easing curves for more expressive animations. All bezier classes use the pattern `animate-bezier-{name}`.
+
+### Sine Easing
+
+Gentle, subtle easing curves.
+
+| Class | Bezier Values | Use Case |
+|-------|---------------|----------|
+| `animate-bezier-sine-in` | (0.12, 0, 0.39, 0) | Gentle acceleration |
+| `animate-bezier-sine-out` | (0.39, 0.575, 0.565, 1) | Gentle deceleration |
+| `animate-bezier-sine-in-out` | (0.445, 0.05, 0.55, 0.95) | Gentle both ends |
+
+```html
+<div class="animate-fade-in animate-bezier-sine-in">
+  Gentle fade start
+</div>
+```
+
+### Quadratic Easing
+
+Moderate easing, good for most UI animations.
+
+| Class | Bezier Values | Use Case |
+|-------|---------------|----------|
+| `animate-bezier-quad-in` | (0.55, 0.085, 0.68, 0.53) | Moderate acceleration |
+| `animate-bezier-quad-out` | (0.25, 0.46, 0.45, 0.94) | Moderate deceleration |
+| `animate-bezier-quad-in-out` | (0.455, 0.03, 0.515, 0.955) | Balanced moderation |
+
+```html
+<div class="animate-slide-in-top animate-bezier-quad-out">
+  Standard UI animation
+</div>
+```
+
+### Cubic Easing
+
+Stronger easing for more dramatic effects.
+
+| Class | Bezier Values | Use Case |
+|-------|---------------|----------|
+| `animate-bezier-cubic-in` | (0.55, 0.055, 0.675, 0.19) | Strong acceleration |
+| `animate-bezier-cubic-out` | (0.215, 0.61, 0.355, 1) | Strong deceleration |
+| `animate-bezier-cubic-in-out` | (0.645, 0.045, 0.355, 1) | Strong both ends |
+
+```html
+<div class="animate-zoom-in animate-bezier-cubic-out">
+  Dramatic zoom effect
+</div>
+```
+
+### Quartic Easing
+
+Very strong easing for bold animations.
+
+| Class | Bezier Values | Use Case |
+|-------|---------------|----------|
+| `animate-bezier-quart-in` | (0.895, 0.03, 0.685, 0.22) | Very strong acceleration |
+| `animate-bezier-quart-out` | (0.165, 0.84, 0.44, 1) | Very strong deceleration |
+| `animate-bezier-quart-in-out` | (0.77, 0, 0.175, 1) | Very strong both ends |
+
+```html
+<div class="animate-rotate-90 animate-bezier-quart-in">
+  Bold rotation start
+</div>
+```
+
+### Quintic Easing
+
+Extremely strong easing for maximum impact.
+
+| Class | Bezier Values | Use Case |
+|-------|---------------|----------|
+| `animate-bezier-quint-in` | (0.755, 0.05, 0.855, 0.06) | Extreme acceleration |
+| `animate-bezier-quint-out` | (0.23, 1, 0.32, 1) | Extreme deceleration |
+| `animate-bezier-quint-in-out` | (0.86, 0, 0.07, 1) | Extreme both ends |
+
+```html
+<div class="animate-slide-out-right animate-bezier-quint-out">
+  Powerful exit animation
+</div>
+```
+
+### Exponential Easing
+
+Mathematical exponential curves for precise control.
+
+| Class | Bezier Values | Use Case |
+|-------|---------------|----------|
+| `animate-bezier-expo-in` | (0.95, 0.05, 0.795, 0.035) | Sharp exponential start |
+| `animate-bezier-expo-out` | (0.19, 1, 0.22, 1) | Sharp exponential end |
+| `animate-bezier-expo-in-out` | (1, 0, 0, 1) | Sharp both ends |
+
+```html
+<div class="animate-fade-out animate-bezier-expo-out">
+  Quick fade at end
+</div>
+```
+
+### Circular Easing
+
+Circular motion curves for smooth arcs.
+
+| Class | Bezier Values | Use Case |
+|-------|---------------|----------|
+| `animate-bezier-circ-in` | (0.6, 0.04, 0.98, 0.335) | Circular acceleration |
+| `animate-bezier-circ-out` | (0.075, 0.82, 0.165, 1) | Circular deceleration |
+| `animate-bezier-circ-in-out` | (0.785, 0.135, 0.15, 0.86) | Circular both ends |
+
+```html
+<div class="animate-rotate-360 animate-bezier-circ-in-out">
+  Smooth circular motion
+</div>
+```
+
+### Back Easing
+
+Overshoot curves that go beyond the target before settling.
+
+| Class | Bezier Values | Use Case |
+|-------|---------------|----------|
+| `animate-bezier-back-in` | (0.6, -0.28, 0.735, 0.045) | Anticipation effect |
+| `animate-bezier-back-out` | (0.175, 0.885, 0.32, 1.275) | Overshoot effect |
+| `animate-bezier-back-in-out` | (0.68, -0.55, 0.265, 1.55) | Both anticipation & overshoot |
+
+```html
+<div class="animate-scale animate-bezier-back-out">
+  Bouncy scale with overshoot
+</div>
+
+<button class="hover:animate-pop hover:animate-bezier-back-out">
+  Springy button
+</button>
+```
+
+## Step-Based Timing Functions
+
+For discrete, frame-by-frame animations.
+
+| Class | Steps | Description |
+|-------|-------|-------------|
+| `animate-steps-none` | 0 | No steps (continuous) |
+| `animate-steps-retro` | 8 | Retro, choppy animation |
+| `animate-steps-normal` | 16 | Standard stepped animation |
+| `animate-steps-modern` | 24 | Smooth stepped animation |
+
+```html
+<div class="animate-rotate-360 animate-steps-retro">
+  Retro 8-frame rotation
+</div>
+
+<div class="animate-slide-in-left animate-steps-normal">
+  16-step slide animation
+</div>
+```
+
+## Easing by Animation Type
+
+### Entrances (In Animations)
+
+Use **-out** easing for natural entrances:
+
+```html
+<div class="animate-fade-in animate-bezier-cubic-out">
+  Decelerates into place
+</div>
+
+<div class="animate-slide-in-bottom animate-bezier-quad-out">
+  Smooth entrance from bottom
+</div>
+
+<div class="animate-zoom-in animate-bezier-back-out">
+  Bouncy entrance with overshoot
+</div>
+```
+
+### Exits (Out Animations)
+
+Use **-in** easing for natural exits:
+
+```html
+<div class="animate-fade-out animate-bezier-cubic-in">
+  Accelerates away
+</div>
+
+<div class="animate-slide-out-top animate-bezier-quad-in">
+  Smooth exit upward
+</div>
+```
+
+### Continuous Animations
+
+Use **linear** or **-in-out** for loops:
+
+```html
+<div class="
+  animate-spin-clockwise
+  animate-linear
+  animate-iteration-count-infinite
+">
+  Constant rotation
+</div>
+
+<div class="
+  animate-pulse
+  animate-bezier-sine-in-out
+  animate-iteration-count-infinite
+">
+  Smooth pulsing
+</div>
+```
+
+### Interactive Elements
+
+Use **back-out** for springy feedback:
+
+```html
+<button class="
+  hover:animate-scale
+  hover:animate-bezier-back-out
+  hover:animate-duration-300
+">
+  Bouncy hover effect
+</button>
+
+<div class="
+  active:animate-pop
+  active:animate-bezier-back-out
+">
+  Springy click feedback
+</div>
+```
+
+## Combining Easing with Other Properties
+
+```html
+<div class="
+  animate-fade-in
+  animate-duration-600
+  animate-delay-200
+  animate-bezier-cubic-out
+">
+  Complete animation with custom easing
+</div>
+
+<div class="
+  animate-bounce-fade-in
+  animate-duration-800
+  animate-bezier-back-out
+  animate-iteration-count-once
+">
+  Bouncy entrance with overshoot
+</div>
+```
+
+## Responsive Easing
+
+```html
+<div class="
+  animate-slide-in-left
+  animate-ease-out
+  md:animate-bezier-cubic-out
+  lg:animate-bezier-back-out
+">
+  Different easing at different breakpoints
+</div>
+```
+
+## CSS Variable Reference
+
+All bezier classes use the following CSS custom properties:
+
+```css
+/* Sine curves */
+--tw-anim-bezier-sine-in: cubic-bezier(0.12, 0, 0.39, 0);
+--tw-anim-bezier-sine-out: cubic-bezier(0.39, 0.575, 0.565, 1);
+--tw-anim-bezier-sine-in-out: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+/* Quad curves */
+--tw-anim-bezier-quad-in: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+--tw-anim-bezier-quad-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+--tw-anim-bezier-quad-in-out: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+/* Cubic curves */
+--tw-anim-bezier-cubic-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+--tw-anim-bezier-cubic-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+--tw-anim-bezier-cubic-in-out: cubic-bezier(0.645, 0.045, 0.355, 1);
+
+/* Quart curves */
+--tw-anim-bezier-quart-in: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+--tw-anim-bezier-quart-out: cubic-bezier(0.165, 0.84, 0.44, 1);
+--tw-anim-bezier-quart-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+
+/* Quint curves */
+--tw-anim-bezier-quint-in: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+--tw-anim-bezier-quint-out: cubic-bezier(0.23, 1, 0.32, 1);
+--tw-anim-bezier-quint-in-out: cubic-bezier(0.86, 0, 0.07, 1);
+
+/* Expo curves */
+--tw-anim-bezier-expo-in: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+--tw-anim-bezier-expo-out: cubic-bezier(0.19, 1, 0.22, 1);
+--tw-anim-bezier-expo-in-out: cubic-bezier(1, 0, 0, 1);
+
+/* Circ curves */
+--tw-anim-bezier-circ-in: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+--tw-anim-bezier-circ-out: cubic-bezier(0.075, 0.82, 0.165, 1);
+--tw-anim-bezier-circ-in-out: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+/* Back curves (overshoot) */
+--tw-anim-bezier-back-in: cubic-bezier(0.6, -0.28, 0.735, 0.045);
+--tw-anim-bezier-back-out: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+--tw-anim-bezier-back-in-out: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+```
+
+## Best Practices
+
+### Match Easing to Motion Type
+
+```html
+<!-- Entrances: Use -out easing -->
+<div class="animate-fade-in animate-bezier-cubic-out">Enters smoothly</div>
+
+<!-- Exits: Use -in easing -->
+<div class="animate-fade-out animate-bezier-cubic-in">Exits smoothly</div>
+
+<!-- Loops: Use linear or -in-out -->
+<div class="animate-spin animate-linear">Constant speed</div>
+```
+
+### Use Subtle Easing for UI
+
+For interface elements, use gentler curves:
+
+```html
+<!-- Good: Gentle, professional -->
+<button class="hover:animate-scale hover:animate-bezier-quad-out">
+  Hover me
+</button>
+
+<!-- Avoid: Too dramatic for UI -->
+<button class="hover:animate-scale hover:animate-bezier-quint-out">
+  Hover me
+</button>
+```
+
+### Back Easing for Playful Effects
+
+Use back easing sparingly for emphasis:
+
+```html
+<!-- Good use: Call-to-action -->
+<button class="animate-zoom-in animate-bezier-back-out">
+  Get Started!
+</button>
+
+<!-- Avoid: Not for all UI elements -->
+<nav class="animate-slide-in animate-bezier-back-out">
+  Navigation
+</nav>
+```
+
+## Browser Compatibility
+
+All easing functions are supported in modern browsers:
+
+- Chrome 43+
+- Firefox 16+
+- Safari 9+
+- Edge 12+
+- Opera 30+
+
+Cubic-bezier functions have universal support.

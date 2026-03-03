@@ -1,0 +1,396 @@
+---
+title: Animation Duration Classes
+description: Complete reference of animation duration utilities in Tailwind Animations
+---
+
+Animation duration classes control how long an animation takes to complete one cycle. Use these classes to speed up or slow down animations.
+
+## Syntax
+
+Duration classes follow the pattern `animate-duration-{value}` where value can be:
+- A predefined timing value (named or numeric)
+- An arbitrary value using square brackets
+
+## Predefined Duration Values
+
+### Named Durations
+
+| Class | Value | Use Case |
+|-------|-------|----------|
+| `animate-duration-none` | 0ms | Instant (no animation) |
+| `animate-duration-faster` | 100ms | Very quick animations |
+| `animate-duration-fast` | 200ms | Fast animations |
+| `animate-duration-normal` | 300ms | Standard speed (default) |
+| `animate-duration-slow` | 400ms | Slow animations |
+| `animate-duration-slower` | 500ms | Very slow animations |
+
+### Numeric Durations
+
+| Class | Value | Description |
+|-------|-------|-------------|
+| `animate-duration-0` | 0ms | No animation |
+| `animate-duration-100` | 100ms | Extremely fast |
+| `animate-duration-150` | 150ms | Very fast |
+| `animate-duration-200` | 200ms | Fast |
+| `animate-duration-250` | 250ms | Quick |
+| `animate-duration-300` | 300ms | Normal |
+| `animate-duration-400` | 400ms | Moderate |
+| `animate-duration-500` | 500ms | Moderate-slow |
+| `animate-duration-700` | 700ms | Slow |
+| `animate-duration-800` | 800ms | Very slow |
+| `animate-duration-900` | 900ms | Extremely slow |
+| `animate-duration-1000` | 1000ms | One second |
+
+## Usage Examples
+
+### Basic Duration Override
+
+Change the default duration of any animation:
+
+```html
+<!-- Default fade-in is 600ms -->
+<div class="animate-fade-in">
+  Standard fade
+</div>
+
+<!-- Override to 1 second -->
+<div class="animate-fade-in animate-duration-1000">
+  Slow fade
+</div>
+
+<!-- Speed up to 200ms -->
+<div class="animate-fade-in animate-duration-200">
+  Quick fade
+</div>
+```
+
+### Named Duration Values
+
+Use semantic names for common speeds:
+
+```html
+<div class="animate-bounce animate-duration-faster">
+  Very quick bounce
+</div>
+
+<div class="animate-slide-in-left animate-duration-normal">
+  Standard slide
+</div>
+
+<div class="animate-rotate-360 animate-duration-slower">
+  Slow rotation
+</div>
+```
+
+### Different Durations for Different Elements
+
+```html
+<div class="space-y-4">
+  <div class="animate-fade-in animate-duration-200">Fast fade</div>
+  <div class="animate-fade-in animate-duration-400">Medium fade</div>
+  <div class="animate-fade-in animate-duration-800">Slow fade</div>
+</div>
+```
+
+### Arbitrary Values
+
+Use custom durations not in the preset:
+
+```html
+<!-- 2.5 second duration -->
+<div class="animate-pulse animate-duration-[2500ms]">
+  Long pulse
+</div>
+
+<!-- 75ms duration -->
+<div class="animate-shake animate-duration-[75ms]">
+  Ultra-fast shake
+</div>
+
+<!-- Using seconds -->
+<div class="animate-rotate-360 animate-duration-[3s]">
+  3-second rotation
+</div>
+```
+
+### Combining with Other Properties
+
+```html
+<div class="
+  animate-zoom-in
+  animate-duration-500
+  animate-delay-200
+  animate-bezier-ease-out
+">
+  Zooms in over 500ms after 200ms delay
+</div>
+```
+
+## Responsive Durations
+
+Apply different durations at different breakpoints:
+
+```html
+<div class="
+  animate-slide-in-top
+  animate-duration-300
+  md:animate-duration-500
+  lg:animate-duration-700
+">
+  Slower animation on larger screens
+</div>
+```
+
+## Common Duration Patterns
+
+### Micro-Interactions
+
+Quick, responsive animations for UI feedback:
+
+```html
+<button class="
+  hover:animate-scale
+  hover:animate-duration-150
+">
+  Quick scale on hover
+</button>
+
+<div class="
+  active:animate-shake
+  active:animate-duration-100
+">
+  Instant shake on click
+</div>
+```
+
+### Page Entrance Animations
+
+Slightly longer durations for page load:
+
+```html
+<header class="animate-fade-in-down animate-duration-700">
+  Header content
+</header>
+
+<main class="animate-fade-in animate-duration-800 animate-delay-300">
+  Main content
+</main>
+```
+
+### Loading States
+
+Continuous animations should be moderate speed:
+
+```html
+<div class="
+  animate-pulse
+  animate-duration-[1500ms]
+  animate-iteration-count-infinite
+">
+  Loading...
+</div>
+
+<div class="
+  animate-spin-clockwise
+  animate-duration-1000
+  animate-iteration-count-infinite
+">
+  ⚙️
+</div>
+```
+
+### Attention-Seeking Animations
+
+Medium to slow for noticeable effects:
+
+```html
+<div class="
+  animate-tada
+  animate-duration-900
+">
+  Important notification!
+</div>
+
+<button class="
+  animate-heartbeat
+  animate-duration-800
+  animate-iteration-count-infinite
+">
+  Like ❤️
+</button>
+```
+
+## Duration Guidelines by Animation Type
+
+### Fade Animations
+
+```html
+<!-- Quick fades: 200-400ms -->
+<div class="animate-fade-in animate-duration-300">Fast fade</div>
+
+<!-- Standard fades: 400-600ms -->
+<div class="animate-fade-in animate-duration-500">Normal fade</div>
+
+<!-- Slow fades: 600-1000ms -->
+<div class="animate-fade-in animate-duration-800">Slow fade</div>
+```
+
+### Slide Animations
+
+```html
+<!-- Quick slides: 200-400ms -->
+<div class="animate-slide-in-left animate-duration-300">Quick slide</div>
+
+<!-- Standard slides: 400-600ms -->
+<div class="animate-slide-in-left animate-duration-500">Normal slide</div>
+```
+
+### Bounce & Elastic
+
+```html
+<!-- Bounces need moderate duration: 400-800ms -->
+<div class="animate-bouncing animate-duration-600">Bounce</div>
+
+<!-- Elastic effects need longer: 600-1000ms -->
+<div class="animate-rubber-band animate-duration-800">Rubber band</div>
+```
+
+### Rotations
+
+```html
+<!-- Quick spins: 300-600ms -->
+<div class="animate-rotate-90 animate-duration-400">Quick rotation</div>
+
+<!-- Full rotations: 600-1000ms -->
+<div class="animate-rotate-360 animate-duration-800">Full spin</div>
+
+<!-- Continuous spins: 1000-2000ms -->
+<div class="
+  animate-spin-clockwise
+  animate-duration-[1500ms]
+  animate-iteration-count-infinite
+">
+  Slow continuous spin
+</div>
+```
+
+## CSS Variable Reference
+
+All duration classes use the following CSS custom properties:
+
+```css
+/* Named durations */
+--tw-anim-duration-none: 0ms;
+--tw-anim-duration-faster: 100ms;
+--tw-anim-duration-fast: 200ms;
+--tw-anim-duration-normal: 300ms;
+--tw-anim-duration-slow: 400ms;
+--tw-anim-duration-slower: 500ms;
+
+/* Numeric durations */
+--tw-anim-duration-0: 0ms;
+--tw-anim-duration-100: 100ms;
+--tw-anim-duration-150: 150ms;
+--tw-anim-duration-200: 200ms;
+--tw-anim-duration-250: 250ms;
+--tw-anim-duration-300: 300ms;
+--tw-anim-duration-400: 400ms;
+--tw-anim-duration-500: 500ms;
+--tw-anim-duration-700: 700ms;
+--tw-anim-duration-800: 800ms;
+--tw-anim-duration-900: 900ms;
+--tw-anim-duration-1000: 1000ms;
+```
+
+## Best Practices
+
+### Keep UI Animations Quick
+
+For interactive elements, use durations under 400ms:
+
+```html
+<!-- Good: Quick and responsive -->
+<button class="hover:animate-scale hover:animate-duration-200">
+  Click me
+</button>
+
+<!-- Avoid: Too slow for interaction -->
+<button class="hover:animate-scale hover:animate-duration-1000">
+  Click me
+</button>
+```
+
+### Use Longer Durations for Complex Animations
+
+Complex animations need more time to be appreciated:
+
+```html
+<!-- Good: Adequate time for complex motion -->
+<div class="animate-rubber-band animate-duration-800">
+  Complex animation
+</div>
+
+<!-- Avoid: Too fast to see details -->
+<div class="animate-rubber-band animate-duration-150">
+  Complex animation
+</div>
+```
+
+### Match Duration to Animation Purpose
+
+```html
+<!-- Attention-seeking: Longer -->
+<div class="animate-tada animate-duration-900">Notice me!</div>
+
+<!-- Subtle feedback: Shorter -->
+<button class="hover:animate-pop hover:animate-duration-200">Hover</button>
+
+<!-- Page transitions: Medium -->
+<div class="animate-fade-in animate-duration-500">Content</div>
+```
+
+### Consider Total Experience
+
+When using multiple animated elements, keep total time reasonable:
+
+```html
+<!-- Total: 0ms + 600ms = 600ms ✓ -->
+<div class="animate-fade-in animate-duration-600 animate-delay-0">Item 1</div>
+
+<!-- Total: 200ms + 600ms = 800ms ✓ -->
+<div class="animate-fade-in animate-duration-600 animate-delay-200">Item 2</div>
+
+<!-- Total: 400ms + 600ms = 1000ms ✓ -->
+<div class="animate-fade-in animate-duration-600 animate-delay-400">Item 3</div>
+
+<!-- Combined total: 1000ms (just over 1 second) -->
+```
+
+## Performance Notes
+
+- Shorter durations (100-300ms) are imperceptibly faster in most browsers
+- Very long durations (2000ms+) may feel sluggish to users
+- Duration does not significantly impact performance
+- Consider user motion preferences:
+
+```html
+<div class="
+  animate-fade-in
+  animate-duration-500
+  motion-reduce:animate-duration-0
+">
+  Respects reduced motion preferences
+</div>
+```
+
+## Browser Compatibility
+
+Animation duration is supported in all modern browsers:
+
+- Chrome 43+
+- Firefox 16+
+- Safari 9+
+- Edge 12+
+- Opera 30+
+
+Both milliseconds (ms) and seconds (s) are supported in arbitrary values.

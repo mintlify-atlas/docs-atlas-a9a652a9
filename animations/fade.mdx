@@ -1,0 +1,266 @@
+---
+title: Fade Animations
+description: Smooth appearance and disappearance effects with opacity transitions
+---
+
+Fade animations are the most subtle and versatile animations in the library. They smoothly transition elements in and out using opacity changes, often combined with directional movement.
+
+## Basic Fade Animations
+
+<Tabs>
+  <Tab title="fade-in">
+    Smoothly fades an element from invisible to visible.
+
+    ```html
+    <div class="animate-fade-in">
+      Content appears smoothly
+    </div>
+    ```
+
+    **When to use:** Perfect for revealing content, modal overlays, tooltips, or any element that should appear gracefully.
+
+    **Duration:** 600ms (default)
+  </Tab>
+
+  <Tab title="fade-out">
+    Smoothly fades an element from visible to invisible.
+
+    ```html
+    <div class="animate-fade-out">
+      Content disappears smoothly
+    </div>
+    ```
+
+    **When to use:** Ideal for dismissing notifications, closing modals, or removing elements from view.
+
+    **Duration:** 600ms (default)
+  </Tab>
+
+  <Tab title="blurred-fade-in">
+    Combines opacity fade with a blur effect for a progressive appearance.
+
+    ```html
+    <div class="animate-blurred-fade-in">
+      Content appears with blur clearing
+    </div>
+    ```
+
+    **When to use:** Great for hero sections, image galleries, or creating a dreamy entrance effect.
+
+    **Duration:** 900ms (default)
+    
+    **Technical:** Animates from `filter: blur(5px); opacity: 0` to `filter: blur(0); opacity: 1`
+  </Tab>
+</Tabs>
+
+## Directional Fade In Animations
+
+These animations combine fading with directional movement for more dynamic entrances.
+
+<Accordion title="fade-in-up">
+  Element fades in while moving upward.
+
+  ```html
+  <div class="animate-fade-in-up">
+    Slides up 20px while fading in
+  </div>
+  ```
+
+  **Movement:** Starts 20px below, moves to original position
+  
+  **Duration:** 600ms
+
+  **Best for:** List items, card entries, bottom notifications
+</Accordion>
+
+<Accordion title="fade-in-down">
+  Element fades in while moving downward.
+
+  ```html
+  <div class="animate-fade-in-down">
+    Slides down 20px while fading in
+  </div>
+  ```
+
+  **Movement:** Starts 20px above, moves to original position
+  
+  **Duration:** 600ms
+
+  **Best for:** Dropdown menus, header notifications, top banners
+</Accordion>
+
+<Accordion title="fade-in-left">
+  Element fades in while moving from the right.
+
+  ```html
+  <div class="animate-fade-in-left">
+    Slides left 20px while fading in
+  </div>
+  ```
+
+  **Movement:** Starts 20px to the right, moves to original position
+  
+  **Duration:** 600ms
+
+  **Best for:** Side panels, navigation drawers (RTL layouts)
+</Accordion>
+
+<Accordion title="fade-in-right">
+  Element fades in while moving from the left.
+
+  ```html
+  <div class="animate-fade-in-right">
+    Slides right 20px while fading in
+  </div>
+  ```
+
+  **Movement:** Starts 20px to the left, moves to original position
+  
+  **Duration:** 600ms
+
+  **Best for:** Side panels, navigation drawers (LTR layouts)
+</Accordion>
+
+## Directional Fade Out Animations
+
+<Tabs>
+  <Tab title="fade-out-up">
+    Element fades out while moving upward.
+
+    ```html
+    <div class="animate-fade-out-up">
+      Moves up 20px while fading out
+    </div>
+    ```
+
+    **Movement:** Moves 20px upward while opacity reduces to 0
+  </Tab>
+
+  <Tab title="fade-out-down">
+    Element fades out while moving downward.
+
+    ```html
+    <div class="animate-fade-out-down">
+      Moves down 20px while fading out
+    </div>
+    ```
+
+    **Movement:** Moves 20px downward while opacity reduces to 0
+  </Tab>
+
+  <Tab title="fade-out-left">
+    Element fades out while moving left.
+
+    ```html
+    <div class="animate-fade-out-left">
+      Moves left 20px while fading out
+    </div>
+    ```
+
+    **Movement:** Moves 20px to the left while opacity reduces to 0
+  </Tab>
+
+  <Tab title="fade-out-right">
+    Element fades out while moving right.
+
+    ```html
+    <div class="animate-fade-out-right">
+      Moves right 20px while fading out
+    </div>
+    ```
+
+    **Movement:** Moves 20px to the right while opacity reduces to 0
+  </Tab>
+</Tabs>
+
+## Special Fade Animations
+
+### pulse-fade-in
+
+Combines a pulsing scale effect with fading for an attention-grabbing entrance.
+
+```html
+<div class="animate-pulse-fade-in">
+  Pulses and fades in
+</div>
+```
+
+**Animation sequence:**
+- Starts at scale 0.9, opacity 0
+- Expands to scale 1.05, opacity 0.5 at midpoint
+- Settles at scale 1, opacity 1
+
+**Duration:** 600ms
+
+**Best for:** Call-to-action buttons, important notifications, modal entries
+
+## Customization Examples
+
+### Fast Fade with Delay
+
+```html
+<div class="animate-fade-in animate-duration-fast animate-delay-300">
+  Quick fade after 300ms delay
+</div>
+```
+
+### Smooth Fade with Custom Easing
+
+```html
+<div class="animate-fade-in-up animate-bezier-cubic-out animate-duration-slower">
+  Elegant upward fade with cubic easing
+</div>
+```
+
+### Infinite Subtle Pulse
+
+```html
+<div class="animate-fade-in animate-iteration-count-infinite animate-direction-alternate animate-duration-slow">
+  Continuously fades in and out
+</div>
+```
+
+### Staggered List Items
+
+```html
+<ul>
+  <li class="animate-fade-in-up animate-delay-0">First item</li>
+  <li class="animate-fade-in-up animate-delay-100">Second item</li>
+  <li class="animate-fade-in-up animate-delay-200">Third item</li>
+  <li class="animate-fade-in-up animate-delay-300">Fourth item</li>
+</ul>
+```
+
+## Usage Tips
+
+<Tip>Fade animations work well with fill-mode-forwards to keep the final state after animation completes.</Tip>
+
+```html
+<div class="animate-fade-in animate-fill-mode-forwards">
+  Stays visible after animation
+</div>
+```
+
+<Warning>Avoid using fade-out without removing the element from the DOM, as it will remain in the layout but invisible.</Warning>
+
+### Combining with Hover States
+
+```html
+<div class="opacity-0 hover:animate-fade-in">
+  Fades in on hover
+</div>
+```
+
+### Responsive Animations
+
+```html
+<div class="animate-fade-in md:animate-fade-in-left">
+  Simple fade on mobile, directional on desktop
+</div>
+```
+
+## Performance Considerations
+
+- Fade animations are highly performant as they only animate opacity (and transform for directional variants)
+- Opacity changes are GPU-accelerated in modern browsers
+- The blur filter in `blurred-fade-in` may be slightly more expensive, use sparingly on low-end devices

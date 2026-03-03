@@ -1,0 +1,349 @@
+---
+title: Slide Animations
+description: Entry and exit animations with directional sliding movements
+---
+
+Slide animations move elements from off-screen or to off-screen positions, creating smooth transitions that guide the user's eye to important content.
+
+## Basic Slide Animations
+
+<Tabs>
+  <Tab title="slide-in-top">
+    Element slides in from above.
+
+    ```html
+    <div class="animate-slide-in-top">
+      Slides down from 20px above
+    </div>
+    ```
+
+    **Movement:** `translateY(-20px)` to `translateY(0)`
+    
+    **Duration:** 600ms
+
+    **Best for:** Dropdown menus, header notifications, alerts from the top
+  </Tab>
+
+  <Tab title="slide-in-bottom">
+    Element slides in from below.
+
+    ```html
+    <div class="animate-slide-in-bottom">
+      Slides up from 20px below
+    </div>
+    ```
+
+    **Movement:** `translateY(20px)` to `translateY(0)`
+    
+    **Duration:** 600ms
+
+    **Best for:** Bottom sheets, footer notifications, chat messages
+  </Tab>
+
+  <Tab title="slide-in-left">
+    Element slides in from the left.
+
+    ```html
+    <div class="animate-slide-in-left">
+      Slides right from 20px to the left
+    </div>
+    ```
+
+    **Movement:** `translateX(-20px)` to `translateX(0)`
+    
+    **Duration:** 600ms
+
+    **Best for:** Side navigation panels, drawer menus (LTR)
+  </Tab>
+
+  <Tab title="slide-in-right">
+    Element slides in from the right.
+
+    ```html
+    <div class="animate-slide-in-right">
+      Slides left from 20px to the right
+    </div>
+    ```
+
+    **Movement:** `translateX(20px)` to `translateX(0)`
+    
+    **Duration:** 600ms
+
+    **Best for:** Side panels, shopping carts, settings panels
+  </Tab>
+</Tabs>
+
+## Slide Out Animations
+
+<Accordion title="slide-out-top">
+  Element slides out upward.
+
+  ```html
+  <div class="animate-slide-out-top">
+    Slides up and exits
+  </div>
+  ```
+
+  **Movement:** `translateY(0)` to `translateY(-20px)`
+  
+  **Duration:** 600ms
+
+  **Best for:** Dismissing top notifications, collapsing headers
+</Accordion>
+
+<Accordion title="slide-out-bottom">
+  Element slides out downward.
+
+  ```html
+  <div class="animate-slide-out-bottom">
+    Slides down and exits
+  </div>
+  ```
+
+  **Movement:** `translateY(0)` to `translateY(20px)`
+  
+  **Duration:** 600ms
+
+  **Best for:** Dismissing bottom sheets, hiding footers
+</Accordion>
+
+<Accordion title="slide-out-left">
+  Element slides out to the left.
+
+  ```html
+  <div class="animate-slide-out-left">
+    Slides left and exits
+  </div>
+  ```
+
+  **Movement:** `translateX(0)` to `translateX(-20px)`
+  
+  **Duration:** 600ms
+
+  **Best for:** Closing side panels, dismissing cards to the left
+</Accordion>
+
+<Accordion title="slide-out-right">
+  Element slides out to the right.
+
+  ```html
+  <div class="animate-slide-out-right">
+    Slides right and exits
+  </div>
+  ```
+
+  **Movement:** `translateX(0)` to `translateX(20px)`
+  
+  **Duration:** 600ms
+
+  **Best for:** Dismissing notifications, swiping cards away
+</Accordion>
+
+## Advanced Slide Animations
+
+### slide-up-fade
+
+Combines upward sliding with a fade effect for a dramatic entrance.
+
+```html
+<div class="animate-slide-up-fade">
+  Slides up 50px while fading in
+</div>
+```
+
+**Animation details:**
+- Starts at `translateY(50px)` with `opacity: 0`
+- Ends at `translateY(0)` with `opacity: 1`
+- More dramatic movement (50px vs standard 20px)
+
+**Duration:** 600ms
+
+**Best for:** Hero sections, feature cards, modal entries
+
+### slide-rotate-in
+
+Element slides in from the left while rotating.
+
+```html
+<div class="animate-slide-rotate-in">
+  Slides and rotates into view
+</div>
+```
+
+**Animation details:**
+- Starts at `translateX(-20px) rotate(-90deg)` with `opacity: 0`
+- Ends at `translateX(0) rotate(0deg)` with `opacity: 1`
+
+**Duration:** 600ms
+
+**Best for:** Playful UI elements, game interfaces, creative cards
+
+### slide-rotate-out
+
+Element slides out to the right while rotating.
+
+```html
+<div class="animate-slide-rotate-out">
+  Rotates and slides out of view
+</div>
+```
+
+**Animation details:**
+- Starts at `translateX(0) rotate(0deg)` with `opacity: 1`
+- Ends at `translateX(20px) rotate(90deg)` with `opacity: 0`
+
+**Duration:** 600ms
+
+**Best for:** Dismissing cards with flair, playful exit effects
+
+## Customization Examples
+
+### Slower, Smoother Slide
+
+```html
+<div class="animate-slide-in-bottom animate-duration-slower animate-bezier-cubic-out">
+  Elegant, slow slide with smooth easing
+</div>
+```
+
+### Quick Slide with Bounce
+
+```html
+<div class="animate-slide-in-top animate-duration-fast animate-bezier-back-out">
+  Fast slide with a bounce at the end
+</div>
+```
+
+### Delayed Slide Sequence
+
+```html
+<div class="animate-slide-in-left animate-delay-0">First</div>
+<div class="animate-slide-in-left animate-delay-150">Second</div>
+<div class="animate-slide-in-left animate-delay-300">Third</div>
+```
+
+### Alternating Slide Animation
+
+```html
+<div class="animate-slide-in-right 
+            animate-iteration-count-infinite 
+            animate-direction-alternate 
+            animate-duration-slow">
+  Slides back and forth
+</div>
+```
+
+## Practical Use Cases
+
+### Mobile Menu
+
+```html
+<!-- Menu overlay -->
+<div class="fixed inset-0 bg-black/50 animate-fade-in" />
+
+<!-- Menu panel -->
+<nav class="fixed left-0 top-0 bottom-0 w-64 bg-white animate-slide-in-left">
+  <ul>
+    <li>Home</li>
+    <li>About</li>
+    <li>Contact</li>
+  </ul>
+</nav>
+```
+
+### Toast Notification
+
+```html
+<div class="fixed bottom-4 right-4 
+            bg-green-500 text-white p-4 rounded 
+            animate-slide-in-bottom">
+  Success! Your changes have been saved.
+</div>
+```
+
+### Modal Dialog
+
+```html
+<!-- Backdrop -->
+<div class="fixed inset-0 bg-black/75 animate-fade-in" />
+
+<!-- Modal -->
+<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+            bg-white rounded-lg p-6 animate-slide-in-top animate-delay-100">
+  <h2>Confirm Action</h2>
+  <p>Are you sure you want to continue?</p>
+</div>
+```
+
+### Accordion Panel
+
+```html
+<div class="overflow-hidden">
+  <div class="animate-slide-in-top">
+    Accordion content revealed with smooth slide
+  </div>
+</div>
+```
+
+## Combining with Duration and Easing
+
+### Natural Entrance
+
+```html
+<div class="animate-slide-in-bottom 
+            animate-duration-normal 
+            animate-bezier-quad-out">
+  Natural, organic slide motion
+</div>
+```
+
+### Snappy UI Response
+
+```html
+<div class="animate-slide-in-right 
+            animate-duration-faster 
+            animate-ease-out">
+  Fast, responsive slide
+</div>
+```
+
+### Dramatic Entrance
+
+```html
+<div class="animate-slide-up-fade 
+            animate-duration-slower 
+            animate-bezier-quint-out">
+  Slow, dramatic reveal
+</div>
+```
+
+## Tips and Best Practices
+
+<Tip>Match slide direction with the element's position. Top elements should slide from top, side panels from the side.</Tip>
+
+<Tip>Use `animate-fill-mode-both` to maintain the element's start state before the animation and end state after.</Tip>
+
+```html
+<div class="animate-slide-in-left animate-delay-500 animate-fill-mode-both">
+  Maintains position before and after animation
+</div>
+```
+
+<Warning>When sliding elements out, make sure to remove them from the DOM after animation completes to prevent layout issues.</Warning>
+
+### Handling Exit Animations
+
+```javascript
+const element = document.querySelector('.notification');
+element.classList.add('animate-slide-out-top');
+
+// Remove after animation (600ms default + small buffer)
+setTimeout(() => element.remove(), 650);
+```
+
+## Performance Notes
+
+- Slide animations use `transform: translate()` which is GPU-accelerated
+- They're highly performant and suitable for mobile devices
+- Combining with opacity (like `slide-up-fade`) is still performant
+- Avoid animating hundreds of elements simultaneously

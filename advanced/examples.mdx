@@ -1,0 +1,510 @@
+---
+title: Real-World Examples
+description: Practical examples and use cases for Tailwind Animations
+---
+
+## Overview
+
+This page showcases real-world examples demonstrating how to use Tailwind Animations in common UI patterns. Each example is production-ready and can be copied directly into your projects.
+
+## Interactive Elements
+
+### Animated Button
+
+A button that pulses on load and celebrates when clicked:
+
+```html
+<button class="
+  px-6 py-3 bg-blue-600 text-white rounded-lg
+  animate-pulse-fade-in
+  animate-duration-slow
+  hover:animate-play-paused
+  hover:scale-105
+  active:animate-tada
+  transition-transform
+">
+  Click Me
+</button>
+```
+
+**Key Features:**
+- Initial pulse effect draws attention
+- Pauses on hover for better UX
+- Celebrates with tada animation on click
+- Smooth scale transition
+
+### Loading Button
+
+```html
+<button disabled class="
+  px-6 py-3 bg-gray-400 text-white rounded-lg
+  opacity-75 cursor-not-allowed
+">
+  <span class="
+    inline-block mr-2
+    animate-spin-clockwise
+    animate-iteration-count-infinite
+    animate-duration-slower
+    animate-linear
+  ">
+    ⟳
+  </span>
+  Loading...
+</button>
+```
+
+**Use Cases:**
+- Form submissions
+- API requests
+- File uploads
+
+### Toggle Switch
+
+```html
+<label class="relative inline-block w-14 h-8 cursor-pointer">
+  <input type="checkbox" class="sr-only peer" />
+  <div class="
+    w-full h-full bg-gray-300 rounded-full
+    peer-checked:bg-green-500
+    transition-colors
+  "></div>
+  <div class="
+    absolute top-1 left-1 w-6 h-6 bg-white rounded-full
+    peer-checked:left-7
+    peer-checked:animate-tada
+    peer-checked:animate-duration-fast
+    transition-all
+  "></div>
+</label>
+```
+
+**Key Features:**
+- Smooth slide transition
+- Celebratory animation when toggled on
+- Accessible with sr-only input
+
+## Card Components
+
+### Entrance Card
+
+A card that slides up and fades in on page load:
+
+```html
+<div class="
+  max-w-sm bg-white rounded-xl shadow-lg overflow-hidden
+  animate-slide-up-fade
+  animate-delay-200
+  animate-duration-slow
+  animate-bezier-back-out
+  animate-fill-mode-both
+  hover:shadow-2xl
+  transition-shadow
+">
+  <img src="image.jpg" alt="Card image" class="w-full h-48 object-cover" />
+  <div class="p-6">
+    <h3 class="text-xl font-bold mb-2">Card Title</h3>
+    <p class="text-gray-600">Card description goes here...</p>
+  </div>
+</div>
+```
+
+**Key Features:**
+- Delayed entrance for staggered effect
+- Back-out easing adds bounce
+- Hover shadow enhances interactivity
+
+### Flip Card
+
+```html
+<div class="w-64 h-64 perspective-1000">
+  <div class="
+    relative w-full h-full
+    transition-transform duration-700
+    transform-style-3d
+    hover:animate-flip-horizontal
+    hover:animate-duration-700
+  ">
+    <!-- Front -->
+    <div class="absolute inset-0 bg-blue-500 rounded-xl flex items-center justify-center backface-hidden">
+      <h3 class="text-white text-2xl font-bold">Front</h3>
+    </div>
+    <!-- Back -->
+    <div class="absolute inset-0 bg-purple-500 rounded-xl flex items-center justify-center backface-hidden rotate-y-180">
+      <h3 class="text-white text-2xl font-bold">Back</h3>
+    </div>
+  </div>
+</div>
+```
+
+**Use Cases:**
+- Product showcases
+- Team member profiles
+- Feature highlights
+
+### Staggered Card Grid
+
+```html
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="card animate-fade-in-up animate-delay-0 animate-duration-500">
+    Card 1
+  </div>
+  <div class="card animate-fade-in-up animate-delay-150 animate-duration-500">
+    Card 2
+  </div>
+  <div class="card animate-fade-in-up animate-delay-300 animate-duration-500">
+    Card 3
+  </div>
+  <div class="card animate-fade-in-up animate-delay-450 animate-duration-500">
+    Card 4
+  </div>
+  <div class="card animate-fade-in-up animate-delay-600 animate-duration-500">
+    Card 5
+  </div>
+  <div class="card animate-fade-in-up animate-delay-750 animate-duration-500">
+    Card 6
+  </div>
+</div>
+```
+
+**Key Features:**
+- Sequential reveal creates visual rhythm
+- Uniform duration for consistency
+- 150ms delay increments feel natural
+
+## Navigation Elements
+
+### Animated Menu Items
+
+```html
+<nav>
+  <ul class="space-y-2">
+    <li class="animate-slide-in-left animate-delay-0 animate-duration-300">
+      <a href="#" class="block p-3 hover:animate-tada">Home</a>
+    </li>
+    <li class="animate-slide-in-left animate-delay-100 animate-duration-300">
+      <a href="#" class="block p-3 hover:animate-tada">About</a>
+    </li>
+    <li class="animate-slide-in-left animate-delay-200 animate-duration-300">
+      <a href="#" class="block p-3 hover:animate-tada">Services</a>
+    </li>
+    <li class="animate-slide-in-left animate-delay-300 animate-duration-300">
+      <a href="#" class="block p-3 hover:animate-tada">Contact</a>
+    </li>
+  </ul>
+</nav>
+```
+
+### Dropdown Menu
+
+```html
+<div class="relative group">
+  <button class="px-4 py-2 bg-blue-600 text-white rounded">
+    Menu
+  </button>
+  <div class="
+    absolute top-full left-0 mt-2
+    opacity-0 invisible
+    group-hover:opacity-100
+    group-hover:visible
+    group-hover:animate-fade-in-down
+    group-hover:animate-duration-200
+    bg-white shadow-lg rounded-lg
+    min-w-[200px]
+  ">
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Item 1</a>
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Item 2</a>
+    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Item 3</a>
+  </div>
+</div>
+```
+
+## Notification & Alert Patterns
+
+### Toast Notification
+
+```html
+<div class="
+  fixed top-4 right-4
+  max-w-sm bg-white shadow-lg rounded-lg p-4
+  animate-slide-in-right
+  animate-duration-300
+  animate-bezier-cubic-out
+">
+  <div class="flex items-start">
+    <div class="flex-shrink-0 animate-tada animate-duration-fast">
+      ✓
+    </div>
+    <div class="ml-3">
+      <h3 class="text-sm font-medium text-gray-900">Success!</h3>
+      <p class="mt-1 text-sm text-gray-500">Your changes have been saved.</p>
+    </div>
+  </div>
+</div>
+```
+
+### Alert Banner
+
+```html
+<div class="
+  bg-yellow-50 border-l-4 border-yellow-400 p-4
+  animate-slide-in-top
+  animate-duration-500
+  animate-fill-mode-both
+">
+  <div class="flex">
+    <div class="flex-shrink-0 animate-horizontal-vibration animate-iteration-count-infinite">
+      ⚠️
+    </div>
+    <div class="ml-3">
+      <p class="text-sm text-yellow-700">
+        <strong class="font-bold">Warning:</strong> This action cannot be undone.
+      </p>
+    </div>
+  </div>
+</div>
+```
+
+### Notification Badge
+
+```html
+<button class="relative p-2">
+  <svg class="w-6 h-6"><!-- Bell icon --></svg>
+  <span class="
+    absolute -top-1 -right-1
+    w-5 h-5 bg-red-500 text-white text-xs
+    rounded-full flex items-center justify-center
+    animate-pulse
+    animate-iteration-count-infinite
+    animate-duration-slower
+  ">
+    3
+  </span>
+</button>
+```
+
+## Loading States
+
+### Skeleton Loader
+
+```html
+<div class="space-y-4">
+  <!-- Avatar skeleton -->
+  <div class="
+    w-12 h-12 bg-gray-300 rounded-full
+    animate-pulse
+    animate-iteration-count-infinite
+  "></div>
+  
+  <!-- Text skeleton -->
+  <div class="space-y-2">
+    <div class="h-4 bg-gray-300 rounded w-3/4 animate-pulse animate-iteration-count-infinite"></div>
+    <div class="h-4 bg-gray-300 rounded w-1/2 animate-pulse animate-iteration-count-infinite"></div>
+  </div>
+</div>
+```
+
+### Spinner
+
+```html
+<div class="flex items-center justify-center">
+  <div class="
+    w-16 h-16 border-4 border-blue-200 border-t-blue-600 rounded-full
+    animate-spin-clockwise
+    animate-iteration-count-infinite
+    animate-duration-slower
+    animate-linear
+  "></div>
+</div>
+```
+
+### Progress Bar
+
+```html
+<div class="w-full h-2 bg-gray-200 rounded-full overflow-hidden">
+  <div class="
+    h-full bg-blue-600
+    animate-expand-horizontally
+    animate-duration-1000
+    animate-fill-mode-forwards
+    origin-left
+  "></div>
+</div>
+```
+
+## Scroll-Based Animations
+
+### Parallax Hero
+
+```html
+<div class="relative h-screen overflow-hidden">
+  <div class="
+    absolute inset-0
+    view-animate-[--hero]
+    animate-fade-out
+    animate-range-cover
+  ">
+    <img src="hero.jpg" alt="Hero" class="w-full h-full object-cover" />
+  </div>
+  <div class="relative z-10 flex items-center justify-center h-full">
+    <h1 class="
+      text-6xl font-bold text-white
+      view-animate-[--title]
+      animate-fade-in-up
+      animate-range-entry
+    ">
+      Welcome
+    </h1>
+  </div>
+</div>
+```
+
+### Scroll Reveal Sections
+
+```html
+<section class="py-20">
+  <div class="
+    max-w-4xl mx-auto
+    view-animate-[--section1]
+    animate-slide-in-bottom
+    animate-range-[entry_10%_contain_25%]
+  ">
+    <h2 class="text-4xl font-bold mb-4">Section Title</h2>
+    <p class="text-lg text-gray-600">Section content...</p>
+  </div>
+</section>
+```
+
+### Progress Indicator
+
+```html
+<div class="fixed top-0 left-0 right-0 h-1 bg-gray-200 z-50">
+  <div class="
+    h-full bg-blue-600
+    timeline-scroll
+    animate-expand-horizontally
+    origin-left
+  "></div>
+</div>
+```
+
+## Form Elements
+
+### Input with Error
+
+```html
+<div>
+  <input 
+    type="email" 
+    class="
+      border-2 border-red-500 px-4 py-2 rounded
+      animate-shake
+      animate-duration-fast
+    " 
+    placeholder="Enter email" 
+  />
+  <p class="
+    text-red-500 text-sm mt-1
+    animate-fade-in
+    animate-duration-200
+  ">
+    Please enter a valid email
+  </p>
+</div>
+```
+
+### Success State
+
+```html
+<div class="relative">
+  <input 
+    type="text" 
+    class="border-2 border-green-500 px-4 py-2 rounded w-full" 
+    value="john@example.com" 
+    disabled
+  />
+  <div class="
+    absolute right-3 top-1/2 -translate-y-1/2
+    text-green-500
+    animate-bounce-fade-in
+    animate-duration-500
+  ">
+    ✓
+  </div>
+</div>
+```
+
+## Modal & Overlay
+
+### Modal Dialog
+
+```html
+<!-- Backdrop -->
+<div class="
+  fixed inset-0 bg-black/50
+  animate-fade-in
+  animate-duration-200
+">
+</div>
+
+<!-- Modal -->
+<div class="
+  fixed inset-0 flex items-center justify-center p-4
+">
+  <div class="
+    bg-white rounded-xl shadow-2xl max-w-md w-full p-6
+    animate-zoom-in
+    animate-duration-300
+    animate-bezier-back-out
+  ">
+    <h2 class="text-2xl font-bold mb-4">Modal Title</h2>
+    <p class="text-gray-600 mb-6">Modal content goes here...</p>
+    <div class="flex justify-end gap-2">
+      <button class="px-4 py-2 text-gray-600 hover:animate-tada">Cancel</button>
+      <button class="px-4 py-2 bg-blue-600 text-white rounded hover:animate-pulse-fade-in">Confirm</button>
+    </div>
+  </div>
+</div>
+```
+
+### Sidebar
+
+```html
+<aside class="
+  fixed top-0 left-0 h-full w-64 bg-gray-900 text-white
+  animate-slide-in-left
+  animate-duration-300
+  animate-bezier-cubic-out
+">
+  <nav class="p-4">
+    <ul class="space-y-2">
+      <li class="animate-fade-in animate-delay-100">Link 1</li>
+      <li class="animate-fade-in animate-delay-200">Link 2</li>
+      <li class="animate-fade-in animate-delay-300">Link 3</li>
+    </ul>
+  </nav>
+</aside>
+```
+
+## Best Practices
+
+<Note>
+**When Using These Examples:**
+- Adjust timing values based on your design system
+- Test animations on different devices and browsers
+- Always respect `prefers-reduced-motion` user preferences
+- Use animations to enhance UX, not distract from content
+- Keep animations subtle and purposeful
+</Note>
+
+<Warning>
+**Accessibility Reminder:**
+Always add this to your global CSS:
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+```
+</Warning>

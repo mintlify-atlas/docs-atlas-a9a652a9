@@ -1,0 +1,403 @@
+---
+title: 'Steps Animation'
+description: 'Create retro, stepped animations with precise frame control'
+icon: 'stairs'
+---
+
+Steps timing functions create animations that jump between keyframes in discrete intervals rather than smoothly transitioning. This creates a "stop-motion" or "frame-by-frame" effect perfect for retro animations, sprite sheets, and mechanical motion.
+
+## What are Steps?
+
+Instead of smooth transitions, steps divide the animation into distinct frames:
+
+- **Retro** (8 steps): Chunky, retro video game style
+- **Normal** (16 steps): Balanced stepped animation
+- **Modern** (24 steps): Smoother stepped motion
+
+## Usage
+
+Apply steps classes to create frame-by-frame animations:
+
+```html
+<div class="animate-rotate-360 animate-steps-retro">
+  Rotates in 8 distinct steps
+</div>
+
+<div class="animate-slide-in-left animate-steps-normal">
+  Slides in 16 frames
+</div>
+```
+
+## Available Steps Values
+
+| Class | CSS Variable | Steps | Character | Use Case |
+|-------|--------------|-------|-----------|----------|
+| `animate-steps-retro` | `--tw-anim-steps-retro` | 8 | Very chunky, vintage | Retro games, pixel art |
+| `animate-steps-normal` | `--tw-anim-steps-normal` | 16 | Balanced stepping | General stopped motion |
+| `animate-steps-modern` | `--tw-anim-steps-modern` | 24 | Smoother stepping | Sprite animations |
+
+## Quick Start
+
+<CodeGroup>
+```html Retro Steps
+<div class="animate-rotate-360 
+            animate-steps-retro 
+            animate-duration-slow 
+            animate-iteration-count-infinite">
+  🎮 Retro rotation (8 frames)
+</div>
+```
+
+```html Normal Steps
+<div class="animate-bounce 
+            animate-steps-normal 
+            animate-iteration-count-infinite">
+  ⚙️ Mechanical bounce (16 frames)
+</div>
+```
+
+```html Modern Steps
+<div class="animate-slide-in-right 
+            animate-steps-modern">
+  🎬 Smooth stepped entrance (24 frames)
+</div>
+```
+</CodeGroup>
+
+## Comparison
+
+See how different step counts affect the same animation:
+
+```html
+<!-- Smooth (default) -->
+<div class="animate-rotate-360 animate-duration-slow">
+  Smooth rotation
+</div>
+
+<!-- 8 steps - chunky -->
+<div class="animate-rotate-360 animate-steps-retro animate-duration-slow">
+  8-frame rotation
+</div>
+
+<!-- 16 steps - balanced -->
+<div class="animate-rotate-360 animate-steps-normal animate-duration-slow">
+  16-frame rotation
+</div>
+
+<!-- 24 steps - smoother -->
+<div class="animate-rotate-360 animate-steps-modern animate-duration-slow">
+  24-frame rotation
+</div>
+```
+
+## Custom Step Values
+
+Use arbitrary numeric values for precise control:
+
+```html
+<!-- 4 steps - very chunky -->
+<div class="animate-rotate-360 animate-steps-4">
+  Ultra retro
+</div>
+
+<!-- 12 steps - custom middle ground -->
+<div class="animate-slide-in-left animate-steps-12">
+  Custom step count
+</div>
+
+<!-- 30 steps - very smooth stepping -->
+<div class="animate-fade-in animate-steps-30">
+  Many frames
+</div>
+```
+
+## Common Patterns
+
+### Retro Loading Spinner
+
+Create a classic 8-bit style spinner:
+
+```html
+<div class="animate-spin-clockwise 
+            animate-steps-retro 
+            animate-iteration-count-infinite 
+            animate-duration-slow">
+  ⟳
+</div>
+```
+
+### Mechanical Clock Hand
+
+Simulate a ticking clock hand:
+
+```html
+<div class="clock-hand 
+            animate-rotate-360 
+            animate-steps-normal 
+            animate-iteration-count-infinite 
+            animate-duration-1000">
+  🕐
+</div>
+```
+
+### Sprite Sheet Animation
+
+Perfect for sprite sheet frames:
+
+```html
+<div class="sprite 
+            animate-steps-modern" 
+     style="animation-name: sprite-frames; 
+            animation-duration: 1s; 
+            animation-iteration-count: infinite;">
+  Character sprite
+</div>
+```
+
+### Retro Game Effect
+
+```html
+<div class="game-character 
+            animate-bounce 
+            animate-steps-retro 
+            animate-iteration-count-infinite">
+  👾
+</div>
+```
+
+### Ticker Animation
+
+Create a digital ticker or counter effect:
+
+```html
+<div class="ticker 
+            animate-slide-in-bottom 
+            animate-steps-normal 
+            animate-iteration-count-thrice">
+  New score: 1000
+</div>
+```
+
+## CSS Reference
+
+```css
+.animate-steps-retro {
+  animation-timing-function: steps(8);
+}
+
+.animate-steps-normal {
+  animation-timing-function: steps(16);
+}
+
+.animate-steps-modern {
+  animation-timing-function: steps(24);
+}
+
+/* Custom values */
+.animate-steps-12 {
+  animation-timing-function: steps(12);
+}
+```
+
+## Combining with Other Properties
+
+### With Duration
+
+Control how long each full cycle takes:
+
+```html
+<div class="animate-rotate-360 
+            animate-steps-retro 
+            animate-duration-faster">
+  Fast retro rotation
+</div>
+```
+
+### With Iteration
+
+Repeat stepped animations:
+
+```html
+<div class="animate-shake 
+            animate-steps-normal 
+            animate-iteration-count-thrice">
+  Stepped shake 3 times
+</div>
+```
+
+### With Easing (Mixed)
+
+Note: Steps override easing functions, but you can combine them in complex animations:
+
+```html
+<!-- Steps take precedence over easing -->
+<div class="animate-bounce 
+            animate-steps-retro 
+            animate-ease-out">
+  Steps win (easing ignored)
+</div>
+```
+
+## Best Practices
+
+<Tip>
+  **Use retro for authentic 8-bit**: 8 steps perfectly captures classic video game aesthetics.
+</Tip>
+
+<Tip>
+  **Match duration to step count**: Slower durations work better with fewer steps to avoid jerkiness.
+</Tip>
+
+<Warning>
+  **Not for all animations**: Steps work best with rotations, slides, and transforms. Fade animations may look odd.
+</Warning>
+
+### Recommended Usage
+
+**Great for:**
+- Loading spinners
+- Retro/pixel art aesthetics
+- Sprite sheet animations
+- Clock hands and tickers
+- Mechanical motion
+- Frame-by-frame effects
+
+**Avoid for:**
+- Smooth UI transitions
+- Fade animations
+- Scale animations
+- Organic motion
+
+## Advanced Examples
+
+### Multi-Step Loading Indicator
+
+```html
+<div class="loading-dots flex gap-2">
+  <div class="animate-bounce 
+              animate-steps-retro 
+              animate-iteration-count-infinite 
+              animate-delay-0">•</div>
+  <div class="animate-bounce 
+              animate-steps-retro 
+              animate-iteration-count-infinite 
+              animate-delay-200">•</div>
+  <div class="animate-bounce 
+              animate-steps-retro 
+              animate-iteration-count-infinite 
+              animate-delay-400">•</div>
+</div>
+```
+
+### Retro Game Coin Spin
+
+```html
+<div class="coin 
+            animate-flip-horizontal 
+            animate-steps-retro 
+            animate-iteration-count-infinite 
+            animate-duration-slow">
+  🪙
+</div>
+```
+
+### Digital Clock Style
+
+```html
+<div class="digital-display">
+  <div class="digit 
+              animate-slide-in-bottom 
+              animate-steps-normal" 
+       style="animation-duration: 1s;">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+  </div>
+</div>
+```
+
+### Stepped Progress Bar
+
+```html
+<div class="progress-bar">
+  <div class="progress-fill 
+              animate-expand-horizontally 
+              animate-steps-modern 
+              animate-duration-slow 
+              animate-fill-mode-forwards" 
+       style="animation-duration: 3s;">
+  </div>
+</div>
+```
+
+### Robot/Mechanical Movement
+
+```html
+<div class="robot 
+            animate-slide-in-right 
+            animate-steps-normal 
+            animate-duration-slower">
+  🤖
+</div>
+```
+
+### Pixel Art Character Walk
+
+```html
+<div class="character-container">
+  <div class="character 
+              animate-steps-retro" 
+       style="animation-name: walk-cycle; 
+              animation-duration: 800ms; 
+              animation-iteration-count: infinite;">
+    🚶
+  </div>
+</div>
+
+<style>
+@keyframes walk-cycle {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100px); }
+}
+</style>
+```
+
+## Performance Considerations
+
+<Tip>
+  **Steps are performant**: Stepped animations can be more performant than smooth animations since there are fewer calculations.
+</Tip>
+
+Steps animations are particularly efficient for:
+- Loading indicators
+- Background effects
+- Non-critical decorative elements
+
+## Accessibility
+
+Steps can create more jarring motion:
+
+```html
+<!-- Respect motion preferences -->
+<div class="animate-rotate-360 
+            animate-steps-retro 
+            motion-reduce:animate-none">
+  Respects prefers-reduced-motion
+</div>
+```
+
+## CSS Variables
+
+| Class | CSS Variable | Value |
+|-------|--------------|-------|
+| `animate-steps-retro` | `--tw-anim-steps-retro` | 8 |
+| `animate-steps-normal` | `--tw-anim-steps-normal` | 16 |
+| `animate-steps-modern` | `--tw-anim-steps-modern` | 24 |
+
+## Related Properties
+
+Steps work with:
+- [Duration](/customization/duration) - Control animation length
+- [Iteration](/customization/iteration) - Repeat stepped animations
+- [Delay](/customization/delay) - Stagger stepped effects
+- [Fill Modes](/customization/fill-modes) - Control before/after states

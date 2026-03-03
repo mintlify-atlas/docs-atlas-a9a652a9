@@ -1,0 +1,167 @@
+---
+title: 'Migrating from Tailwind CSS v3'
+description: 'Complete guide to migrate from @midudev/tailwind-animations v0.2.0 (Tailwind CSS v3) to tailwind-animations v1.0+ (Tailwind CSS v4)'
+---
+
+## Overview
+
+Tailwind Animations v1.0 represents a major architectural change with native support for Tailwind CSS v4. The plugin has been completely rewritten as a CSS-only implementation, eliminating the JavaScript-based plugin system used in v3.
+
+<Warning>
+  **Breaking Changes**: Version 1.0+ is incompatible with Tailwind CSS v3. If you need v3 support, use `@midudev/tailwind-animations@0.2.0`.
+</Warning>
+
+## Key Changes
+
+### Package Rename
+
+The package has been renamed from `@midudev/tailwind-animations` to `tailwind-animations`.
+
+### CSS-Only Implementation
+
+The plugin is now pure CSS using Tailwind v4's `@theme` and `@utility` directives. The JavaScript plugin system has been completely removed.
+
+### Configuration Method
+
+Tailwind CSS v4 uses CSS imports instead of JavaScript configuration files.
+
+## Migration Steps
+
+<Steps>
+  <Step title="Update Tailwind CSS">
+    First, upgrade your project to Tailwind CSS v4:
+
+    ```bash
+    npm install tailwindcss@^4.0.0
+    ```
+  </Step>
+
+  <Step title="Uninstall Old Package">
+    Remove the old scoped package:
+
+    ```bash
+    npm uninstall @midudev/tailwind-animations
+    ```
+  </Step>
+
+  <Step title="Install New Package">
+    Install the new unscoped package:
+
+    ```bash
+    npm install tailwind-animations
+    ```
+  </Step>
+
+  <Step title="Update Configuration">
+    **Before (Tailwind CSS v3):**
+
+    ```js tailwind.config.js
+    module.exports = {
+      // ... other config
+      plugins: [
+        require('@midudev/tailwind-animations')
+      ]
+    }
+    ```
+
+    **After (Tailwind CSS v4):**
+
+    ```css globals.css
+    @import 'tailwindcss';
+    @import 'tailwind-animations';
+    ```
+
+    <Note>
+      You can now delete your `tailwind.config.js` file if it only contained the animations plugin.
+    </Note>
+  </Step>
+
+  <Step title="Remove JavaScript Plugin Logic">
+    If you had any custom theme extensions for animations in your `tailwind.config.js`, you'll need to migrate them to CSS custom properties using Tailwind v4's `@theme` directive.
+  </Step>
+
+  <Step title="Verify Your Animations">
+    All animation class names remain the same. Test your application to ensure animations work correctly:
+
+    ```html
+    <div class="animate-fade-in">
+      Fade in box
+    </div>
+
+    <div class="animate-slide-in-bottom animate-delay-300 animate-duration-slow">
+      Slow animation after 300ms
+    </div>
+    ```
+  </Step>
+</Steps>
+
+## What Stays the Same
+
+### Class Names
+
+All animation utility classes remain unchanged:
+
+- `animate-fade-in`, `animate-fade-out`
+- `animate-slide-in-top`, `animate-slide-in-bottom`
+- `animate-zoom-in`, `animate-zoom-out`
+- All other animation classes
+
+### Animation Modifiers
+
+All modifier classes continue to work:
+
+- `animate-delay-*` - Animation delays
+- `animate-duration-*` - Animation durations
+- `animate-iteration-count-*` - Iteration counts
+- `animate-fill-mode-*` - Fill modes
+- `animate-bezier-*` - Timing functions
+
+### View Timelines
+
+View timeline utilities remain functional:
+
+```html
+<div class="view-animate-[--subjectReveal] animate-zoom-in animate-range-[entry_10%_contain_25%]">
+  Scroll-based animation
+</div>
+```
+
+## Benefits of v4
+
+<CardGroup cols={2}>
+  <Card title="Faster Build Times" icon="bolt">
+    CSS-only implementation eliminates JavaScript processing overhead
+  </Card>
+  <Card title="Simpler Architecture" icon="cube">
+    No plugin registration or JavaScript configuration needed
+  </Card>
+  <Card title="Better Tree-Shaking" icon="scissors">
+    Improved CSS optimization with Tailwind v4's engine
+  </Card>
+  <Card title="Modern Standards" icon="star">
+    Built on Tailwind CSS v4's native `@theme` and `@utility` directives
+  </Card>
+</CardGroup>
+
+## Troubleshooting
+
+### Animations not working after migration
+
+1. Verify you've imported `tailwind-animations` in your CSS file
+2. Ensure you're using Tailwind CSS v4.0.0 or higher
+3. Check that your build process is processing the CSS imports correctly
+
+### Using both v3 and v4 in a monorepo
+
+If you have a monorepo with projects on different Tailwind versions:
+
+- Projects on Tailwind v3: Use `@midudev/tailwind-animations@0.2.0`
+- Projects on Tailwind v4: Use `tailwind-animations@latest`
+
+## Need Help?
+
+If you encounter issues during migration:
+
+- Check the [GitHub Issues](https://github.com/midudev/tailwind-animations/issues)
+- Review the [Tailwind CSS v4 migration guide](https://tailwindcss.com/docs/upgrade-guide)
+- Join the community discussions

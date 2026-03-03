@@ -1,80 +1,364 @@
 ---
-title: "Quickstart"
-description: "Start building awesome documentation in minutes"
+title: Quick Start
+description: Get your first animation working in minutes with tailwind-animations
 ---
 
-## Get started in three steps
+# Quick Start Guide
 
-Get your documentation site running locally and make your first customization.
+This guide will help you create your first animated elements using tailwind-animations. You'll learn the basics of applying animations, customizing timing, and combining effects.
 
-### Step 1: Set up your local environment
+## Your First Animation
 
-<AccordionGroup>
-  <Accordion icon="copy" title="Clone your docs locally">
-    During the onboarding process, you created a GitHub repository with your docs content if you didn't already have one. You can find a link to this repository in your [dashboard](https://dashboard.mintlify.com).
+<Steps>
+  <Step title="Install and Configure">
+    First, make sure you have tailwind-animations installed and configured. If you haven't done this yet, follow the [installation guide](/installation).
     
-    To clone the repository locally so that you can make and preview changes to your docs, follow the [Cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) guide in the GitHub docs.
-  </Accordion>
-  <Accordion icon="rectangle-terminal" title="Start the preview server">
-    1. Install the Mintlify CLI: `npm i -g mint`
-    2. Navigate to your docs directory and run: `mint dev`
-    3. Open `http://localhost:3000` to see your docs live!
+    Quick recap:
+    ```bash
+    npm install tailwind-animations
+    ```
     
-    <Tip>Your preview updates automatically as you edit files.</Tip>
-  </Accordion>
-</AccordionGroup>
-
-### Step 2: Deploy your changes
-
-<AccordionGroup>
-  <Accordion icon="github" title="Install our GitHub app">
-    Install the Mintlify GitHub app from your [dashboard](https://dashboard.mintlify.com/settings/organization/github-app).
+    ```css globals.css
+    @import 'tailwindcss';
+    @import 'tailwind-animations';
+    ```
+  </Step>
+  
+  <Step title="Add Your First Animation">
+    Add a simple fade-in animation to an element:
     
-    Our GitHub app automatically deploys your changes to your docs site, so you don't need to manage deployments yourself.
-</Accordion>
-<Accordion icon="palette" title="Update your site name and colors">
-    For a first change, let's update the name and colors of your docs site.
+    ```html
+    <div class="animate-fade-in">
+      <h1>Welcome to Tailwind Animations!</h1>
+    </div>
+    ```
+    
+    That's it! Your element will now fade in smoothly when it appears on the page.
+  </Step>
+  
+  <Step title="Customize the Animation">
+    Make the animation slower and add a delay:
+    
+    ```html
+    <div class="animate-fade-in animate-duration-slow animate-delay-300">
+      <h1>Welcome to Tailwind Animations!</h1>
+    </div>
+    ```
+    
+    The element will now wait 300ms before starting a slow fade-in (400ms duration).
+  </Step>
+</Steps>
 
-    1. Open `docs.json` in your editor.
-    2. Change the `"name"` field to your project name.
-    3. Update the `"colors"` to match your brand.
-    4. Save and see your changes instantly at `http://localhost:3000`.
+## Common Animation Patterns
 
-    <Tip>Try changing the primary color to see an immediate difference!</Tip>
-  </Accordion>
-</AccordionGroup>
+Here are some popular animation patterns you can use right away:
 
-### Step 3: Go live
+### Fade Animations
 
-<Accordion icon="rocket" title="Publish your docs">
-  1. Commit and push your changes.
-  2. Your docs will update and be live in moments!
-</Accordion>
+Smooth opacity transitions for appearing and disappearing elements:
 
-## Next steps
+```html
+<!-- Simple fade in -->
+<div class="animate-fade-in">
+  Fade in box
+</div>
 
-Now that you have your docs running, explore these key features:
+<!-- Fade in from bottom -->
+<div class="animate-fade-in-up">
+  Content slides up while fading in
+</div>
 
-<CardGroup cols={2}>
+<!-- Fade in from left -->
+<div class="animate-fade-in-left">
+  Content slides from left while fading in
+</div>
 
-<Card title="Write Content" icon="pen-to-square" href="/essentials/markdown">
-  Learn MDX syntax and start writing your documentation.
-</Card>
+<!-- Blurred fade in -->
+<div class="animate-blurred-fade-in">
+  Progressive blur removal with fade in
+</div>
+```
 
-<Card title="Customize style" icon="palette" href="/essentials/settings">
-  Make your docs match your brand perfectly.
-</Card>
+### Slide Animations
 
-<Card title="Add code examples" icon="square-code" href="/essentials/code">
-  Include syntax-highlighted code blocks.
-</Card>
+Elements that slide in from different directions:
 
-<Card title="API documentation" icon="code" href="/api-reference/introduction">
-  Auto-generate API docs from OpenAPI specs.
-</Card>
+```html
+<!-- Slide in from bottom -->
+<div class="animate-slide-in-bottom">
+  Notification message
+</div>
 
-</CardGroup>
+<!-- Slide in from top with delay -->
+<div class="animate-slide-in-top animate-delay-200">
+  Header banner
+</div>
+
+<!-- Slide from left, slow -->
+<div class="animate-slide-in-left animate-duration-slower">
+  Side panel
+</div>
+```
+
+### Zoom & Pop Animations
+
+Great for drawing attention to important elements:
+
+```html
+<!-- Zoom in effect -->
+<div class="animate-zoom-in">
+  <button>Click me!</button>
+</div>
+
+<!-- Pop effect (grows and shrinks) -->
+<div class="animate-pop">
+  <span class="badge">New</span>
+</div>
+
+<!-- Scale on hover -->
+<button class="animate-scale hover:animate-play-paused">
+  Hover to pause
+</button>
+```
+
+### Rotation Animations
+
+Add spinning and rotating effects:
+
+```html
+<!-- Rotate 360 degrees -->
+<div class="animate-rotate-360">
+  <svg>Loading spinner</svg>
+</div>
+
+<!-- Infinite spin -->
+<div class="animate-spin-clockwise animate-iteration-count-infinite">
+  ⚙️
+</div>
+
+<!-- Rotate on entry -->
+<div class="animate-rotate-in">
+  Card content
+</div>
+```
+
+## Building a Complete Example
+
+Let's create a hero section with multiple animated elements:
+
+```html
+<section class="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-blue-500 to-purple-600 text-white p-8">
+  <!-- Main heading: fades in from top -->
+  <h1 class="text-6xl font-bold mb-4 animate-fade-in-down">
+    Welcome
+  </h1>
+  
+  <!-- Subtitle: fades in with delay -->
+  <p class="text-xl mb-8 animate-fade-in animate-delay-300">
+    Experience the power of Tailwind Animations
+  </p>
+  
+  <!-- CTA Button: zooms in with longer delay -->
+  <button class="px-8 py-3 bg-white text-blue-600 rounded-lg font-semibold
+                 animate-zoom-in animate-delay-500
+                 hover:animate-tada">
+    Get Started
+  </button>
+  
+  <!-- Feature cards: slide up with staggered delays -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16 max-w-6xl">
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl
+                animate-slide-up-fade animate-delay-700">
+      <h3 class="text-2xl font-bold mb-2">Fast</h3>
+      <p>Lightning-quick CSS animations</p>
+    </div>
+    
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl
+                animate-slide-up-fade animate-delay-900">
+      <h3 class="text-2xl font-bold mb-2">Easy</h3>
+      <p>Simple utility classes</p>
+    </div>
+    
+    <div class="bg-white/10 backdrop-blur-lg p-6 rounded-xl
+                animate-slide-up-fade animate-delay-1000">
+      <h3 class="text-2xl font-bold mb-2">Powerful</h3>
+      <p>70+ pre-built animations</p>
+    </div>
+  </div>
+</section>
+```
+
+## Customization Options
+
+### Duration
+
+Control how long animations take:
+
+```html
+<!-- Semantic names -->
+<div class="animate-fade-in animate-duration-faster">100ms</div>
+<div class="animate-fade-in animate-duration-fast">200ms</div>
+<div class="animate-fade-in animate-duration-normal">300ms</div>
+<div class="animate-fade-in animate-duration-slow">400ms</div>
+<div class="animate-fade-in animate-duration-slower">500ms</div>
+
+<!-- Numeric values -->
+<div class="animate-fade-in animate-duration-250">250ms</div>
+<div class="animate-fade-in animate-duration-700">700ms</div>
+```
+
+### Delay
+
+Add a delay before the animation starts:
+
+```html
+<div class="animate-fade-in animate-delay-100">Delay 100ms</div>
+<div class="animate-fade-in animate-delay-300">Delay 300ms</div>
+<div class="animate-fade-in animate-delay-500">Delay 500ms</div>
+```
+
+<Tip>
+  Use staggered delays to create a cascading effect when animating multiple elements.
+</Tip>
+
+### Iterations
+
+Control how many times an animation repeats:
+
+```html
+<!-- Play once (default) -->
+<div class="animate-bounce-fade-in animate-iteration-count-once">Once</div>
+
+<!-- Play twice -->
+<div class="animate-tada animate-iteration-count-twice">Twice</div>
+
+<!-- Play three times -->
+<div class="animate-heartbeat animate-iteration-count-thrice">Thrice</div>
+
+<!-- Loop forever -->
+<div class="animate-pulse animate-iteration-count-infinite">Infinite</div>
+```
+
+### Direction
+
+Change the playback direction:
+
+```html
+<!-- Normal direction -->
+<div class="animate-slide-in-bottom animate-direction-normal">Normal</div>
+
+<!-- Reverse -->
+<div class="animate-slide-in-bottom animate-direction-reverse">Reverse</div>
+
+<!-- Alternate (forward then backward) -->
+<div class="animate-wobble animate-direction-alternate animate-iteration-count-infinite">
+  Alternating
+</div>
+```
+
+### Easing Functions
+
+Apply custom timing functions for smoother animations:
+
+```html
+<!-- Standard easing -->
+<div class="animate-fade-in animate-ease-in">Ease in</div>
+<div class="animate-fade-in animate-ease-out">Ease out</div>
+<div class="animate-fade-in animate-ease-in-out">Ease in-out</div>
+
+<!-- Cubic bezier curves -->
+<div class="animate-slide-in-bottom animate-bezier-cubic-out">Cubic out</div>
+<div class="animate-zoom-in animate-bezier-back-out">Back out (overshoot)</div>
+<div class="animate-fade-in-up animate-bezier-expo-out">Exponential out</div>
+```
+
+## Interactive Animations
+
+### Pause on Hover
+
+```html
+<div class="animate-spin-clockwise animate-iteration-count-infinite
+            hover:animate-play-paused">
+  Hover to pause
+</div>
+```
+
+### Multiple State Changes
+
+```html
+<button class="px-4 py-2 bg-blue-500 text-white rounded
+               animate-fade-in
+               hover:animate-tada
+               active:animate-jiggle">
+  Interactive Button
+</button>
+```
+
+## Scroll-Driven Animations
+
+Animate elements based on their position in the viewport:
+
+```html
+<!-- Animate when element enters viewport -->
+<div class="w-full h-64 bg-gradient-to-r from-purple-500 to-pink-500
+            animate-zoom-in
+            view-animate-[--entrance]
+            animate-range-[entry_10%_contain_25%]">
+  Animates when scrolling into view
+</div>
+
+<!-- Rotate while scrolling -->
+<div class="animate-rotate-360 timeline-scroll animate-duration-slower">
+  Rotates as you scroll
+</div>
+```
 
 <Note>
-  **Need help?** See our [full documentation](https://mintlify.com/docs) or join our [community](https://mintlify.com/community).
+  View Timeline and Scroll Timeline features use modern CSS and may not be supported in all browsers. Check [caniuse.com](https://caniuse.com/css-scroll-timeline) for browser compatibility.
 </Note>
+
+## Tips for Great Animations
+
+<Tip>
+  **Keep it subtle**: Animations should enhance the user experience, not distract from it. Start with shorter durations and fewer effects.
+</Tip>
+
+<Tip>
+  **Use delays for sequencing**: When animating multiple elements, add staggered delays to create a natural flow.
+</Tip>
+
+<Tip>
+  **Respect user preferences**: Consider users who prefer reduced motion. You can use Tailwind's `motion-safe:` and `motion-reduce:` variants:
+  
+  ```html
+  <div class="motion-safe:animate-fade-in motion-reduce:opacity-100">
+    Respects user preferences
+  </div>
+  ```
+</Tip>
+
+<Tip>
+  **Test on different devices**: Animation performance can vary. Test on mobile devices to ensure smooth 60fps animations.
+</Tip>
+
+## Next Steps
+
+Now that you understand the basics, explore more advanced features:
+
+<CardGroup cols={2}>
+  <Card title="Full Animation Catalog" icon="book-open" href="/animations/overview">
+    Browse all 70+ available animations with live examples
+  </Card>
+  
+  <Card title="Advanced Customization" icon="sliders" href="/customization/duration">
+    Learn about custom timing functions, fill modes, and more
+  </Card>
+  
+  <Card title="View Timeline Guide" icon="eye" href="/advanced/view-timeline">
+    Create scroll-driven animations with View Timeline
+  </Card>
+  
+  <Card title="Best Practices" icon="lightbulb" href="/advanced/examples">
+    Performance tips and accessibility guidelines
+  </Card>
+</CardGroup>

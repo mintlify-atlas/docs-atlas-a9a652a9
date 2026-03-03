@@ -1,0 +1,363 @@
+---
+title: Scroll Timeline Animations
+description: Create animations that progress based on scroll position
+---
+
+## Overview
+
+Scroll timeline animations link animation progress directly to the user's scroll position. Unlike view timelines that trigger when elements enter the viewport, scroll timelines continuously progress the animation as the user scrolls, creating dynamic, interactive experiences.
+
+<Note>
+Scroll timeline animations require browser support for the CSS `animation-timeline` property. This is a modern CSS feature with limited browser support. Check [Can I Use](https://caniuse.com/mdn-css_properties_animation-timeline) for current compatibility.
+</Note>
+
+## Basic Usage
+
+Use the `timeline-scroll` class to link an animation to scroll progress:
+
+```html
+<div class="animate-rotate-360 timeline-scroll">
+  Rotates as you scroll
+</div>
+```
+
+The animation will progress from 0% to 100% as the user scrolls through the scrollable container.
+
+## Timeline Variants
+
+### Default Scroll
+
+```html
+<!-- Follows the nearest scrollable ancestor -->
+<div class="animate-fade-in timeline-scroll">
+  Fades based on scroll
+</div>
+```
+
+### Directional Scrolling
+
+```html
+<!-- Horizontal scroll only -->
+<div class="animate-slide-in-left timeline-scroll-x">
+  Animates on horizontal scroll
+</div>
+
+<!-- Vertical scroll only -->
+<div class="animate-slide-in-bottom timeline-scroll-y">
+  Animates on vertical scroll
+</div>
+```
+
+### Block and Inline Directions
+
+```html
+<!-- Block direction (usually vertical) -->
+<div class="animate-rotate-90 timeline-scroll-block">
+  Follows block scroll direction
+</div>
+
+<!-- Inline direction (usually horizontal) -->
+<div class="animate-slide-in-right timeline-scroll-inline">
+  Follows inline scroll direction
+</div>
+```
+
+## Combining with Animations
+
+Scroll timelines work with any animation class from the library:
+
+### Rotation Effects
+
+```html
+<!-- Continuous rotation -->
+<div class="animate-rotate-360 timeline-scroll animate-duration-slower">
+  Slow rotation with scroll
+</div>
+
+<!-- Flip effect -->
+<div class="animate-flip-horizontal timeline-scroll">
+  Flips as you scroll
+</div>
+```
+
+### Scale and Transform
+
+```html
+<!-- Zoom in -->
+<div class="animate-zoom-in timeline-scroll">
+  Grows with scroll progress
+</div>
+
+<!-- Scale effect -->
+<div class="animate-scale timeline-scroll">
+  Scales continuously
+</div>
+```
+
+### Fade Effects
+
+```html
+<!-- Fade in -->
+<div class="animate-fade-in timeline-scroll">
+  Fades in as you scroll down
+</div>
+
+<!-- Fade out -->
+<div class="animate-fade-out timeline-scroll">
+  Fades out as you scroll down
+</div>
+```
+
+## Controlling Animation Speed
+
+Use `animate-duration-*` classes to control how the animation maps to scroll distance:
+
+```html
+<!-- Faster animation (completes quickly) -->
+<div class="animate-rotate-360 timeline-scroll animate-duration-faster">
+  Quick rotation
+</div>
+
+<!-- Slower animation (more gradual) -->
+<div class="animate-rotate-360 timeline-scroll animate-duration-slower">
+  Slow rotation
+</div>
+
+<!-- Custom duration -->
+<div class="animate-fade-in timeline-scroll animate-duration-1000">
+  1 second worth of scroll
+</div>
+```
+
+## Scroll Timeline Axis
+
+Control which scroll direction drives the animation:
+
+```html
+<!-- Y-axis (vertical) -->
+<div class="animate-fade-in timeline-scroll scroll-timeline-axis-y">
+  Vertical scroll only
+</div>
+
+<!-- X-axis (horizontal) -->
+<div class="animate-slide-in-left timeline-scroll scroll-timeline-axis-x">
+  Horizontal scroll only
+</div>
+
+<!-- Block direction -->
+<div class="animate-zoom-in timeline-scroll scroll-timeline-axis-block">
+  Block direction
+</div>
+
+<!-- Inline direction -->
+<div class="animate-rotate-90 timeline-scroll scroll-timeline-axis-inline">
+  Inline direction
+</div>
+```
+
+## Real-World Examples
+
+### Parallax Effect
+
+```html
+<div class="relative h-screen overflow-y-scroll">
+  <!-- Background layer -->
+  <div class="absolute inset-0 animate-fade-out timeline-scroll">
+    <img src="bg.jpg" alt="Background" />
+  </div>
+  
+  <!-- Foreground content -->
+  <div class="relative z-10">
+    <h1>Scroll Down</h1>
+    <!-- Content -->
+  </div>
+</div>
+```
+
+### Progress Indicator
+
+```html
+<div class="fixed top-0 left-0 right-0 h-1 bg-gray-200">
+  <div class="h-full bg-blue-500 
+              animate-expand-horizontally 
+              timeline-scroll 
+              origin-left">
+  </div>
+</div>
+```
+
+### Rotating Logo
+
+```html
+<div class="sticky top-4">
+  <div class="animate-rotate-360 timeline-scroll animate-duration-slower">
+    <svg><!-- Logo --></svg>
+  </div>
+</div>
+```
+
+### Scrolling Cards
+
+```html
+<div class="space-y-8">
+  <div class="animate-slide-in-left timeline-scroll">
+    <div class="card">Card 1</div>
+  </div>
+  <div class="animate-slide-in-right timeline-scroll">
+    <div class="card">Card 2</div>
+  </div>
+  <div class="animate-slide-in-left timeline-scroll">
+    <div class="card">Card 3</div>
+  </div>
+</div>
+```
+
+## Advanced Techniques
+
+### Combining with Easing
+
+```html
+<!-- Smooth easing -->
+<div class="animate-fade-in 
+            timeline-scroll 
+            animate-bezier-cubic-out">
+  Smooth fade with cubic easing
+</div>
+
+<!-- Bouncy effect -->
+<div class="animate-scale 
+            timeline-scroll 
+            animate-bezier-back-out">
+  Overshoots slightly
+</div>
+```
+
+### Reversing Animations
+
+```html
+<!-- Reverse the animation direction -->
+<div class="animate-rotate-360 
+            timeline-scroll 
+            animate-direction-reverse">
+  Rotates counter-clockwise
+</div>
+```
+
+### Multiple Animations
+
+```html
+<!-- Note: Apply multiple scroll-timeline elements -->
+<div class="relative">
+  <div class="animate-rotate-360 timeline-scroll absolute inset-0">
+    <div class="animate-fade-in">
+      Rotates and fades
+    </div>
+  </div>
+</div>
+```
+
+## Best Practices
+
+<Warning>
+**Performance Warning:**
+Scroll-linked animations can impact performance if overused. Follow these guidelines:
+- Limit the number of scroll-timeline elements per page
+- Use `transform` and `opacity` properties for best performance
+- Test on lower-end devices
+- Consider disabling for users who prefer reduced motion
+</Warning>
+
+### Performance Tips
+
+1. **Use will-change sparingly:**
+   ```html
+   <div class="animate-rotate-360 timeline-scroll will-change-transform">
+     Optimized rotation
+   </div>
+   ```
+
+2. **Avoid layout-triggering properties:**
+   - ✅ Use: `transform`, `opacity`
+   - ❌ Avoid: `width`, `height`, `margin`, `padding`
+
+3. **Debounce complex effects:**
+   - Keep animations simple and lightweight
+   - Avoid animating many elements simultaneously
+
+### Accessibility Considerations
+
+- Respect `prefers-reduced-motion`:
+  ```css
+  @media (prefers-reduced-motion: reduce) {
+    .timeline-scroll {
+      animation-timeline: auto !important;
+    }
+  }
+  ```
+
+- Ensure content is readable without animations
+- Don't hide critical information in scroll-driven animations
+- Test with screen readers
+
+## Browser Support
+
+<Note>
+**Limited Browser Support:**
+Scroll timeline animations are a cutting-edge CSS feature with limited browser support. Always provide fallbacks:
+
+```css
+/* Fallback for unsupported browsers */
+@supports not (animation-timeline: scroll()) {
+  .timeline-scroll {
+    animation-timeline: auto;
+  }
+}
+```
+</Note>
+
+### Progressive Enhancement
+
+```html
+<!-- Works without JS, enhances with scroll timeline -->
+<div class="opacity-100 animate-fade-in timeline-scroll">
+  Visible by default, fades with scroll if supported
+</div>
+```
+
+## Common Patterns
+
+### Sticky Header with Fade
+
+```html
+<header class="sticky top-0 animate-fade-out timeline-scroll">
+  <nav><!-- Navigation --></nav>
+</header>
+```
+
+### Image Reveal
+
+```html
+<div class="overflow-hidden">
+  <img src="photo.jpg" 
+       class="animate-zoom-in timeline-scroll scale-150" 
+       alt="Photo" />
+</div>
+```
+
+### Text Slide-In
+
+```html
+<h2 class="animate-slide-in-bottom timeline-scroll animate-duration-fast">
+  Slides in as you scroll
+</h2>
+```
+
+### Counter Animation
+
+```html
+<div class="animate-rotate-360 
+            timeline-scroll 
+            animate-iteration-count-infinite">
+  Continuous rotation
+</div>
+```

@@ -1,0 +1,528 @@
+---
+title: Movement & Motion Animations
+description: Bouncing, swaying, wobbling, and other dynamic movements
+---
+
+Movement animations add life and personality to your interfaces with natural motion patterns like bouncing, floating, swaying, and wobbling. These animations create engaging, dynamic experiences.
+
+## Bounce Animations
+
+<Tabs>
+  <Tab title="bouncing">
+    Simple vertical bounce.
+
+    ```html
+    <div class="animate-bouncing">
+      Bounces up and down
+    </div>
+    ```
+
+    **Motion:** Moves 10px up at midpoint, returns to start
+    
+    **Duration:** 1000ms
+
+    **Best for:** Attention indicators, playful elements, call-to-action buttons
+  </Tab>
+
+  <Tab title="vertical-bounce">
+    More pronounced vertical bouncing motion.
+
+    ```html
+    <div class="animate-vertical-bounce">
+      Stronger vertical bounce (20px)
+    </div>
+    ```
+
+    **Motion:** Bounces 20px up and down
+    
+    **Duration:** 600ms
+
+    **Best for:** Loading indicators, active state markers, emphasizing elements
+  </Tab>
+
+  <Tab title="horizontal-bounce">
+    Bounces left and right horizontally.
+
+    ```html
+    <div class="animate-horizontal-bounce">
+      Bounces 20px side to side
+    </div>
+    ```
+
+    **Motion:** Moves 20px right at midpoint, returns to start
+    
+    **Duration:** 600ms
+
+    **Best for:** Directional indicators, navigation cues, playful UI elements
+  </Tab>
+</Tabs>
+
+### bounce-fade-in
+
+Combines bouncing entrance with fade effect.
+
+```html
+<div class="animate-bounce-fade-in">
+  Bounces from 0.5x scale while fading in
+</div>
+```
+
+**Animation:** Scales from 0.5 to 1.0 while fading from transparent to opaque
+
+**Duration:** 600ms
+
+**Best for:** Success messages, celebration effects, modal entrances
+
+## Floating & Sinking
+
+<Accordion title="float">
+  Gentle upward and downward floating motion.
+
+  ```html
+  <div class="animate-float animate-iteration-count-infinite">
+    Softly floats up 10px and down
+  </div>
+  ```
+
+  **Motion:** Smoothly moves 10px up and returns
+  
+  **Duration:** 1000ms
+
+  **Best for:** Floating badges, decorative elements, call-out boxes
+
+  **Tip:** Always use with `animate-iteration-count-infinite` for continuous floating
+</Accordion>
+
+<Accordion title="sink">
+  Gentle downward and upward sinking motion.
+
+  ```html
+  <div class="animate-sink animate-iteration-count-infinite">
+    Softly sinks down 10px and returns
+  </div>
+  ```
+
+  **Motion:** Smoothly moves 10px down from elevated position and returns
+  
+  **Duration:** 1000ms
+
+  **Best for:** Opposite of float, alternative floating effect
+</Accordion>
+
+## Jump & Hang
+
+<Tabs>
+  <Tab title="jump">
+    Quick upward jump motion.
+
+    ```html
+    <div class="animate-jump">
+      Jumps 20px up and lands
+    </div>
+    ```
+
+    **Motion:** Quick 20px upward movement and return
+    
+    **Duration:** 1000ms
+
+    **Best for:** Button feedback, playful interactions, game elements
+  </Tab>
+
+  <Tab title="hang">
+    Hanging/suspended motion effect.
+
+    ```html
+    <div class="animate-hang animate-iteration-count-infinite">
+      Hangs and drops repeatedly
+    </div>
+    ```
+
+    **Motion:** Starts 20px up, drops down, returns up
+    
+    **Duration:** 1000ms
+
+    **Best for:** Suspended elements, decorative motion, attention grabbers
+  </Tab>
+</Tabs>
+
+## Pendulum Motions
+
+<Accordion title="swing">
+  Pendulum-like swinging rotation.
+
+  ```html
+  <div class="animate-swing animate-iteration-count-infinite">
+    Swings like a pendulum (±15°)
+  </div>
+  ```
+
+  **Rotation:** 0° → 15° → 0°
+  
+  **Duration:** 1000ms
+
+  **Best for:** Hanging signs, decorative elements, notification badges
+</Accordion>
+
+<Accordion title="sway">
+  Gentle swaying motion.
+
+  ```html
+  <div class="animate-sway animate-iteration-count-infinite">
+    Gently sways (±15°)
+  </div>
+  ```
+
+  **Rotation:** 0° → 15° → 0°
+  
+  **Duration:** 600ms
+
+  **Best for:** Tree-like elements, subtle motion backgrounds, decorative items
+</Accordion>
+
+## Shake & Wobble
+
+<Tabs>
+  <Tab title="shake">
+    Rapid horizontal shaking.
+
+    ```html
+    <div class="animate-shake">
+      Shakes horizontally (±10px)
+    </div>
+    ```
+
+    **Motion:** Quick left-right-left-right tremor
+    
+    **Duration:** 500ms
+
+    **Best for:** Error indicators, invalid input feedback, attention grabbing
+  </Tab>
+
+  <Tab title="wobble">
+    Irregular oscillating motion.
+
+    ```html
+    <div class="animate-wobble">
+      Complex wobbling motion
+    </div>
+    ```
+
+    **Motion:** Irregular horizontal oscillation (±20px, ±15%, ±5%)
+    
+    **Duration:** 1000ms
+
+    **Best for:** Unstable elements, jello effects, playful animations
+  </Tab>
+
+  <Tab title="jiggle">
+    Quick rotational jiggling.
+
+    ```html
+    <div class="animate-jiggle animate-iteration-count-infinite">
+      Jiggles with rotation (±3°)
+    </div>
+    ```
+
+    **Rotation:** -3° → 3° → -3°
+    
+    **Duration:** 500ms
+
+    **Best for:** Notification bells, alert icons, attention indicators
+  </Tab>
+</Tabs>
+
+## Vibration Effects
+
+### horizontal-vibration
+
+Rapid horizontal vibrating motion.
+
+```html
+<div class="animate-horizontal-vibration">
+  Vibrates horizontally (±5px)
+</div>
+```
+
+**Motion:** Very rapid left-right vibration
+
+**Duration:** 300ms (usually with infinite iteration)
+
+**Best for:** Notification alerts, error states, incoming message indicators
+
+**Note:** Comes with `infinite` iteration by default
+
+## Rolling Animations
+
+<Accordion title="roll-in">
+  Rolls into view from the left.
+
+  ```html
+  <div class="animate-roll-in">
+    Rolls and slides in from left
+  </div>
+  ```
+
+  **Animation:** Starts at `translateX(-20px) rotate(-120deg)`, ends at original position
+  
+  **Duration:** 1000ms
+
+  **Best for:** Playful entrances, game elements, ball-like objects
+</Accordion>
+
+<Accordion title="roll-out">
+  Rolls out of view to the right.
+
+  ```html
+  <div class="animate-roll-out">
+    Rolls and slides out to right
+  </div>
+  ```
+
+  **Animation:** Ends at `translateX(20px) rotate(120deg)`
+  
+  **Duration:** 1000ms
+
+  **Best for:** Dismissing elements with flair, playful exits
+</Accordion>
+
+## Tilt & Squeeze
+
+<Tabs>
+  <Tab title="tilt">
+    3D tilting motion around Y-axis.
+
+    ```html
+    <div class="animate-tilt animate-iteration-count-infinite">
+      Tilts in 3D (±20° Y-axis)
+    </div>
+    ```
+
+    **Rotation:** `rotateY(0°)` → `rotateY(20°)` → `rotateY(0°)`
+    
+    **Duration:** 600ms
+
+    **Best for:** 3D card effects, interactive elements, showcase items
+  </Tab>
+
+  <Tab title="squeeze">
+    Compression and expansion effect.
+
+    ```html
+    <div class="animate-squeeze animate-iteration-count-infinite">
+      Squeezes horizontally and vertically
+    </div>
+    ```
+
+    **Scale:** `scale(1, 1)` → `scale(1.1, 0.9)` → `scale(1, 1)`
+    
+    **Duration:** 600ms
+
+    **Best for:** Elastic elements, playful buttons, squishy effects
+  </Tab>
+</Tabs>
+
+## Special Movement Effects
+
+### swing-drop-in
+
+Element swings and drops into position.
+
+```html
+<div class="animate-swing-drop-in">
+  Swings down from above
+</div>
+```
+
+**Animation:** Starts at `rotate(-30deg) translateY(-50px)` with fade
+
+**Duration:** 600ms
+
+**Best for:** Dramatic entrances, modal reveals, suspended element drops
+
+### dancing
+
+Playful dancing skew effect.
+
+```html
+<div class="animate-dancing animate-iteration-count-infinite">
+  Dances with skew motion
+</div>
+```
+
+**Animation:** Skews between ±40° creating a dance-like effect
+
+**Duration:** 1000ms
+
+**Best for:** Fun UI elements, party modes, celebration states
+
+## Customization Examples
+
+### Continuous Floating Badge
+
+```html
+<div class="relative">
+  <span class="absolute -top-2 -right-2 
+               bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center
+               animate-float animate-iteration-count-infinite animate-duration-slow">
+    3
+  </span>
+</div>
+```
+
+### Error Shake
+
+```html
+<input class="border-2 border-red-500 animate-shake" 
+       type="text" placeholder="Invalid input!" />
+```
+
+### Bouncing Loading Dots
+
+```html
+<div class="flex gap-2">
+  <div class="w-3 h-3 bg-blue-500 rounded-full animate-bouncing animate-delay-0 animate-iteration-count-infinite"></div>
+  <div class="w-3 h-3 bg-blue-500 rounded-full animate-bouncing animate-delay-200 animate-iteration-count-infinite"></div>
+  <div class="w-3 h-3 bg-blue-500 rounded-full animate-bouncing animate-delay-400 animate-iteration-count-infinite"></div>
+</div>
+```
+
+### Floating Call-to-Action
+
+```html
+<button class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-full
+               animate-float animate-iteration-count-infinite animate-duration-slower">
+  Get Started
+</button>
+```
+
+### Notification Bell
+
+```html
+<button class="relative">
+  <span class="text-2xl animate-jiggle animate-iteration-count-infinite">🔔</span>
+  <span class="absolute top-0 right-0 w-2 h-2 bg-red-500 rounded-full"></span>
+</button>
+```
+
+## Practical Use Cases
+
+### Loading Indicator
+
+```html
+<div class="flex items-center gap-3">
+  <div class="w-12 h-12 border-4 border-gray-200 border-t-blue-500 rounded-full
+              animate-bouncing animate-iteration-count-infinite"></div>
+  <span>Loading...</span>
+</div>
+```
+
+### Attention-Grabbing Button
+
+```html
+<button class="bg-yellow-400 px-6 py-3 rounded-lg font-bold
+               animate-wobble animate-iteration-count-infinite animate-duration-slower">
+  🎉 Limited Time Offer!
+</button>
+```
+
+### Incoming Message
+
+```html
+<div class="bg-white rounded-lg shadow-lg p-4 animate-slide-in-right animate-horizontal-vibration">
+  <p class="font-semibold">New Message</p>
+  <p class="text-sm text-gray-600">You have a new notification</p>
+</div>
+```
+
+### Playful 404 Element
+
+```html
+<div class="text-9xl animate-wobble animate-iteration-count-infinite animate-duration-slow">
+  404
+</div>
+```
+
+### Suspended Badge
+
+```html
+<div class="inline-block animate-swing animate-iteration-count-infinite animate-duration-slower">
+  <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">New</span>
+</div>
+```
+
+## Advanced Combinations
+
+### Multi-Direction Wobble
+
+```html
+<div class="animate-wobble animate-vertical-bounce 
+            animate-iteration-count-infinite animate-duration-slow">
+  Complex motion
+</div>
+```
+
+### Staggered Bounce Effect
+
+```html
+<div class="flex gap-4">
+  <div class="w-16 h-16 bg-blue-500 rounded animate-bouncing animate-iteration-count-infinite animate-delay-0"></div>
+  <div class="w-16 h-16 bg-blue-500 rounded animate-bouncing animate-iteration-count-infinite animate-delay-200"></div>
+  <div class="w-16 h-16 bg-blue-500 rounded animate-bouncing animate-iteration-count-infinite animate-delay-400"></div>
+</div>
+```
+
+### Floating with Rotation
+
+```html
+<div class="animate-float animate-rotational-wave 
+            animate-iteration-count-infinite animate-duration-slower">
+  💎 Floating gem
+</div>
+```
+
+## Tips and Best Practices
+
+<Tip>Use infinite iterations for continuous motion effects like floating, swinging, and jiggling.</Tip>
+
+```html
+<div class="animate-float animate-iteration-count-infinite">
+  Continuously floats
+</div>
+```
+
+<Tip>Combine movement animations with delays to create staggered, wave-like effects across multiple elements.</Tip>
+
+<Warning>Avoid overusing shake and vibration animations as they can be jarring and distracting.</Warning>
+
+<Warning>Respect user preferences for reduced motion. Consider disabling continuous animations for users who prefer reduced motion.</Warning>
+
+### Subtle vs. Pronounced Motion
+
+```html
+<!-- Subtle floating -->
+<div class="animate-float animate-duration-slower animate-iteration-count-infinite">
+  Gentle motion
+</div>
+
+<!-- Pronounced bouncing -->
+<div class="animate-vertical-bounce animate-duration-fast animate-iteration-count-infinite">
+  Energetic motion
+</div>
+```
+
+### Pausing on Interaction
+
+```html
+<div class="animate-swing animate-iteration-count-infinite 
+            hover:animate-play-paused">
+  Pauses when you hover
+</div>
+```
+
+## Performance Considerations
+
+- Most movement animations use `transform` properties (GPU-accelerated)
+- Excellent performance on modern devices
+- Be cautious with infinite animations on mobile (battery impact)
+- Limit the number of simultaneously animated elements
+- Consider using `prefers-reduced-motion` media query for accessibility

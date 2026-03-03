@@ -1,0 +1,245 @@
+---
+title: Animation Classes
+description: Complete reference of all animation classes in Tailwind Animations
+---
+
+Animation classes apply predefined animations to elements. Each class applies a complete animation with default timing, duration, and fill mode.
+
+## Available Animations
+
+All animation classes use the `animate-*` pattern and include predefined timing, duration, and fill modes.
+
+### Fade Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-fade-in` | Fades element in from transparent to opaque | 600ms |
+| `animate-fade-out` | Fades element out from opaque to transparent | 600ms |
+| `animate-blurred-fade-in` | Fades in with blur effect | 900ms |
+| `animate-fade-in-up` | Fades in while moving up | 600ms |
+| `animate-fade-in-down` | Fades in while moving down | 600ms |
+| `animate-fade-in-left` | Fades in while moving from right to left | 600ms |
+| `animate-fade-in-right` | Fades in while moving from left to right | 600ms |
+| `animate-fade-out-up` | Fades out while moving up | 600ms |
+| `animate-fade-out-down` | Fades out while moving down | 600ms |
+| `animate-fade-out-left` | Fades out while moving left | 600ms |
+| `animate-fade-out-right` | Fades out while moving right | 600ms |
+
+```html
+<div class="animate-fade-in">
+  This element fades in
+</div>
+
+<div class="animate-blurred-fade-in animate-delay-200">
+  This element fades in with blur and a 200ms delay
+</div>
+```
+
+### Slide Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-slide-in-top` | Slides in from the top | 600ms |
+| `animate-slide-in-bottom` | Slides in from the bottom | 600ms |
+| `animate-slide-in-left` | Slides in from the left | 600ms |
+| `animate-slide-in-right` | Slides in from the right | 600ms |
+| `animate-slide-out-top` | Slides out to the top | 600ms |
+| `animate-slide-out-bottom` | Slides out to the bottom | 600ms |
+| `animate-slide-out-left` | Slides out to the left | 600ms |
+| `animate-slide-out-right` | Slides out to the right | 600ms |
+| `animate-slide-up-fade` | Slides up while fading in | 600ms |
+
+```html
+<div class="animate-slide-in-top">
+  Slides in from top
+</div>
+
+<button class="animate-slide-in-left animate-duration-400">
+  Slides in faster from left
+</button>
+```
+
+### Zoom & Scale Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-zoom-in` | Zooms in from 50% to 100% scale with fade | 600ms |
+| `animate-zoom-out` | Zooms out from 100% to 50% scale with fade | 600ms |
+| `animate-scale` | Scales element to 110% | 600ms |
+| `animate-pop` | Quick pop effect (scale up and down) | 600ms |
+
+```html
+<div class="animate-zoom-in">
+  Zooms into view
+</div>
+```
+
+### Rotation Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-rotate-90` | Rotates 90 degrees clockwise | 1000ms |
+| `animate-rotate-180` | Rotates 180 degrees clockwise | 1000ms |
+| `animate-rotate-360` | Rotates 360 degrees clockwise | 1000ms |
+| `animate-spin-clockwise` | Spins 360 degrees clockwise | 600ms |
+| `animate-spin-counter-clockwise` | Spins 360 degrees counter-clockwise | 600ms |
+| `animate-rotate-in` | Rotates in from -90 degrees with fade | 600ms |
+| `animate-rotate-out` | Rotates out to 90 degrees with fade | 600ms |
+| `animate-slide-rotate-in` | Slides and rotates in | 600ms |
+| `animate-slide-rotate-out` | Slides and rotates out | 600ms |
+| `animate-impulse-rotation-right` | Impulse rotation to the right | 1000ms |
+| `animate-impulse-rotation-left` | Impulse rotation to the left | 1000ms |
+
+```html
+<div class="animate-rotate-360 animate-iteration-count-infinite">
+  Rotates continuously
+</div>
+```
+
+### Flip Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-flip-horizontal` | Flips horizontally 180 degrees | 1000ms |
+| `animate-flip-vertical` | Flips vertically 180 degrees | 1000ms |
+| `animate-flip-x` | Flips on X-axis | 600ms |
+| `animate-flip-y` | Flips on Y-axis | 600ms |
+| `animate-flip-in-x` | Flips in on X-axis with fade | 600ms |
+| `animate-flip-in-y` | Flips in on Y-axis with fade | 600ms |
+| `animate-flip-out-x` | Flips out on X-axis with fade | 600ms |
+| `animate-flip-out-y` | Flips out on Y-axis with fade | 600ms |
+
+```html
+<div class="animate-flip-horizontal hover:animate-flip-vertical">
+  Flip on hover
+</div>
+```
+
+### Bounce & Movement Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-bouncing` | Bounces up and down | 1000ms |
+| `animate-vertical-bounce` | Vertical bouncing motion | 600ms |
+| `animate-horizontal-bounce` | Horizontal bouncing motion | 600ms |
+| `animate-jump` | Jumps up and returns | 1000ms |
+| `animate-hang` | Hangs and drops | 1000ms |
+| `animate-float` | Gentle floating motion | 1000ms |
+| `animate-sink` | Gentle sinking motion | 1000ms |
+| `animate-bounce-fade-in` | Bounces while fading in | 600ms |
+
+```html
+<div class="animate-bouncing animate-iteration-count-infinite">
+  Bounces forever
+</div>
+```
+
+### Shake & Wobble Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-shake` | Shakes horizontally | 500ms |
+| `animate-wobble` | Wobbles back and forth | 1000ms |
+| `animate-swing` | Swings like a pendulum | 1000ms |
+| `animate-sway` | Gentle swaying motion | 600ms |
+| `animate-jiggle` | Small rotation jiggle | 500ms |
+| `animate-horizontal-vibration` | Rapid horizontal vibration | 300ms (infinite) |
+| `animate-rotational-wave` | Rotational waving motion | 2000ms (infinite) |
+
+```html
+<button class="hover:animate-shake">
+  Shake on hover
+</button>
+```
+
+### Pulse & Flash Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-pulse` | Pulses opacity continuously | 2000ms (infinite) |
+| `animate-pulsing` | Pulses scale continuously | 1000ms |
+| `animate-pulse-fade-in` | Pulses while fading in | 600ms |
+| `animate-flash` | Flashes visibility | 1000ms |
+| `animate-blink` | Blinks from transparent to opaque | 500ms |
+| `animate-heartbeat` | Heartbeat pulsing effect | 600ms |
+
+```html
+<div class="animate-pulse">
+  Pulses continuously
+</div>
+```
+
+### Special Effect Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-tada` | Celebratory tada effect | 1000ms |
+| `animate-rubber-band` | Rubber band stretching effect | 1000ms |
+| `animate-jelly` | Jelly wobble effect | 1000ms |
+| `animate-roll-in` | Rolls in from the left | 1000ms |
+| `animate-roll-out` | Rolls out to the right | 1000ms |
+| `animate-swing-drop-in` | Swings and drops into view | 600ms |
+| `animate-skew` | Skews element | 500ms |
+| `animate-skew-right` | Skews element to the right | 500ms |
+| `animate-tilt` | Tilts on Y-axis | 600ms |
+| `animate-squeeze` | Squeezes element | 600ms |
+| `animate-dancing` | Dancing skew motion | 1000ms |
+
+```html
+<div class="animate-tada">
+  Celebrate!
+</div>
+```
+
+### Expand & Contract Animations
+
+| Class | Description | Default Duration |
+|-------|-------------|------------------|
+| `animate-expand-horizontally` | Expands horizontally from 0 to 100% | 600ms |
+| `animate-contract-horizontally` | Contracts horizontally from 100% to 0 | 600ms |
+| `animate-expand-vertically` | Expands vertically from 0 to 100% | 600ms |
+| `animate-contract-vertically` | Contracts vertically from 100% to 0 | 600ms |
+
+```html
+<div class="animate-expand-horizontally">
+  Expands into view
+</div>
+```
+
+## Combining with Control Classes
+
+Animation classes can be combined with duration, delay, iteration, and timing function classes:
+
+```html
+<div class="animate-fade-in animate-duration-1000 animate-delay-500">
+  Fades in slowly after a delay
+</div>
+
+<div class="animate-bouncing animate-iteration-count-infinite animate-bezier-ease-in-out">
+  Bounces continuously with custom easing
+</div>
+
+<div class="animate-rotate-360 animate-direction-reverse animate-fill-mode-forwards">
+  Rotates backwards and stays at end state
+</div>
+```
+
+## Notes
+
+- All animations include default timing functions optimized for their motion type
+- Most animations use `both` as the default fill mode to maintain start and end states
+- Some animations like `animate-pulse` and `animate-horizontal-vibration` are infinite by default
+- Override default durations using `animate-duration-*` classes
+- Add delays using `animate-delay-*` classes
+- Control repetition using `animate-iteration-count-*` classes
+
+## Browser Compatibility
+
+All animation classes are compatible with modern browsers that support CSS animations:
+
+- Chrome 43+
+- Firefox 16+
+- Safari 9+
+- Edge 12+
+
+For scroll-driven animations (used with timeline classes), see the [Timeline Classes](/api/timeline-classes) reference for specific browser requirements.

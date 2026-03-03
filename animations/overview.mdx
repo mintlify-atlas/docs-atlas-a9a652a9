@@ -1,0 +1,201 @@
+---
+title: Animation Overview
+description: Explore all animation categories available in the Tailwind Animations library
+---
+
+Tailwind Animations provides 70+ ready-to-use CSS animations through simple utility classes. All animations are CSS-only, performant, and fully customizable.
+
+## Animation Categories
+
+<CardGroup cols={2}>
+  <Card title="Fade Animations" icon="circle-half-stroke" href="/animations/fade">
+    Smooth appearance and disappearance effects with directional fading
+  </Card>
+  
+  <Card title="Slide Animations" icon="arrow-right" href="/animations/slide">
+    Entry and exit animations with directional sliding movements
+  </Card>
+  
+  <Card title="Zoom & Scale" icon="magnifying-glass-plus" href="/animations/zoom-scale">
+    Scaling effects for emphasis and smooth zoom transitions
+  </Card>
+  
+  <Card title="Rotation" icon="rotate" href="/animations/rotate">
+    Rotate elements with precise angles or continuous spinning
+  </Card>
+  
+  <Card title="Flip Animations" icon="repeat" href="/animations/flip">
+    3D flip effects on horizontal and vertical axes
+  </Card>
+  
+  <Card title="Movement & Motion" icon="wand-magic-sparkles" href="/animations/movement">
+    Bouncing, swaying, wobbling, and other dynamic movements
+  </Card>
+  
+  <Card title="Interactive & Fun" icon="star" href="/animations/interactive">
+    Playful animations for user interactions and celebrations
+  </Card>
+</CardGroup>
+
+## Quick Start
+
+Add any animation to your elements using the `animate-*` utility class:
+
+```html
+<div class="animate-fade-in">
+  Smoothly fades in
+</div>
+```
+
+## Customization
+
+Every animation can be customized with control utilities:
+
+### Duration
+
+```html
+<!-- Semantic names -->
+<div class="animate-fade-in animate-duration-faster">100ms</div>
+<div class="animate-fade-in animate-duration-fast">200ms</div>
+<div class="animate-fade-in animate-duration-normal">300ms (default)</div>
+<div class="animate-fade-in animate-duration-slow">400ms</div>
+<div class="animate-fade-in animate-duration-slower">500ms</div>
+
+<!-- Numeric values -->
+<div class="animate-fade-in animate-duration-250">250ms</div>
+```
+
+### Delay
+
+```html
+<div class="animate-fade-in animate-delay-300">
+  Starts after 300ms
+</div>
+```
+
+Available delays: `0`, `100`, `150`, `200`, `250`, `300`, `400`, `500`, `700`, `800`, `900`, `1000` (in ms)
+
+### Iteration Count
+
+```html
+<div class="animate-bounce animate-iteration-count-infinite">
+  Bounces forever
+</div>
+
+<div class="animate-tada animate-iteration-count-thrice">
+  Plays 3 times
+</div>
+```
+
+Options: `once`, `twice`, `thrice`, `infinite`
+
+### Direction
+
+```html
+<div class="animate-slide-in-top animate-direction-alternate">
+  Alternates forward and backward
+</div>
+```
+
+Options: `normal`, `reverse`, `alternate`, `alternate-reverse`
+
+### Fill Mode
+
+```html
+<div class="animate-zoom-in animate-fill-mode-forwards">
+  Maintains final state after animation
+</div>
+```
+
+Options: `forwards`, `backwards`, `both`
+
+### Easing Functions
+
+```html
+<!-- Standard -->
+<div class="animate-fade-in animate-ease-in-out">Smooth ease</div>
+
+<!-- Advanced cubic bezier -->
+<div class="animate-slide-in-bottom animate-bezier-cubic-out">
+  Custom easing curve
+</div>
+```
+
+Available cubic bezier curves:
+- **Sine**: `sine-in`, `sine-out`, `sine-in-out`
+- **Quad**: `quad-in`, `quad-out`, `quad-in-out`
+- **Cubic**: `cubic-in`, `cubic-out`, `cubic-in-out`
+- **Quart**: `quart-in`, `quart-out`, `quart-in-out`
+- **Quint**: `quint-in`, `quint-out`, `quint-in-out`
+- **Expo**: `expo-in`, `expo-out`, `expo-in-out`
+- **Circ**: `circ-in`, `circ-out`, `circ-in-out`
+- **Back**: `back-in`, `back-out`, `back-in-out`
+
+### Play State
+
+```html
+<div class="animate-spin-clockwise hover:animate-play-paused">
+  Pauses on hover
+</div>
+```
+
+## Advanced Features
+
+### Scroll-Driven Animations
+
+Animate elements based on scroll position:
+
+```html
+<div class="animate-rotate-360 timeline-scroll">
+  Rotates as you scroll
+</div>
+```
+
+### View Timeline Animations
+
+Trigger animations when elements enter the viewport:
+
+```html
+<div class="animate-zoom-in view-animate-[--entrance] animate-range-[entry_10%_contain_25%]">
+  Animates when entering viewport
+</div>
+```
+
+### Retro/Pixel-Style Animations
+
+Create step-based animations for a retro effect:
+
+```html
+<div class="animate-rotate-360 animate-steps-retro animate-iteration-count-infinite">
+  8-step pixel rotation
+</div>
+```
+
+Options: `retro` (8 steps), `normal` (16 steps), `modern` (24 steps)
+
+## Combining Animations
+
+Stack multiple utilities for complex effects:
+
+```html
+<button class="animate-tada 
+             animate-delay-200 
+             animate-duration-slow
+             animate-iteration-count-infinite
+             animate-direction-alternate
+             hover:animate-play-paused
+             animate-bezier-back-out">
+  Click me!
+</button>
+```
+
+## Best Practices
+
+<Tip>Use animations sparingly to avoid overwhelming users. Reserve animations for important UI moments.</Tip>
+
+<Warning>Respect user preferences by checking for `prefers-reduced-motion` in your CSS.</Warning>
+
+- Choose appropriate durations (faster for small elements, slower for large ones)
+- Use delays to create staggered effects for multiple elements
+- Combine `animate-fill-mode-forwards` to maintain the final state
+- Test animations on different devices and screen sizes

@@ -1,0 +1,462 @@
+---
+title: Flip Animations
+description: 3D flip effects on horizontal and vertical axes
+---
+
+Flip animations create stunning 3D effects by rotating elements around their X or Y axis. These animations are perfect for card reveals, image transitions, and interactive elements that need to show both sides.
+
+## 3D Flip Rotations
+
+<Tabs>
+  <Tab title="flip-horizontal">
+    Flips element 180° around the Y-axis (horizontal flip).
+
+    ```html
+    <div class="animate-flip-horizontal">
+      Flips left to right
+    </div>
+    ```
+
+    **Transform:** `rotateY(0deg)` to `rotateY(180deg)`
+    
+    **Duration:** 1000ms
+
+    **Best for:** Card reveals, showing back of elements, horizontal page turns
+
+    **Visual:** Element appears to flip like turning a page sideways
+  </Tab>
+
+  <Tab title="flip-vertical">
+    Flips element 180° around the X-axis (vertical flip).
+
+    ```html
+    <div class="animate-flip-vertical">
+      Flips top to bottom
+    </div>
+    ```
+
+    **Transform:** `rotateX(0deg)` to `rotateX(180deg)`
+    
+    **Duration:** 1000ms
+
+    **Best for:** Vertical card flips, dropdown reveals, panel rotations
+
+    **Visual:** Element appears to flip like a calendar page
+  </Tab>
+</Tabs>
+
+## 2D Mirror Flips
+
+<Accordion title="flip-x">
+  Mirrors element along the X-axis.
+
+  ```html
+  <div class="animate-flip-x">
+    Mirrors horizontally
+  </div>
+  ```
+
+  **Transform sequence:**
+  - 0%: `scaleX(1)`
+  - 50%: `scaleX(-1)`
+  - 100%: `scaleX(1)`
+
+  **Duration:** 600ms
+
+  **Best for:** Image effects, icon animations, playful transitions
+
+  **Note:** This creates a 2D mirror effect, not a 3D flip
+</Accordion>
+
+<Accordion title="flip-y">
+  Mirrors element along the Y-axis.
+
+  ```html
+  <div class="animate-flip-y">
+    Mirrors vertically
+  </div>
+  ```
+
+  **Transform sequence:**
+  - 0%: `scaleY(1)`
+  - 50%: `scaleY(-1)`
+  - 100%: `scaleY(1)`
+
+  **Duration:** 600ms
+
+  **Best for:** Vertical mirror effects, reflection animations
+</Accordion>
+
+## Flip with Fade Animations
+
+### Flip In Animations
+
+<Tabs>
+  <Tab title="flip-in-x">
+    Flips into view from the right with fade.
+
+    ```html
+    <div class="animate-flip-in-x">
+      Flips in around Y-axis
+    </div>
+    ```
+
+    **Animation:**
+    - Starts: `opacity: 0; rotateY(90deg)`
+    - Ends: `opacity: 1; rotateY(0deg)`
+
+    **Duration:** 600ms
+
+    **Best for:** Card entrances, panel reveals, content appearing from the side
+  </Tab>
+
+  <Tab title="flip-in-y">
+    Flips into view from above/below with fade.
+
+    ```html
+    <div class="animate-flip-in-y">
+      Flips in around X-axis
+    </div>
+    ```
+
+    **Animation:**
+    - Starts: `opacity: 0; rotateX(90deg)`
+    - Ends: `opacity: 1; rotateX(0deg)`
+
+    **Duration:** 600ms
+
+    **Best for:** Dropdown content, vertical reveals, menu entries
+  </Tab>
+</Tabs>
+
+### Flip Out Animations
+
+<Tabs>
+  <Tab title="flip-out-x">
+    Flips out of view horizontally with fade.
+
+    ```html
+    <div class="animate-flip-out-x">
+      Flips out around Y-axis
+    </div>
+    ```
+
+    **Animation:**
+    - Starts: `opacity: 1; rotateY(0deg)`
+    - Ends: `opacity: 0; rotateY(90deg)`
+
+    **Duration:** 600ms
+
+    **Best for:** Card exits, dismissing panels
+  </Tab>
+
+  <Tab title="flip-out-y">
+    Flips out of view vertically with fade.
+
+    ```html
+    <div class="animate-flip-out-y">
+      Flips out around X-axis
+    </div>
+    ```
+
+    **Animation:**
+    - Starts: `opacity: 1; rotateX(0deg)`
+    - Ends: `opacity: 0; rotateX(90deg)`
+
+    **Duration:** 600ms
+
+    **Best for:** Closing dropdowns, vertical dismissals
+  </Tab>
+</Tabs>
+
+## Customization Examples
+
+### Slow, Smooth Flip
+
+```html
+<div class="animate-flip-horizontal 
+            animate-duration-slower 
+            animate-bezier-cubic-in-out">
+  Elegant, slow flip
+</div>
+```
+
+### Quick Flip on Hover
+
+```html
+<div class="hover:animate-flip-horizontal hover:animate-duration-fast">
+  Quick flip on hover
+</div>
+```
+
+### Infinite Flipping
+
+```html
+<div class="animate-flip-vertical 
+            animate-iteration-count-infinite 
+            animate-duration-slow">
+  Continuously flips
+</div>
+```
+
+### Alternating Flip
+
+```html
+<div class="animate-flip-horizontal 
+            animate-iteration-count-infinite 
+            animate-direction-alternate 
+            animate-duration-normal">
+  Flips back and forth
+</div>
+```
+
+### Delayed Flip Entrance
+
+```html
+<div class="animate-flip-in-x 
+            animate-delay-500 
+            animate-bezier-back-out">
+  Flips in after delay with bounce
+</div>
+```
+
+## Practical Use Cases
+
+### Interactive Flip Card
+
+```html
+<div class="relative w-64 h-96 [perspective:1000px]">
+  <!-- Front -->
+  <div class="absolute inset-0 bg-white rounded-lg shadow-xl p-6
+              [backface-visibility:hidden]">
+    <h3>Front Side</h3>
+    <p>Hover to flip</p>
+  </div>
+  
+  <!-- Back -->
+  <div class="absolute inset-0 bg-blue-500 text-white rounded-lg shadow-xl p-6
+              [backface-visibility:hidden] [transform:rotateY(180deg)]
+              hover:animate-flip-horizontal">
+    <h3>Back Side</h3>
+    <p>More information here</p>
+  </div>
+</div>
+```
+
+### Product Image Flip
+
+```html
+<div class="relative group cursor-pointer [perspective:1000px]">
+  <img src="front.jpg" 
+       class="group-hover:animate-flip-horizontal group-hover:animate-duration-fast"/>
+</div>
+```
+
+### Notification Card
+
+```html
+<div class="bg-white rounded-lg shadow-lg p-6 animate-flip-in-y">
+  <h4>New Message</h4>
+  <p>You have a new notification</p>
+</div>
+```
+
+### Menu Dropdown
+
+```html
+<button class="px-4 py-2 bg-blue-500 text-white rounded">Menu</button>
+
+<div class="mt-2 bg-white rounded-lg shadow-xl p-4 animate-flip-in-y animate-duration-fast">
+  <ul>
+    <li>Option 1</li>
+    <li>Option 2</li>
+    <li>Option 3</li>
+  </ul>
+</div>
+```
+
+### Profile Card Reveal
+
+```html
+<div class="w-80 h-96 bg-gradient-to-br from-purple-500 to-pink-500 
+            rounded-lg shadow-2xl p-8 text-white
+            animate-flip-horizontal animate-delay-300">
+  <img src="avatar.jpg" class="w-24 h-24 rounded-full mx-auto mb-4"/>
+  <h2 class="text-2xl font-bold text-center">John Doe</h2>
+  <p class="text-center mt-2">Web Developer</p>
+</div>
+```
+
+### Toggle Panel
+
+```html
+<!-- Panel 1 (visible) -->
+<div id="panel1" class="bg-white p-6 rounded-lg">
+  <button onclick="flip()" class="text-blue-500">Show More</button>
+</div>
+
+<!-- Panel 2 (hidden, flips in when toggled) -->
+<div id="panel2" class="hidden bg-white p-6 rounded-lg animate-flip-in-x">
+  <p>Additional content...</p>
+  <button onclick="flip()" class="text-blue-500">Show Less</button>
+</div>
+```
+
+### Loading Card Flip
+
+```html
+<div class="animate-flip-vertical 
+            animate-iteration-count-infinite 
+            animate-duration-slow">
+  <div class="bg-gray-200 rounded-lg p-8">
+    <div class="animate-pulse">
+      <div class="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+      <div class="h-4 bg-gray-300 rounded w-1/2"></div>
+    </div>
+  </div>
+</div>
+```
+
+## Advanced Techniques
+
+### Staggered Card Flips
+
+```html
+<div class="grid grid-cols-3 gap-4">
+  <div class="card animate-flip-in-x animate-delay-0">Card 1</div>
+  <div class="card animate-flip-in-x animate-delay-200">Card 2</div>
+  <div class="card animate-flip-in-x animate-delay-400">Card 3</div>
+  <div class="card animate-flip-in-x animate-delay-600">Card 4</div>
+  <div class="card animate-flip-in-x animate-delay-800">Card 5</div>
+  <div class="card animate-flip-in-x animate-delay-1000">Card 6</div>
+</div>
+```
+
+### Flip with Perspective Control
+
+```html
+<div class="[perspective:800px]">
+  <div class="animate-flip-horizontal">Closer perspective</div>
+</div>
+
+<div class="[perspective:2000px]">
+  <div class="animate-flip-horizontal">Farther perspective</div>
+</div>
+```
+
+### Combining Flips
+
+```html
+<!-- Flip both axes simultaneously -->
+<div style="animation: flip-horizontal 1s, flip-vertical 1s;">
+  Complex 3D rotation
+</div>
+```
+
+### Transform Origin Control
+
+```html
+<!-- Flip from left edge -->
+<div class="animate-flip-horizontal origin-left">
+  Door opening effect
+</div>
+
+<!-- Flip from top edge -->
+<div class="animate-flip-vertical origin-top">
+  Lid opening effect
+</div>
+```
+
+## Creating a Complete Flip Card
+
+Here's a complete example of a flip card that shows both sides:
+
+```html
+<style>
+  .flip-card {
+    perspective: 1000px;
+  }
+  
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+  }
+  
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+  }
+  
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+</style>
+
+<div class="flip-card w-64 h-80">
+  <div class="flip-card-inner">
+    <div class="flip-card-front bg-blue-500 rounded-lg p-6 text-white">
+      <h2 class="text-2xl font-bold">Front</h2>
+      <p>Hover to flip</p>
+    </div>
+    <div class="flip-card-back bg-green-500 rounded-lg p-6 text-white">
+      <h2 class="text-2xl font-bold">Back</h2>
+      <p>Additional info</p>
+    </div>
+  </div>
+</div>
+```
+
+## Tips and Best Practices
+
+<Tip>Add `perspective` to the parent element for realistic 3D flip effects. A value between 800px-1500px works well.</Tip>
+
+```html
+<div class="[perspective:1000px]">
+  <div class="animate-flip-horizontal">Realistic 3D depth</div>
+</div>
+```
+
+<Tip>Use `backface-visibility: hidden` to prevent the back of elements from showing through during the flip.</Tip>
+
+```html
+<div class="animate-flip-horizontal [backface-visibility:hidden]">
+  Clean flip without showing reverse
+</div>
+```
+
+<Warning>3D transforms may render slightly differently across browsers. Test on multiple browsers for consistent results.</Warning>
+
+<Warning>Avoid flipping elements with complex content or many child elements, as it may affect performance.</Warning>
+
+### Maintaining Final State
+
+```html
+<div class="animate-flip-horizontal animate-fill-mode-forwards">
+  Stays flipped after animation
+</div>
+```
+
+### Smooth Easing
+
+```html
+<div class="animate-flip-vertical animate-bezier-cubic-in-out">
+  Smooth acceleration and deceleration
+</div>
+```
+
+## Performance Considerations
+
+- 3D transforms (`rotateX`, `rotateY`) are GPU-accelerated
+- Performance is excellent on modern devices
+- The `preserve-3d` transform style may impact performance with many elements
+- Use `backface-visibility: hidden` to improve rendering performance
+- Limit the number of simultaneously flipping elements on mobile devices
