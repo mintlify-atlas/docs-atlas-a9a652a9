@@ -1,0 +1,121 @@
+{
+  "projectType": "sdk-library",
+  "projectName": "Tailwind Animations",
+  "projectDescription": "Easy-to-use Tailwind CSS plugin that adds 70+ CSS animations through utility classes",
+  "theme": "palm",
+  "primaryColor": "#8b5cf6",
+  "lightColor": "#a78bfa",
+  "darkColor": "#7c3aed",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "Get Started",
+            "pages": [
+              "introduction",
+              "installation",
+              "quickstart"
+            ]
+          },
+          {
+            "group": "Animations",
+            "pages": [
+              "animations/overview",
+              "animations/fade",
+              "animations/slide",
+              "animations/zoom-scale",
+              "animations/rotate",
+              "animations/flip",
+              "animations/movement",
+              "animations/interactive"
+            ]
+          },
+          {
+            "group": "Customization",
+            "pages": [
+              "customization/duration",
+              "customization/delay",
+              "customization/easing",
+              "customization/iteration",
+              "customization/fill-modes",
+              "customization/steps"
+            ]
+          },
+          {
+            "group": "Advanced",
+            "pages": [
+              "advanced/view-timeline",
+              "advanced/scroll-timeline",
+              "advanced/combining-animations",
+              "advanced/examples"
+            ]
+          },
+          {
+            "group": "Migration",
+            "pages": [
+              "migration/from-v3",
+              "migration/scoped-package"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "API Reference",
+        "groups": [
+          {
+            "group": "Classes",
+            "pages": [
+              "api/animation-classes",
+              "api/delay-classes",
+              "api/duration-classes",
+              "api/easing-classes",
+              "api/control-classes",
+              "api/timeline-classes"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "keyFeatures": [
+    "70+ predefined CSS animations",
+    "Granular control with utility classes (delay, duration, easing, iteration)",
+    "View timeline and scroll timeline support",
+    "Advanced cubic bezier easing functions",
+    "Steps/retro animation support",
+    "CSS-only implementation (no JavaScript)",
+    "Tree-shakeable and performance optimized"
+  ],
+  "publicApiSurface": [
+    "animate-fade-in",
+    "animate-fade-out",
+    "animate-slide-in-top",
+    "animate-slide-in-bottom",
+    "animate-slide-in-left",
+    "animate-slide-in-right",
+    "animate-zoom-in",
+    "animate-zoom-out",
+    "animate-rotate-90",
+    "animate-rotate-180",
+    "animate-rotate-360",
+    "animate-flip-horizontal",
+    "animate-flip-vertical",
+    "animate-bounce",
+    "animate-pulse",
+    "animate-tada",
+    "animate-heartbeat",
+    "animate-delay-*",
+    "animate-duration-*",
+    "animate-bezier-*",
+    "animate-iteration-count-*",
+    "animate-direction-*",
+    "animate-fill-mode-*",
+    "animate-play-*",
+    "animate-steps-*",
+    "animate-range-*",
+    "view-animate-*",
+    "timeline-scroll"
+  ]
+}
